@@ -38,6 +38,7 @@ namespace GAMES_MARKET.Controllers
         [HttpPost]
         public ActionResult AddUser()
         {
+            //asdasd
             int a = 1;
             if (a == 2)
             {
