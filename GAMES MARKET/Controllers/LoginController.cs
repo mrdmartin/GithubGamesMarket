@@ -13,9 +13,40 @@ namespace GAMES_MARKET.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult LoginCompleted()
+        {
+            int a = 1;
+            if (a == 2)
+            {
+                return RedirectToAction("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
         public ActionResult Help()
         {
             return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddUser()
+        {
+            int a = 1;
+            if (a == 2)
+            {
+                return RedirectToAction("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
