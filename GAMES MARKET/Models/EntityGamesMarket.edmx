@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Games_MarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="capturas">
+          <Key>
+            <PropertyRef Name="id_captura" />
+          </Key>
+          <Property Name="id_captura" Type="int" Nullable="false" />
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="img_path" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="claves">
+          <Key>
+            <PropertyRef Name="id_clave" />
+          </Key>
+          <Property Name="id_clave" Type="int" Nullable="false" />
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="text" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="id_comentario" />
+          </Key>
+          <Property Name="id_comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="comentario" Type="text" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="descuentos">
+          <Key>
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_descuento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="descuento" Type="int" Nullable="false" />
+          <Property Name="inicio" Type="date" Nullable="false" />
+          <Property Name="fin" Type="date" Nullable="false" />
+          <Property Name="img_path" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deseados">
+          <Key>
+            <PropertyRef Name="id_juego" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="generos">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="generos-juegos">
+          <Key>
+            <PropertyRef Name="id_genero" />
+            <PropertyRef Name="id_juego" />
+          </Key>
+          <Property Name="id_genero" Type="int" Nullable="false" />
+          <Property Name="id_juego" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="juegos">
+          <Key>
+            <PropertyRef Name="id_juego" />
+          </Key>
+          <Property Name="id_juego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="id_plataforma" Type="int" Nullable="false" />
+          <Property Name="precio" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="img_path" Type="text" Nullable="false" />
+          <Property Name="url_trailer" Type="text" Nullable="false" />
+          <Property Name="distribuidora" Type="text" Nullable="false" />
+          <Property Name="descripcion" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plataformas">
+          <Key>
+            <PropertyRef Name="id_plataforma" />
+          </Key>
+          <Property Name="id_plataforma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="imgPath" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="apellidos" Type="text" Nullable="false" />
+          <Property Name="email" Type="text" Nullable="false" />
+          <Property Name="pass" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="valoraciones">
+          <Key>
+            <PropertyRef Name="id_juego" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_juego" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="valoracion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="id_venta" />
+          </Key>
+          <Property Name="id_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_clave" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha_venta" Type="date" Nullable="false" />
+          <Property Name="tarj" Type="text" Nullable="false" />
+          <Property Name="tarj_mes" Type="text" Nullable="false" />
+          <Property Name="tarj_ano" Type="text" Nullable="false" />
+          <Property Name="cod_seg" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_capturas_capturas">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="capturas" Type="Self.capturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="capturas">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_claves_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="claves" Type="Self.claves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="claves">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_claves_ventas">
+          <End Role="claves" Type="Self.claves" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="claves">
+              <PropertyRef Name="id_clave" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_clave" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comentarios_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comentarios_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_descuentos_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="descuentos" Type="Self.descuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="descuentos">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deseados_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="deseados" Type="Self.deseados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="deseados">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deseados_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="deseados" Type="Self.deseados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="deseados">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genero-juegos_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="generos-juegos" Type="Self.generos-juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="generos-juegos">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_generos-juegos_generos">
+          <End Role="generos" Type="Self.generos" Multiplicity="1" />
+          <End Role="generos-juegos" Type="Self.generos-juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="generos">
+              <PropertyRef Name="id_genero" />
+            </Principal>
+            <Dependent Role="generos-juegos">
+              <PropertyRef Name="id_genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_juegos_plataformas">
+          <End Role="plataformas" Type="Self.plataformas" Multiplicity="1" />
+          <End Role="juegos" Type="Self.juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plataformas">
+              <PropertyRef Name="id_plataforma" />
+            </Principal>
+            <Dependent Role="juegos">
+              <PropertyRef Name="id_plataforma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventas_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Games_MarketModelStoreContainer">
+          <EntitySet Name="capturas" EntityType="Self.capturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="claves" EntityType="Self.claves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="descuentos" EntityType="Self.descuentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="deseados" EntityType="Self.deseados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="generos" EntityType="Self.generos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="generos-juegos" EntityType="Self.generos-juegos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="juegos" EntityType="Self.juegos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plataformas" EntityType="Self.plataformas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="valoraciones" EntityType="Self.valoraciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_capturas_capturas" Association="Self.FK_capturas_capturas">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="capturas" EntitySet="capturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_claves_juegos" Association="Self.FK_claves_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="claves" EntitySet="claves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_claves_ventas" Association="Self.FK_claves_ventas">
+            <End Role="claves" EntitySet="claves" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comentarios_juegos" Association="Self.FK_comentarios_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comentarios_usuarios" Association="Self.FK_comentarios_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_descuentos_juegos" Association="Self.FK_descuentos_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="descuentos" EntitySet="descuentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deseados_juegos" Association="Self.FK_deseados_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="deseados" EntitySet="deseados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deseados_usuarios" Association="Self.FK_deseados_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="deseados" EntitySet="deseados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genero-juegos_juegos" Association="Self.FK_genero-juegos_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="generos-juegos" EntitySet="generos-juegos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_generos-juegos_generos" Association="Self.FK_generos-juegos_generos">
+            <End Role="generos" EntitySet="generos" />
+            <End Role="generos-juegos" EntitySet="generos-juegos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_juegos_plataformas" Association="Self.FK_juegos_plataformas">
+            <End Role="plataformas" EntitySet="plataformas" />
+            <End Role="juegos" EntitySet="juegos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_juegos" Association="Self.FK_valoraciones_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_usuarios" Association="Self.FK_valoraciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventas_usuarios" Association="Self.FK_ventas_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Games_MarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="capturas">
+          <Key>
+            <PropertyRef Name="id_captura" />
+          </Key>
+          <Property Name="id_captura" Type="Int32" Nullable="false" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="img_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_capturas_capturas" FromRole="capturas" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="claves">
+          <Key>
+            <PropertyRef Name="id_clave" />
+          </Key>
+          <Property Name="id_clave" Type="Int32" Nullable="false" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_claves_juegos" FromRole="claves" ToRole="juegos" />
+          <NavigationProperty Name="ventas" Relationship="Self.FK_claves_ventas" FromRole="claves" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="id_comentario" />
+          </Key>
+          <Property Name="id_comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_comentarios_juegos" FromRole="comentarios" ToRole="juegos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_comentarios_usuarios" FromRole="comentarios" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="descuentos">
+          <Key>
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_descuento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="img_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_descuentos_juegos" FromRole="descuentos" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="generos">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.generos_juegos" FromRole="generos" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="juegos">
+          <Key>
+            <PropertyRef Name="id_juego" />
+          </Key>
+          <Property Name="id_juego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_plataforma" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="img_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url_trailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distribuidora" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="capturas" Relationship="Self.FK_capturas_capturas" FromRole="juegos" ToRole="capturas" />
+          <NavigationProperty Name="claves" Relationship="Self.FK_claves_juegos" FromRole="juegos" ToRole="claves" />
+          <NavigationProperty Name="comentarios" Relationship="Self.FK_comentarios_juegos" FromRole="juegos" ToRole="comentarios" />
+          <NavigationProperty Name="descuentos" Relationship="Self.FK_descuentos_juegos" FromRole="juegos" ToRole="descuentos" />
+          <NavigationProperty Name="plataformas" Relationship="Self.FK_juegos_plataformas" FromRole="juegos" ToRole="plataformas" />
+          <NavigationProperty Name="valoraciones" Relationship="Self.FK_valoraciones_juegos" FromRole="juegos" ToRole="valoraciones" />
+          <NavigationProperty Name="usuarios" Relationship="Self.deseados" FromRole="juegos" ToRole="usuarios" />
+          <NavigationProperty Name="generos" Relationship="Self.generos_juegos" FromRole="juegos" ToRole="generos" />
+        </EntityType>
+        <EntityType Name="plataformas">
+          <Key>
+            <PropertyRef Name="id_plataforma" />
+          </Key>
+          <Property Name="id_plataforma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_juegos_plataformas" FromRole="plataformas" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="comentarios" Relationship="Self.FK_comentarios_usuarios" FromRole="usuarios" ToRole="comentarios" />
+          <NavigationProperty Name="valoraciones" Relationship="Self.FK_valoraciones_usuarios" FromRole="usuarios" ToRole="valoraciones" />
+          <NavigationProperty Name="ventas" Relationship="Self.FK_ventas_usuarios" FromRole="usuarios" ToRole="ventas" />
+          <NavigationProperty Name="juegos" Relationship="Self.deseados" FromRole="usuarios" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="valoraciones">
+          <Key>
+            <PropertyRef Name="id_juego" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="valoracion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Self.FK_valoraciones_juegos" FromRole="valoraciones" ToRole="juegos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_valoraciones_usuarios" FromRole="valoraciones" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="id_venta" />
+          </Key>
+          <Property Name="id_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_clave" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha_venta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tarj" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarj_mes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarj_ano" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_seg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="claves" Relationship="Self.FK_claves_ventas" FromRole="ventas" ToRole="claves" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_ventas_usuarios" FromRole="ventas" ToRole="usuarios" />
+        </EntityType>
+        <Association Name="FK_capturas_capturas">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="capturas" Type="Self.capturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="capturas">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_claves_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="claves" Type="Self.claves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="claves">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_claves_ventas">
+          <End Role="claves" Type="Self.claves" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="claves">
+              <PropertyRef Name="id_clave" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_clave" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comentarios_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comentarios_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_descuentos_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="descuentos" Type="Self.descuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="descuentos">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_juegos_plataformas">
+          <End Role="plataformas" Type="Self.plataformas" Multiplicity="1" />
+          <End Role="juegos" Type="Self.juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plataformas">
+              <PropertyRef Name="id_plataforma" />
+            </Principal>
+            <Dependent Role="juegos">
+              <PropertyRef Name="id_plataforma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventas_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="deseados">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="*" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+        </Association>
+        <Association Name="generos_juegos">
+          <End Role="juegos" Type="Self.juegos" Multiplicity="*" />
+          <End Role="generos" Type="Self.generos" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Games_MarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="capturas" EntityType="Self.capturas" />
+          <EntitySet Name="claves" EntityType="Self.claves" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" />
+          <EntitySet Name="descuentos" EntityType="Self.descuentos" />
+          <EntitySet Name="generos" EntityType="Self.generos" />
+          <EntitySet Name="juegos" EntityType="Self.juegos" />
+          <EntitySet Name="plataformas" EntityType="Self.plataformas" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="valoraciones" EntityType="Self.valoraciones" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" />
+          <AssociationSet Name="FK_capturas_capturas" Association="Self.FK_capturas_capturas">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="capturas" EntitySet="capturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_claves_juegos" Association="Self.FK_claves_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="claves" EntitySet="claves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_claves_ventas" Association="Self.FK_claves_ventas">
+            <End Role="claves" EntitySet="claves" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comentarios_juegos" Association="Self.FK_comentarios_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comentarios_usuarios" Association="Self.FK_comentarios_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_descuentos_juegos" Association="Self.FK_descuentos_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="descuentos" EntitySet="descuentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_juegos_plataformas" Association="Self.FK_juegos_plataformas">
+            <End Role="plataformas" EntitySet="plataformas" />
+            <End Role="juegos" EntitySet="juegos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_juegos" Association="Self.FK_valoraciones_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_usuarios" Association="Self.FK_valoraciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventas_usuarios" Association="Self.FK_ventas_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="deseados" Association="Self.deseados">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="generos_juegos" Association="Self.generos_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="generos" EntitySet="generos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Games_MarketModelStoreContainer" CdmEntityContainer="Games_MarketEntities">
+          <EntitySetMapping Name="capturas">
+            <EntityTypeMapping TypeName="Games_MarketModel.capturas">
+              <MappingFragment StoreEntitySet="capturas">
+                <ScalarProperty Name="id_captura" ColumnName="id_captura" />
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="claves">
+            <EntityTypeMapping TypeName="Games_MarketModel.claves">
+              <MappingFragment StoreEntitySet="claves">
+                <ScalarProperty Name="id_clave" ColumnName="id_clave" />
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentarios">
+            <EntityTypeMapping TypeName="Games_MarketModel.comentarios">
+              <MappingFragment StoreEntitySet="comentarios">
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="descuentos">
+            <EntityTypeMapping TypeName="Games_MarketModel.descuentos">
+              <MappingFragment StoreEntitySet="descuentos">
+                <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="generos">
+            <EntityTypeMapping TypeName="Games_MarketModel.generos">
+              <MappingFragment StoreEntitySet="generos">
+                <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="juegos">
+            <EntityTypeMapping TypeName="Games_MarketModel.juegos">
+              <MappingFragment StoreEntitySet="juegos">
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_plataforma" ColumnName="id_plataforma" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
+                <ScalarProperty Name="url_trailer" ColumnName="url_trailer" />
+                <ScalarProperty Name="distribuidora" ColumnName="distribuidora" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plataformas">
+            <EntityTypeMapping TypeName="Games_MarketModel.plataformas">
+              <MappingFragment StoreEntitySet="plataformas">
+                <ScalarProperty Name="id_plataforma" ColumnName="id_plataforma" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Games_MarketModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="Games_MarketModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="valoraciones">
+            <EntityTypeMapping TypeName="Games_MarketModel.valoraciones">
+              <MappingFragment StoreEntitySet="valoraciones">
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="valoracion" ColumnName="valoracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventas">
+            <EntityTypeMapping TypeName="Games_MarketModel.ventas">
+              <MappingFragment StoreEntitySet="ventas">
+                <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+                <ScalarProperty Name="id_clave" ColumnName="id_clave" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha_venta" ColumnName="fecha_venta" />
+                <ScalarProperty Name="tarj" ColumnName="tarj" />
+                <ScalarProperty Name="tarj_mes" ColumnName="tarj_mes" />
+                <ScalarProperty Name="tarj_ano" ColumnName="tarj_ano" />
+                <ScalarProperty Name="cod_seg" ColumnName="cod_seg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="deseados" TypeName="Games_MarketModel.deseados" StoreEntitySet="deseados">
+            <EndProperty Name="juegos">
+              <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+            </EndProperty>
+            <EndProperty Name="usuarios">
+              <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="generos_juegos" TypeName="Games_MarketModel.generos_juegos" StoreEntitySet="generos-juegos">
+            <EndProperty Name="juegos">
+              <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+            </EndProperty>
+            <EndProperty Name="generos">
+              <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

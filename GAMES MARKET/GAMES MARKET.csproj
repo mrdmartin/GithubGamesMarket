@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -125,6 +133,54 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\capturas.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\claves.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\comentarios.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\descuentos.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityGamesMarket.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityGamesMarket.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityGamesMarket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityGamesMarket.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\generos.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\juegos.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\plataformas.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuarios.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\valoraciones.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ventas.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,6 +272,16 @@
     <Content Include="Client\shared\img\carousel-resident_evil_3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\EntityGamesMarket.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityGamesMarket.Context.cs</LastGenOutput>
+      <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EntityGamesMarket.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
+      <LastGenOutput>EntityGamesMarket.cs</LastGenOutput>
+    </Content>
     <Content Include="obj\Debug\GAMES MARKET.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\GAMES MARKET.dll" />
     <Content Include="obj\Debug\GAMES MARKET.pdb" />
@@ -235,7 +301,6 @@
     <Folder Include="Client\page\" />
     <Folder Include="Client\shared\fonts\" />
     <Folder Include="Client\shared\js\" />
-    <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -266,12 +331,22 @@
     <Content Include="obj\Debug\GAMES MARKET.csproj.CopyComplete" />
     <Content Include="obj\Debug\GAMES MARKET.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\GAMES MARKET.csprojAssemblyReference.cache" />
+    <EntityDeploy Include="Models\EntityGamesMarket.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityGamesMarket.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EntityGamesMarket.edmx.diagram">
+      <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Help.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\GamesList\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
