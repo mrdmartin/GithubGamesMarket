@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-3 col-lg-4 justify-content-center">
+            <h2 class="m-md-3 text-center">Inicio de sesión</h2>
+            <form id="logForm">
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" class="form-control" id="logEmail">
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" class="form-control" id="logPassword">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-5">Enviar</button>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="" class="">Crear cuenta</a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="~/Login/Help" class="">¿Has olvidado la contraseña?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
