@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GAMES_MARKET.Models;
+using GAMES_MARKET.Models.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,11 +15,23 @@ namespace GAMES_MARKET.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult LoginCompleted()
+
+        public ActionResult Help()
         {
-            int a = 1;
-            if (a == 2)
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginCompleted(UsuariosModel usuariosModel)
+        {
+
+            BOLogin oBOLogin = new BOLogin();
+            usuariosModel = oBOLogin.Login(usuariosModel);
+            if (usuariosModel != null)
             {
                 return RedirectToAction("../Home/Index");
             }
@@ -27,25 +41,31 @@ namespace GAMES_MARKET.Controllers
             }
 
         }
-        public ActionResult Help()
-        {
-            return View();
-        }
-        public ActionResult Register()
-        {
-            return View();
-        }
+
         [HttpPost]
-        public ActionResult AddUser()
+        public ActionResult Register(UsuariosModel oregisterModel)
         {
-            int a = 1;
-            if (a == 2)
+            BOLogin oBOLogin = new BOLogin();
+
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("../Home/Index");
+                ViewBag.error = "Faltan campos por rellenar.";
+                return View(oregisterModel);
+            }
+            if (oBOLogin.getUsuarioByEmail(oregisterModel.email)!= null)
+            {
+                ViewBag.error = "El email ya ha sido registrado previamente";
+                return View(oregisterModel);
+            }
+            if (oregisterModel.contrasena != oregisterModel.contrasena2)
+            {
+                ViewBag.error = "Las contraseñas no son iguales";
+                return View(oregisterModel);
             }
             else
             {
-                return View();
+                oBOLogin.addUser(oregisterModel);
+                return RedirectToAction("../Home/Index");
             }
         }
     }

@@ -22,7 +22,7 @@ namespace GAMES_MARKET.Models
     
         public int id_plataforma { get; set; }
         public string nombre { get; set; }
-        public string imgPath { get; set; }
+        public string img_ruta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<juegos> juegos { get; set; }

@@ -134,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BO\BOLogin.cs" />
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -170,12 +171,10 @@
     <Compile Include="Models\plataformas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\usuarios.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsuariosModel.cs" />
     <Compile Include="Models\valoraciones.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>

@@ -30,8 +30,8 @@ namespace GAMES_MARKET.Models
         public string nombre { get; set; }
         public int id_plataforma { get; set; }
         public decimal precio { get; set; }
-        public string img_path { get; set; }
-        public string url_trailer { get; set; }
+        public string img_ruta { get; set; }
+        public string trailer_url { get; set; }
         public string distribuidora { get; set; }
         public string descripcion { get; set; }
     

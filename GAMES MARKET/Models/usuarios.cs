@@ -27,7 +27,7 @@ namespace GAMES_MARKET.Models
         public string nombre { get; set; }
         public string apellidos { get; set; }
         public string email { get; set; }
-        public string pass { get; set; }
+        public string contrasena { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comentarios> comentarios { get; set; }

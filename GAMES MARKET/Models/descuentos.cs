@@ -19,7 +19,7 @@ namespace GAMES_MARKET.Models
         public int descuento { get; set; }
         public System.DateTime inicio { get; set; }
         public System.DateTime fin { get; set; }
-        public string img_path { get; set; }
+        public string img_ruta { get; set; }
     
         public virtual juegos juegos { get; set; }
     }

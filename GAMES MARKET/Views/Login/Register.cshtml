@@ -1,4 +1,5 @@
-﻿
+﻿@using GAMES_MARKET.Models;
+@model  UsuariosModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,29 +9,36 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Registro</h2>
-            <form id="logForm" action="LoginController/AddUser">
+
+
+
+            <form action="Register" method="POST">
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" class="form-control" id="regName">
+                    <input type="text" class="form-control" name="nombre">
                 </div>
                 <div class="form-group">
                     <label>Apellidos</label>
-                    <input type="text" class="form-control" id="regSurname">
+                    <input type="text" class="form-control" name="apellidos">
                 </div>
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" class="form-control" id="regEmail">
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" class="form-control" id="regPassword">
+                    <input type="password" class="form-control" name="contrasena">
                 </div>
                 <div class="form-group">
                     <label>Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="regPassword2">
+                    <input type="password" class="form-control" name="contrasena2">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-5">Enviar</button>
+                <span class="text-danger">@ViewBag.error</span>
             </form>
+
+
+
         </div>
     </div>
 </div>

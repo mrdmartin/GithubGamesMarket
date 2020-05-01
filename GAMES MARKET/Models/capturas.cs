@@ -16,7 +16,7 @@ namespace GAMES_MARKET.Models
     {
         public int id_captura { get; set; }
         public int id_juego { get; set; }
-        public string img_path { get; set; }
+        public string img_ruta { get; set; }
     
         public virtual juegos juegos { get; set; }
     }
