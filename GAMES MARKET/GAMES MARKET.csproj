@@ -134,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BO\BOJuegos.cs" />
     <Compile Include="Models\BO\BOLogin.cs" />
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
@@ -168,7 +169,11 @@
     <Compile Include="Models\juegos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\juegosModel.cs" />
     <Compile Include="Models\plataformas.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usuarios.cs">
@@ -269,6 +274,19 @@
     <Content Include="Client\shared\img\carousel-borderlands-3.jpg" />
     <Content Include="Client\shared\img\carousel-final_fantasy_7_remake.jpg" />
     <Content Include="Client\shared\img\carousel-resident_evil_3.jpg" />
+    <Content Include="Client\shared\img\gamescover\AnimalCrossingNewHorizonsjpg.jpg" />
+    <Content Include="Client\shared\img\gamescover\Bordelands3.jpg" />
+    <Content Include="Client\shared\img\gamescover\FinalFantasyVIIRemake.jpg" />
+    <Content Include="Client\shared\img\gamescover\ResidentEvil3Remake.jpg" />
+    <Content Include="Client\shared\img\gamescover\ShadowOfTheTombRaider.jpg" />
+    <Content Include="Client\shared\img\gamescover\TheWitcherWildHuntCompleteEdition.jpg" />
+    <Content Include="Client\shared\img\logos\Epic_Games_logo.png" />
+    <Content Include="Client\shared\img\logos\LogoDS.png" />
+    <Content Include="Client\shared\img\logos\LogoEpicGames.png" />
+    <Content Include="Client\shared\img\logos\LogoNintendoSwitch.png" />
+    <Content Include="Client\shared\img\logos\LogoPS4.png" />
+    <Content Include="Client\shared\img\logos\LogoSteam.png" />
+    <Content Include="Client\shared\img\logos\nintendo-logo-png-free-transparent-png-logos-nintendo-switch-logo-transparent-800_150.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\EntityGamesMarket.Context.tt">
@@ -293,7 +311,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,6 +360,7 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\GamesList\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

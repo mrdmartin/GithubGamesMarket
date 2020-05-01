@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id_captura" Type="int" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
-          <Property Name="img_ruta" Type="text" Nullable="false" />
+          <Property Name="img_ruta" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="claves">
           <Key>
@@ -19,7 +19,7 @@
           </Key>
           <Property Name="id_clave" Type="int" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
-          <Property Name="codigo" Type="text" Nullable="false" />
+          <Property Name="codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="comentarios">
@@ -29,7 +29,7 @@
           <Property Name="id_comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
-          <Property Name="comentario" Type="text" Nullable="false" />
+          <Property Name="comentario" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="descuentos">
@@ -41,7 +41,7 @@
           <Property Name="descuento" Type="int" Nullable="false" />
           <Property Name="inicio" Type="date" Nullable="false" />
           <Property Name="fin" Type="date" Nullable="false" />
-          <Property Name="img_ruta" Type="text" Nullable="false" />
+          <Property Name="img_ruta" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="deseados">
           <Key>
@@ -56,7 +56,7 @@
             <PropertyRef Name="id_genero" />
           </Key>
           <Property Name="id_genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="generos-juegos">
           <Key>
@@ -71,31 +71,42 @@
             <PropertyRef Name="id_juego" />
           </Key>
           <Property Name="id_juego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="id_plataforma" Type="int" Nullable="false" />
           <Property Name="precio" Type="numeric" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="img_ruta" Type="text" Nullable="false" />
-          <Property Name="trailer_url" Type="text" Nullable="false" />
-          <Property Name="distribuidora" Type="text" Nullable="false" />
-          <Property Name="descripcion" Type="text" Nullable="false" />
+          <Property Name="img_ruta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="trailer_url" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="distribuidora" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_lanzamiento" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="plataformas">
           <Key>
             <PropertyRef Name="id_plataforma" />
           </Key>
           <Property Name="id_plataforma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="text" Nullable="false" />
-          <Property Name="img_ruta" Type="text" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="img_ruta" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id_usuario" />
           </Key>
           <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="text" Nullable="false" />
-          <Property Name="apellidos" Type="text" Nullable="false" />
-          <Property Name="email" Type="text" Nullable="false" />
-          <Property Name="contrasena" Type="text" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contrasena" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="valoraciones">
           <Key>
@@ -114,10 +125,10 @@
           <Property Name="id_clave" Type="int" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="fecha_venta" Type="date" Nullable="false" />
-          <Property Name="tarj" Type="text" Nullable="false" />
-          <Property Name="tarj_mes" Type="text" Nullable="false" />
-          <Property Name="tarj_ano" Type="text" Nullable="false" />
-          <Property Name="cod_seg" Type="text" Nullable="false" />
+          <Property Name="tarj" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarj_mes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarj_ano" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_seg" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_capturas_capturas">
           <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
@@ -297,6 +308,7 @@
           <EntitySet Name="generos-juegos" EntityType="Self.generos-juegos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="juegos" EntityType="Self.juegos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="plataformas" EntityType="Self.plataformas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="valoraciones" EntityType="Self.valoraciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ventas" EntityType="Self.ventas" Schema="dbo" store:Type="Tables" />
@@ -369,6 +381,7 @@
           <EntitySet Name="generos" EntityType="Games_MarketModel.generos" />
           <EntitySet Name="juegos" EntityType="Games_MarketModel.juegos" />
           <EntitySet Name="plataformas" EntityType="Games_MarketModel.plataformas" />
+          <EntitySet Name="sysdiagrams" EntityType="Games_MarketModel.sysdiagrams" />
           <EntitySet Name="usuarios" EntityType="Games_MarketModel.usuarios" />
           <EntitySet Name="valoraciones" EntityType="Games_MarketModel.valoraciones" />
           <EntitySet Name="ventas" EntityType="Games_MarketModel.ventas" />
@@ -427,7 +440,7 @@
           </Key>
           <Property Name="id_captura" Type="Int32" Nullable="false" />
           <Property Name="id_juego" Type="Int32" Nullable="false" />
-          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_capturas_capturas" FromRole="capturas" ToRole="juegos" />
         </EntityType>
         <EntityType Name="claves">
@@ -436,7 +449,7 @@
           </Key>
           <Property Name="id_clave" Type="Int32" Nullable="false" />
           <Property Name="id_juego" Type="Int32" Nullable="false" />
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_claves_juegos" FromRole="claves" ToRole="juegos" />
           <NavigationProperty Name="ventas" Relationship="Games_MarketModel.FK_claves_ventas" FromRole="claves" ToRole="ventas" />
@@ -448,7 +461,7 @@
           <Property Name="id_comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_juego" Type="Int32" Nullable="false" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
-          <Property Name="comentario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comentario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_comentarios_juegos" FromRole="comentarios" ToRole="juegos" />
           <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.FK_comentarios_usuarios" FromRole="comentarios" ToRole="usuarios" />
@@ -462,7 +475,7 @@
           <Property Name="descuento" Type="Int32" Nullable="false" />
           <Property Name="inicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fin" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_descuentos_juegos" FromRole="descuentos" ToRole="juegos" />
         </EntityType>
         <EntityType Name="generos">
@@ -470,7 +483,7 @@
             <PropertyRef Name="id_genero" />
           </Key>
           <Property Name="id_genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.generos_juegos" FromRole="generos" ToRole="juegos" />
         </EntityType>
         <EntityType Name="juegos">
@@ -478,13 +491,14 @@
             <PropertyRef Name="id_juego" />
           </Key>
           <Property Name="id_juego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_plataforma" Type="Int32" Nullable="false" />
           <Property Name="precio" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="trailer_url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="distribuidora" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trailer_url" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="distribuidora" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_lanzamiento" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="capturas" Relationship="Games_MarketModel.FK_capturas_capturas" FromRole="juegos" ToRole="capturas" />
           <NavigationProperty Name="claves" Relationship="Games_MarketModel.FK_claves_juegos" FromRole="juegos" ToRole="claves" />
           <NavigationProperty Name="comentarios" Relationship="Games_MarketModel.FK_comentarios_juegos" FromRole="juegos" ToRole="comentarios" />
@@ -499,19 +513,29 @@
             <PropertyRef Name="id_plataforma" />
           </Key>
           <Property Name="id_plataforma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_juegos_plataformas" FromRole="plataformas" ToRole="juegos" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id_usuario" />
           </Key>
           <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="comentarios" Relationship="Games_MarketModel.FK_comentarios_usuarios" FromRole="usuarios" ToRole="comentarios" />
           <NavigationProperty Name="valoraciones" Relationship="Games_MarketModel.FK_valoraciones_usuarios" FromRole="usuarios" ToRole="valoraciones" />
           <NavigationProperty Name="ventas" Relationship="Games_MarketModel.FK_ventas_usuarios" FromRole="usuarios" ToRole="ventas" />
@@ -536,10 +560,10 @@
           <Property Name="id_clave" Type="Int32" Nullable="false" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <Property Name="fecha_venta" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="tarj" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="tarj_mes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="tarj_ano" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="cod_seg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tarj" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarj_mes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarj_ano" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cod_seg" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="claves" Relationship="Games_MarketModel.FK_claves_ventas" FromRole="ventas" ToRole="claves" />
           <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.FK_ventas_usuarios" FromRole="ventas" ToRole="usuarios" />
         </EntityType>
@@ -671,7 +695,7 @@
           <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="*" />
           <End Type="Games_MarketModel.generos" Role="generos" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -730,6 +754,7 @@
           <EntitySetMapping Name="juegos">
             <EntityTypeMapping TypeName="Games_MarketModel.juegos">
               <MappingFragment StoreEntitySet="juegos">
+                <ScalarProperty Name="fecha_lanzamiento" ColumnName="fecha_lanzamiento" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="distribuidora" ColumnName="distribuidora" />
                 <ScalarProperty Name="trailer_url" ColumnName="trailer_url" />
@@ -747,6 +772,17 @@
                 <ScalarProperty Name="img_ruta" ColumnName="img_ruta" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_plataforma" ColumnName="id_plataforma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Games_MarketModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

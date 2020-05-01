@@ -5,16 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="30381083cc94439eb2cd84d87d3b1b6c" Name="Diagram1" ZoomLevel="65">
-        <EntityTypeShape EntityType="Games_MarketModel.capturas" Width="1.5" PointX="1.125" PointY="9.125" />
-        <EntityTypeShape EntityType="Games_MarketModel.claves" Width="1.5" PointX="6.625" PointY="6.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.comentarios" Width="1.5" PointX="10.375" PointY="2.75" />
-        <EntityTypeShape EntityType="Games_MarketModel.descuentos" Width="1.5" PointX="5.625" PointY="10.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.generos" Width="1.5" PointX="1.125" PointY="11.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.juegos" Width="1.5" PointX="3.375" PointY="5.5" />
-        <EntityTypeShape EntityType="Games_MarketModel.plataformas" Width="1.5" PointX="1.125" PointY="6.75" />
-        <EntityTypeShape EntityType="Games_MarketModel.usuarios" Width="1.5" PointX="3.5" PointY="0.875" />
-        <EntityTypeShape EntityType="Games_MarketModel.valoraciones" Width="1.5" PointX="1" PointY="3.25" />
-        <EntityTypeShape EntityType="Games_MarketModel.ventas" Width="1.5" PointX="6.75" PointY="2.5" />
+        <EntityTypeShape EntityType="Games_MarketModel.capturas" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="Games_MarketModel.claves" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="Games_MarketModel.comentarios" Width="1.5" PointX="7.5" PointY="19.125" />
+        <EntityTypeShape EntityType="Games_MarketModel.descuentos" Width="1.5" PointX="5.25" PointY="10.375" />
+        <EntityTypeShape EntityType="Games_MarketModel.generos" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="Games_MarketModel.juegos" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="Games_MarketModel.plataformas" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="Games_MarketModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Games_MarketModel.usuarios" Width="1.5" PointX="5.25" PointY="21.875" />
+        <EntityTypeShape EntityType="Games_MarketModel.valoraciones" Width="1.5" PointX="10.5" PointY="16.25" />
+        <EntityTypeShape EntityType="Games_MarketModel.ventas" Width="1.5" PointX="7.5" PointY="14.625" />
         <AssociationConnector Association="Games_MarketModel.FK_capturas_capturas" />
         <AssociationConnector Association="Games_MarketModel.FK_claves_juegos" />
         <AssociationConnector Association="Games_MarketModel.FK_claves_ventas" />

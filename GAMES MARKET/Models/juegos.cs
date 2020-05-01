@@ -34,6 +34,7 @@ namespace GAMES_MARKET.Models
         public string trailer_url { get; set; }
         public string distribuidora { get; set; }
         public string descripcion { get; set; }
+        public System.DateTime fecha_lanzamiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<capturas> capturas { get; set; }

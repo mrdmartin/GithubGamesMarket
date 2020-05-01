@@ -36,11 +36,6 @@
     font-size:21px;
 }
 
-.text-muted {
-    color: #f33f3f !important;
-    font-family: 'Poppins', sans-serif;
-}
-
 .game-last-logo{
     width:120px;
     margin-bottom:8px;
@@ -48,4 +43,7 @@
 }
 
 /*List images*/
-
+.img-thumbnail {
+    width: 300px;
+    align-content: center;
+}
