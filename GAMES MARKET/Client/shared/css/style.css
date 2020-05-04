@@ -11,9 +11,9 @@
     padding: 10px;
 }
 
-#title em {
-    color: #f33f3f;
-}
+    #title em {
+        color: #f33f3f;
+    }
 /*home carousel*/
 .carousel-caption {
     background-color: #282828;
@@ -28,18 +28,18 @@
 .game-last-tittle {
     font-size: 20px;
     color: #1a6692;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .game-last-price {
     color: #121212;
-    font-size:21px;
+    font-size: 21px;
 }
-
-.game-last-logo{
-    width:120px;
-    margin-bottom:8px;
-    margin-top:15px;
+.card-text:last-child {
+    margin-bottom: 16px;
+}
+.game-last-logo {
+    width: 120px;
 }
 
 /*List images*/

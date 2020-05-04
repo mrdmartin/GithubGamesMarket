@@ -56,22 +56,29 @@ namespace GAMES_MARKET.Controllers.BO
             List<juegosModel> listaJuegos = new List<juegosModel>();
             using (var bd = new Games_MarketEntities())
             {
-                listaJuegos = (from juego in bd.juegos
-                            orderby juego.fecha_lanzamiento descending
-                              select new juegosModel
-                              {
-                                  id_juego = juego.id_juego,
-                                  nombre = juego.nombre,
-                                  id_plataforma = juego.id_plataforma,
-                                  precio = juego.precio,
-                                  img_ruta = juego.img_ruta,
-                                  trailer_url = juego.trailer_url,
-                                  distribuidora = juego.distribuidora,
-                                  descripcion = juego.descripcion,
-                                  fecha_lanzamiento = juego.fecha_lanzamiento
-                              }).ToList();
+                listaJuegos = (from juegos in bd.juegos
+                               join plataformas in bd.plataformas
+                              on juegos.id_plataforma equals plataformas.id_plataforma
+                               orderby juegos.fecha_lanzamiento descending
+
+                               select new juegosModel
+                               {
+                                   id_juego = juegos.id_juego,
+                                   nombre = juegos.nombre,
+                                   id_plataforma = juegos.id_plataforma,
+                                   precio = juegos.precio,
+                                   img_ruta = juegos.img_ruta,
+                                   trailer_url = juegos.trailer_url,
+                                   distribuidora = juegos.distribuidora,
+                                   descripcion = juegos.descripcion,
+                                   fecha_lanzamiento = juegos.fecha_lanzamiento,
+                                   nombre_plataforma = plataformas.nombre,
+                                   img_rutaPlataforma = plataformas.img_ruta
+                               }).ToList();
             }
             return listaJuegos;
         }
+
+
     }
 }

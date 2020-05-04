@@ -32,10 +32,29 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
-            @if (Session[""] != )
-            <div id="usuario">
+            @if (Session["Log"] != null)
+            {
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bienvenido @Session["Log"]
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">ver perfil</a>
+                            <a class="dropdown-item" href="#">Lista de deseados</a>
+                            <a class="dropdown-item" href="#">Lista de compras</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Cerrar sesión</a>
+                        </div>
+                    </li>
+                </ul>
+
+            }
+            else
+            {
                 <a href="~/Login/Login">Iniciar Sesión</a>
-            </div>
+            }
+
         </div>
     </nav>
 

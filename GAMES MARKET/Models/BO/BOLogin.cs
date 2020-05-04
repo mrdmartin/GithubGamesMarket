@@ -21,21 +21,20 @@ namespace GAMES_MARKET.Models.BO
             }
         }
 
-            public UsuariosModel Login(UsuariosModel usuariosModel)
+        public UsuariosModel Login(UsuariosModel usuariosModel)
         {
             var bd = new Games_MarketEntities();
             usuarios usuario = bd.usuarios.Where(p => p.email.Equals(usuariosModel.email) && p.contrasena.Equals(usuariosModel.contrasena)).FirstOrDefault();
             usuariosModel.id_usuario = usuario.id_usuario;
+            usuariosModel.nombre = usuario.nombre;
             usuariosModel.apellidos = usuario.apellidos;
 
-
             return usuariosModel;
-            
         }
         public usuarios getUsuarioByEmail(string email)
         {
             var bd = new Games_MarketEntities();
-            usuarios usuario = bd.usuarios.Where(p => p.email.Contains(email)).FirstOrDefault();
+            usuarios usuario = bd.usuarios.Where(p => p.email.Equals(email)).FirstOrDefault();
             return usuario;
         }
 

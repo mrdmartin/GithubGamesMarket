@@ -26,13 +26,23 @@ namespace GAMES_MARKET.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginCompleted(UsuariosModel usuariosModel)
+        public ActionResult Login(UsuariosModel usuariosModel)
         {
-
+            if (usuariosModel.email == null)
+            {
+                ViewBag.error = "Falta el correo electrónico";
+                return View();
+            }
+            if(usuariosModel.contrasena == null)
+            {
+                ViewBag.error = "Falta la contraseña";
+                return View();
+            }
             BOLogin oBOLogin = new BOLogin();
             usuariosModel = oBOLogin.Login(usuariosModel);
-            if (usuariosModel != null)
+            if (usuariosModel.nombre != null)
             {
+                Session["Log"] = usuariosModel.email;
                 return RedirectToAction("../Home/Index");
             }
             else
