@@ -38,6 +38,10 @@ namespace GAMES_MARKET.Models
         [Display(Name = "Plataforma")]
         [Required]
         public string nombre_plataforma { get; set; }
+        [Required]
         public string img_rutaPlataforma { get; set; }
+        public int descuento { get; set; }
+
+
     }
 }

@@ -1,0 +1,28 @@
+﻿@using GAMES_MARKET.Models;
+@model juegosModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> @Model.nombre </h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 p-0 col-md-8 p-md-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sz9QWTcbXYE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-12 p-0 col-md-4 p-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/Client/shared/img/gamescover/FinalFantasyVIIRemake.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Final fantasy VII REMAKE</h5>
+                    <img src="~/Client/shared/img/logos/LogoPS4.png" class="game-last-logo" alt="PS4">
+                    <p class="card-text">El mundo está controlado por la compañía Shinra, una corporación que genera energía mako a partir de la fuerza vital del planeta. En la ciudad de Midgar, el grupo anti-Shinra Avalancha decide tomar medidas drásticas. Cloud Strife, exmiembro de la unidad de élite de Shinra conocida como Soldado, ofrece sus servicios de mercenario a Avalancha, desconocedor de las aventuras que le esperan.</p>
+                    <button class="btn btn-primary">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

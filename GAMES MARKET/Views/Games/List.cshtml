@@ -1,0 +1,48 @@
+﻿@using GAMES_MARKET.Models;
+@model juegosModel
+
+@{
+    ViewBag.Title = "List Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-image">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Cáratula</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Plataforma</th>
+                        <th scope="col" class="d-none d-md-table-cell">Distribuidora</th>
+                        <th scope="col" class="d-none d-md-table-cell">Fecha de lanzamiento</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Rebajas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewData["Lista"] as List<juegosModel>)
+                    {
+                        <tr>
+                            <td class="w-25">
+                                <a href="Game/@item.id_juego"><img src="~/Client/shared/img/gamescover/@item.img_ruta" alt="..." class="img-thumbnail"></a>
+                            </td>
+                            <td><a href="Game/@item.id_juego">@item.nombre</a></td>
+                            <td>
+                                <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="...">
+                            </td>
+                            <td class="d-none d-md-table-cell">@item.distribuidora</td>
+                            <td class="d-none d-md-table-cell">@item.fecha_lanzamiento.ToShortDateString()</td>
+
+                            @{var preciofinal = item.precio - (item.precio * item.descuento / 100);}
+
+                            <td>@preciofinal€</td>
+                            <td>@item.descuento%</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

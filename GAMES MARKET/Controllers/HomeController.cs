@@ -14,14 +14,13 @@ namespace GAMES_MARKET.Controllers
         {
             ViewData["Title"] = "Inici";
             ViewData["PageName"] = "home";
-            BOJuegos oBOJuego = new BOJuegos();
 
+            BOJuegos oBOJuego = new BOJuegos();
+            List<juegosModel> listaOfertas = oBOJuego.getOfertas();
+            ViewData["Ofertas"] = listaOfertas;
 
             List<juegosModel> listaJuegos = oBOJuego.getJuegosDestacados();
-
-
             ViewData["juego"] = listaJuegos;
-
 
             return View();
         }

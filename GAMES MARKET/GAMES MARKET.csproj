@@ -128,7 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GamesListController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -359,8 +359,9 @@
     <Content Include="Views\Login\Help.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\GamesList\Index.cshtml" />
+    <Content Include="Views\Games\List.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Games\Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
