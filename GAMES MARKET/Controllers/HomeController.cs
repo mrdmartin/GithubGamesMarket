@@ -27,15 +27,15 @@ namespace GAMES_MARKET.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewData["Title"] = "Sobre nosotros";
+            ViewData["PageName"] = "about";
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewData["Title"] = "Contacto";
+            ViewData["PageName"] = "contact";
             return View();
         }
     }

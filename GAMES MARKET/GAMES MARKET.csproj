@@ -271,9 +271,7 @@
     <Content Include="Client\shared\-bootstrap\js\bootstrap.min.js" />
     <Content Include="Client\shared\-jquery\jquery-3.4.1.js" />
     <Content Include="Client\shared\css\style.css" />
-    <Content Include="Client\shared\img\carousel-borderlands-3.jpg" />
-    <Content Include="Client\shared\img\carousel-final_fantasy_7_remake.jpg" />
-    <Content Include="Client\shared\img\carousel-resident_evil_3.jpg" />
+    <Content Include="Client\shared\img\about-deco.jpg" />
     <Content Include="Client\shared\img\gamescover\AnimalCrossingNewHorizonsjpg.jpg" />
     <Content Include="Client\shared\img\gamescover\Bordelands3.jpg" />
     <Content Include="Client\shared\img\gamescover\FinalFantasyVIIRemake.jpg" />
@@ -283,6 +281,7 @@
     <Content Include="Client\shared\img\logos\Epic_Games_logo.png" />
     <Content Include="Client\shared\img\logos\LogoDS.png" />
     <Content Include="Client\shared\img\logos\LogoEpicGames.png" />
+    <Content Include="Client\shared\img\logos\LogoGamesMarket.png" />
     <Content Include="Client\shared\img\logos\LogoNintendoSwitch.png" />
     <Content Include="Client\shared\img\logos\LogoPS4.png" />
     <Content Include="Client\shared\img\logos\LogoSteam.png" />
@@ -362,6 +361,8 @@
     <Content Include="Views\Games\List.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Games\Game.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
