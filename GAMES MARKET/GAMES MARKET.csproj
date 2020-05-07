@@ -139,6 +139,7 @@
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CapturasModel.cs" />
     <Compile Include="Models\claves.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -169,7 +170,7 @@
     <Compile Include="Models\juegos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\juegosModel.cs" />
+    <Compile Include="Models\JuegosModel.cs" />
     <Compile Include="Models\plataformas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -282,10 +283,13 @@
     <Content Include="Client\shared\img\logos\LogoDS.png" />
     <Content Include="Client\shared\img\logos\LogoEpicGames.png" />
     <Content Include="Client\shared\img\logos\LogoGamesMarket.png" />
+    <Content Include="Client\shared\img\ico\LogoGM.ico" />
     <Content Include="Client\shared\img\logos\LogoNintendoSwitch.png" />
     <Content Include="Client\shared\img\logos\LogoPS4.png" />
     <Content Include="Client\shared\img\logos\LogoSteam.png" />
     <Content Include="Client\shared\img\logos\nintendo-logo-png-free-transparent-png-logos-nintendo-switch-logo-transparent-800_150.png" />
+    <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura1.jpg" />
+    <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\EntityGamesMarket.Context.tt">
@@ -314,7 +318,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Client\page\" />
-    <Folder Include="Client\shared\fonts\" />
     <Folder Include="Client\shared\js\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Scripts\" />
@@ -353,6 +356,7 @@
     <Content Include="Models\EntityGamesMarket.edmx.diagram">
       <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
     </Content>
+    <Content Include="Client\shared\fonts\Magic-Dreams.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Help.cshtml" />
@@ -363,6 +367,7 @@
     <Content Include="Views\Games\Game.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,5 +1,5 @@
 ﻿@using GAMES_MARKET.Models;
-@model juegosModel
+@model JuegosModel
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,7 +19,7 @@
 
                         <ol class="carousel-indicators">
                             @{ var counter2 = 1; }
-                            @foreach (var item in ViewData["ofertas"] as List<juegosModel>)
+                            @foreach (var item in ViewData["ofertas"] as List<JuegosModel>)
                             {
                                 {
                                     if (counter2 % 5 == 0)
@@ -36,7 +36,7 @@
                         </ol>
                         <div class="carousel-inner">
                             @{counter2 = 1; }
-                            @foreach (var item in ViewData["ofertas"] as List<juegosModel>)
+                            @foreach (var item in ViewData["ofertas"] as List<JuegosModel>)
                             {
 
                                 {
@@ -96,7 +96,7 @@
         <h2>Últimos lanzamientos</h2>
         <div class="row">
             @{ var counter = 1; }
-            @foreach (var item in ViewData["juego"] as List<juegosModel>)
+            @foreach (var item in ViewData["juego"] as List<JuegosModel>)
             {
                 {
                     if (counter % 7 == 0)

@@ -9,13 +9,43 @@ namespace GAMES_MARKET.Controllers.BO
 {
     public class BOJuegos : Controller
     {
-        // GET: BOCadena
-        public juegosModel getJuegoById(int pId)
+        public List<JuegosModel> getGenereFullList()
         {
-            juegosModel oJuegoModel = new juegosModel();
+            List<JuegosModel> listaGeneros = new List<JuegosModel>();
+            using (var bd = new Games_MarketEntities())
+            {
+                listaGeneros = (from generos in bd.generos
+                                select new JuegosModel
+                                {
+                                    id_genero = generos.id_genero,
+                                    nombre_genero = generos.nombre
+                                }).ToList();
+            }
+            return listaGeneros;
+        }
+        public List<JuegosModel> getPlatformFullList()
+        {
+            List<JuegosModel> listaPlataformas = new List<JuegosModel>();
+            using (var bd = new Games_MarketEntities())
+            {
+                listaPlataformas = (from plataformas in bd.plataformas
+                                    select new JuegosModel
+                                    {
+                                        id_plataforma = plataformas.id_plataforma,
+                                        nombre_plataforma = plataformas.nombre,
+                                        img_rutaPlataforma = plataformas.img_ruta
+                                    }).ToList();
+            }
+            return listaPlataformas;
+        }
+        public JuegosModel getJuegoById(int pId)
+        {
+            JuegosModel oJuegoModel = new JuegosModel();
             using (var bd = new Games_MarketEntities())
             {
                 juegos oJuegos = bd.juegos.Where(p => p.id_juego.Equals(pId)).First();
+                plataformas oPlataformas = bd.plataformas.Where(p => p.id_plataforma.Equals(oJuegos.id_plataforma)).First();
+
                 oJuegoModel.id_juego = oJuegos.id_juego;
                 oJuegoModel.nombre = oJuegos.nombre;
                 oJuegoModel.id_plataforma = oJuegos.id_plataforma;
@@ -25,12 +55,13 @@ namespace GAMES_MARKET.Controllers.BO
                 oJuegoModel.distribuidora = oJuegos.distribuidora;
                 oJuegoModel.descripcion = oJuegos.descripcion;
                 oJuegoModel.fecha_lanzamiento = oJuegos.fecha_lanzamiento;
+                oJuegoModel.img_rutaPlataforma = oPlataformas.img_ruta;
             }
             return oJuegoModel;
         }
-        public List<juegosModel> getOfertas()
+        public List<JuegosModel> getOfertas()
         {
-            List<juegosModel> listaJuegos = new List<juegosModel>();
+            List<JuegosModel> listaJuegos = new List<JuegosModel>();
             using (var bd = new Games_MarketEntities())
             {
                 listaJuegos = (from juegos in bd.juegos
@@ -41,7 +72,7 @@ namespace GAMES_MARKET.Controllers.BO
                                where (DateTime.Now > descuentos.inicio) && (DateTime.Now < descuentos.fin)
                                orderby descuentos.descuento descending
 
-                               select new juegosModel
+                               select new JuegosModel
                                {
                                    id_juego = juegos.id_juego,
                                    nombre = juegos.nombre,
@@ -59,9 +90,9 @@ namespace GAMES_MARKET.Controllers.BO
             }
             return listaJuegos;
         }
-        public List<juegosModel> getJuegosDestacados()
+        public List<JuegosModel> getJuegosDestacados()
         {
-            List<juegosModel> listaOfertas = new List<juegosModel>();
+            List<JuegosModel> listaOfertas = new List<JuegosModel>();
             using (var bd = new Games_MarketEntities())
             {
                 listaOfertas = (from juegos in bd.juegos
@@ -69,7 +100,7 @@ namespace GAMES_MARKET.Controllers.BO
                                on juegos.id_plataforma equals plataformas.id_plataforma
                                orderby juegos.fecha_lanzamiento descending
 
-                               select new juegosModel
+                               select new JuegosModel
                                {
                                    id_juego = juegos.id_juego,
                                    nombre = juegos.nombre,
@@ -86,11 +117,10 @@ namespace GAMES_MARKET.Controllers.BO
             }
             return listaOfertas;
         }
-
-        public List<juegosModel> getFullList()
+        public List<JuegosModel> getFullList()
         {
-            List<juegosModel> listaJuegos = new List<juegosModel>();
-            List<juegosModel> listaOfertas = new List<juegosModel>();
+            List<JuegosModel> listaJuegos = new List<JuegosModel>();
+            List<JuegosModel> listaOfertas = new List<JuegosModel>();
             using (var bd = new Games_MarketEntities())
             {
                 listaOfertas = (from juegos in bd.juegos
@@ -101,7 +131,7 @@ namespace GAMES_MARKET.Controllers.BO
                                 where (DateTime.Now > descuentos.inicio) && (DateTime.Now < descuentos.fin)
                                 orderby descuentos.descuento descending
 
-                                select new juegosModel
+                                select new JuegosModel
                                 {
                                     id_juego = juegos.id_juego,
                                     nombre = juegos.nombre,
@@ -127,7 +157,7 @@ namespace GAMES_MARKET.Controllers.BO
                                from descuentos in todas.DefaultIfEmpty()
                                where descuentos == null || ((DateTime.Now < descuentos.inicio) && (DateTime.Now > descuentos.fin))
 
-                               select new juegosModel
+                               select new JuegosModel
                                {
                                    id_juego = juegos.id_juego,
                                    nombre = juegos.nombre,
@@ -144,13 +174,30 @@ namespace GAMES_MARKET.Controllers.BO
 
                                }).ToList();
 
-
                 listaJuegos = (listaJuegos.Concat(listaOfertas).ToList());
-
-
 
             }
             return listaJuegos;
+        }
+
+        public List<CapturasModel> GetCapturasList(int id)
+        {
+            List<CapturasModel> listaCapturas = new List<CapturasModel>();
+            using (var bd = new Games_MarketEntities())
+            {
+                listaCapturas = (from capturas in bd.capturas
+                                 join juegos in bd.juegos
+                                 on capturas.id_juego equals juegos.id_juego
+                                 where capturas.id_juego == id
+
+                                 select new CapturasModel
+                                 {
+                                     id_captura = capturas.id_captura,
+                                     id_juego = juegos.id_juego,
+                                     img_ruta = capturas.img_ruta
+                                 }).ToList();
+            }
+            return listaCapturas;
         }
     }
 }

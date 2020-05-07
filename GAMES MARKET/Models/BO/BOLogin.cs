@@ -25,6 +25,10 @@ namespace GAMES_MARKET.Models.BO
         {
             var bd = new Games_MarketEntities();
             usuarios usuario = bd.usuarios.Where(p => p.email.Equals(usuariosModel.email) && p.contrasena.Equals(usuariosModel.contrasena)).FirstOrDefault();
+            if(usuario == null)
+            {
+                return null;
+            }
             usuariosModel.id_usuario = usuario.id_usuario;
             usuariosModel.nombre = usuario.nombre;
             usuariosModel.apellidos = usuario.apellidos;

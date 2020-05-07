@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GAMES_MARKET.Models
 {    
-    public partial class juegosModel
+    public partial class JuegosModel
     {
         [Display(Name = "ID Juego")]
         [Required]
@@ -41,6 +41,8 @@ namespace GAMES_MARKET.Models
         [Required]
         public string img_rutaPlataforma { get; set; }
         public int descuento { get; set; }
+        public int id_genero { get; set; }
+        public String nombre_genero { get; set; }
 
 
     }

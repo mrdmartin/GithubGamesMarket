@@ -39,14 +39,15 @@ namespace GAMES_MARKET.Controllers
                 return View();
             }
             BOLogin oBOLogin = new BOLogin();
-            usuariosModel = oBOLogin.Login(usuariosModel);
-            if (usuariosModel.nombre != null)
+            if (oBOLogin.Login(usuariosModel) != null)
             {
+                usuariosModel = oBOLogin.Login(usuariosModel);
                 Session["Log"] = usuariosModel.email;
                 return RedirectToAction("../Home/Index");
             }
             else
             {
+                ViewBag.error = "usuario o contraseña incorrecta";
                 return View();
             }
 

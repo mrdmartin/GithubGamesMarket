@@ -1,34 +1,78 @@
 ﻿@using GAMES_MARKET.Models;
-@model juegosModel
+@model JuegosModel
 
 @{
     ViewBag.Title = "List Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<div class="btn-group">
+    <div class="col">
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Género
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="Género">
+
+
+                @foreach (var item in ViewData["GeneroLista"] as List<JuegosModel>)
+                {
+
+                    <a class="dropdown-item" href="nombre_genero">@item.nombre_genero</a>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="dropdown">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Plataforma
+        </button>
+
+        <div class="dropdown-menu" aria-labelledby="Plataforma">
+
+
+            @foreach (var item in ViewData["PlataformaLista"] as List<JuegosModel>)
+            {
+
+                <a class="dropdown-item" href="@item.nombre_plataforma">@item.nombre_plataforma</a>
+            }
+
+
+        </div>
+    </div>
+
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 p-0">
             <table class="table table-image">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Cáratula</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Plataforma</th>
-                        <th scope="col" class="d-none d-md-table-cell">Distribuidora</th>
-                        <th scope="col" class="d-none d-md-table-cell">Fecha de lanzamiento</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Rebajas</th>
+                        <th scope="col"> Cáratula</th>
+                        <th scope="col"> <button type="button" class="btn btn-secondary dropdown-toggle">Título</button></th>
+                        <th scope="col"><button type="button" class="btn btn-secondary dropdown-toggle">Plataforma</button></th>
+                        <th scope="col" class="d-none d-md-table-cell"><button type="button" class="btn btn-secondary dropdown-toggle">Distribuidora</button></th>
+                        <th scope="col" class="d-none d-md-table-cell"><button type="button" class="btn btn-secondary dropdown-toggle">Fecha de lanzamiento</button></th>
+                        <th scope="col"><button type="button" class="btn btn-secondary dropdown-toggle">Precio</button></th>
+                        <th scope="col"><button type="button" class="btn btn-secondary dropdown-toggle">Rebajas</button></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in ViewData["Lista"] as List<juegosModel>)
+                    @foreach (var item in ViewData["Lista"] as List<JuegosModel>)
                     {
                         <tr>
                             <td class="w-25">
                                 <a href="Game/@item.id_juego"><img src="~/Client/shared/img/gamescover/@item.img_ruta" alt="..." class="img-thumbnail"></a>
                             </td>
-                            <td><a href="Game/@item.id_juego">@item.nombre</a></td>
+                            <td>
+                                <a href="Game/@item.id_juego">@item.nombre</a>
+                            </td>
                             <td>
                                 <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="...">
                             </td>
@@ -46,3 +90,5 @@
         </div>
     </div>
 </div>
+
+

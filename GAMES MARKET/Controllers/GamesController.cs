@@ -13,12 +13,12 @@ namespace GAMES_MARKET.Controllers
     {
         // GET: Game
         public ActionResult Game(int? id)
-        {
-            juegos juego = new juegos();
+        { 
             if (id == null)
             {
                 id = 1;
             }
+            juegos juego = new juegos();
             using (var bd = new Games_MarketEntities())
             {
                 
@@ -28,11 +28,14 @@ namespace GAMES_MARKET.Controllers
             {
                 id = 1;
             }
-            juegosModel juegoasd = new juegosModel();
+            
             BOJuegos oBOjuego = new BOJuegos();
+            JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
 
-            juegoasd = oBOjuego.getJuegoById(id.Value);
-            return View(juegoasd);
+            List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
+            ViewData["capturas"] = listaCapturas;
+
+            return View(juegosModel);
         }
         public ActionResult List()
         {
@@ -40,8 +43,14 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "Lista de juegos";
             BOJuegos oBOJuego = new BOJuegos();
 
-            List<juegosModel> listaJuegos = oBOJuego.getFullList();
+            List<JuegosModel> listaJuegos = oBOJuego.getFullList();
             ViewData["Lista"] = listaJuegos;
+
+            List<JuegosModel> listaGeneros = oBOJuego.getGenereFullList();
+            ViewData["GeneroLista"] = listaGeneros;
+
+            List<JuegosModel> listaPlataformas = oBOJuego.getPlatformFullList();
+            ViewData["PlataformaLista"] = listaPlataformas;
 
             return View();
         }
