@@ -128,7 +128,8 @@
                                         <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="@item.nombre_plataforma">
                                     </div>
                                     <div class="col-6 text-right">
-                                        <p class="game-last-price">@item.precio€</p>
+                                        @{var preciofinal = item.precio - (item.precio * item.descuento / 100); }
+                                        <p class="game-last-price">@preciofinal€</p>
                                     </div>
 
                                 </div>

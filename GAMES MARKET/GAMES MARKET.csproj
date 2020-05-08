@@ -190,6 +190,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BBDD\script.sql" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\es\System.Web.Helpers.resources.dll" />
@@ -291,10 +292,16 @@
     <Content Include="Client\shared\img\logos\LogoPS4.png" />
     <Content Include="Client\shared\img\logos\LogoSteam.png" />
     <Content Include="Client\shared\img\logos\nintendo-logo-png-free-transparent-png-logos-nintendo-switch-logo-transparent-800_150.png" />
+    <Content Include="Client\shared\img\screenshots\Borderlands3-captura1.jpg" />
+    <Content Include="Client\shared\img\screenshots\Borderlands3-captura2.jpg" />
+    <Content Include="Client\shared\img\screenshots\Borderlands3-captura3.jpg" />
     <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura1.jpg" />
     <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura2.jpg" />
     <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura3.jpg" />
     <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura4.jpg" />
+    <Content Include="Client\shared\img\screenshots\ResidentEvil3Remake-captura1.jpg" />
+    <Content Include="Client\shared\img\screenshots\ResidentEvil3Remake-captura2.jpg" />
+    <Content Include="Client\shared\img\screenshots\ResidentEvil3Remake-captura3.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura1.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura2.jpg" />
     <Content Include="favicon.ico" />
