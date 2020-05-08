@@ -38,11 +38,5 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "contact";
             return View();
         }
-        public ActionResult Profile()
-        {
-            ViewData["Title"] = "Perfil de usuario";
-            ViewData["PageName"] = "Profile";
-            return View(@Session["Log"]);
-        }
     }
 }

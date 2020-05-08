@@ -2,15 +2,16 @@
 using GAMES_MARKET.Models.BO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace GAMES_MARKET.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Login()
         {
             return View();
@@ -23,6 +24,20 @@ namespace GAMES_MARKET.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+        public ActionResult UserData()
+        {
+            ViewData["Title"] = "Perfil de usuario";
+            ViewData["PageName"] = "Profile";
+            BOLogin oBOLogin = new BOLogin();
+            String text = Session["log"].ToString();
+            usuarios usuario = oBOLogin.getUsuarioByEmail(text);
+            UsuariosModel usuariosModel = new UsuariosModel();
+            usuariosModel.email = usuario.email;
+            usuariosModel.nombre = usuario.nombre;
+            usuariosModel.apellidos = usuario.apellidos;
+
+            return View(usuariosModel);
         }
 
         [HttpPost]

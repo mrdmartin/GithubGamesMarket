@@ -22,16 +22,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Home/Index">Inicio</a>
+                    <a class="nav-link" href="~/Home/Index">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Games/List">Juegos</a>
+                    <a class="nav-link" href="~/Games/List">Juegos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Home/About">Sobre nosotros</a>
+                    <a class="nav-link" href="~/Home/About">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Home/Contact">Contacto</a>
+                    <a class="nav-link" href="~/Home/Contact">Contacto</a>
                 </li>
             </ul>
             @if (Session["Log"] != null)
@@ -42,7 +42,7 @@
                             Bienvenido @Session["Log"]
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../Home/Profile">ver perfil</a>
+                            <a class="dropdown-item" href="~/Login/UserData">ver perfil</a>
                             <a class="dropdown-item" href="#">Lista de deseados</a>
                             <a class="dropdown-item" href="#">Lista de compras</a>
                             <div class="dropdown-divider"></div>
@@ -71,5 +71,12 @@
     <script src="~/Client/shared/-jquery/jquery-3.4.1.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.bundle.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.js"></script>
+    <script src="~/Client/shared/-dataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Client/shared/-dataTables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>

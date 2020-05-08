@@ -16,18 +16,15 @@
 
             <div class="dropdown-menu" aria-labelledby="Género">
 
-
                 @foreach (var item in ViewData["GeneroLista"] as List<JuegosModel>)
                 {
 
                     <a class="dropdown-item" href="nombre_genero">@item.nombre_genero</a>
                 }
 
-
             </div>
         </div>
     </div>
-
 
     <div class="dropdown">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,15 +45,16 @@
     </div>
 
 </div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 p-0">
-            <table class="table table-image">
+            <table id="example" class="table table-image">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col"> Cáratula</th>
+                        <th scope="col">Plataforma</th>
                         <th scope="col"> <button type="button" class="btn btn-secondary dropdown-toggle">Título</button></th>
-                        <th scope="col"><button type="button" class="btn btn-secondary dropdown-toggle">Plataforma</button></th>
                         <th scope="col" class="d-none d-md-table-cell"><button type="button" class="btn btn-secondary dropdown-toggle">Distribuidora</button></th>
                         <th scope="col" class="d-none d-md-table-cell"><button type="button" class="btn btn-secondary dropdown-toggle">Fecha de lanzamiento</button></th>
                         <th scope="col"><button type="button" class="btn btn-secondary dropdown-toggle">Precio</button></th>
@@ -71,10 +69,10 @@
                                 <a href="Game/@item.id_juego"><img src="~/Client/shared/img/gamescover/@item.img_ruta" alt="..." class="img-thumbnail"></a>
                             </td>
                             <td>
-                                <a href="Game/@item.id_juego">@item.nombre</a>
+                                <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="...">
                             </td>
                             <td>
-                                <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="...">
+                                <a href="Game/@item.id_juego">@item.nombre</a>
                             </td>
                             <td class="d-none d-md-table-cell">@item.distribuidora</td>
                             <td class="d-none d-md-table-cell">@item.fecha_lanzamiento.ToShortDateString()</td>

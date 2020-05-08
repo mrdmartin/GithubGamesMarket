@@ -23,8 +23,11 @@ footer {
 /*home carousel*/
 .carousel-caption {
     background-color: #282828;
-    opacity: 0.75;
+    opacity: 0.85;
     padding: 0;
+    right: 0%;
+    left: 0%;
+    width: 100%;
 }
 
 .carousel-indicators {
@@ -52,4 +55,9 @@ footer {
 .img-thumbnail {
     width: 300px;
     align-content: center;
+}
+/*Logo user*/
+.logoUser {
+    width: 150px;
+    height: 150px;
 }

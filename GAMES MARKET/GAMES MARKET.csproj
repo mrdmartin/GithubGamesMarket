@@ -270,9 +270,12 @@
     <Content Include="Client\shared\-bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.min.js" />
+    <Content Include="Client\shared\-dataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Client\shared\-dataTables\jquery.dataTables.min.js" />
     <Content Include="Client\shared\-jquery\jquery-3.4.1.js" />
     <Content Include="Client\shared\css\style.css" />
     <Content Include="Client\shared\img\about-deco.jpg" />
+    <Content Include="Client\shared\img\avatar\ShadowLara.png" />
     <Content Include="Client\shared\img\gamescover\AnimalCrossingNewHorizonsjpg.jpg" />
     <Content Include="Client\shared\img\gamescover\Bordelands3.jpg" />
     <Content Include="Client\shared\img\gamescover\FinalFantasyVIIRemake.jpg" />
@@ -288,6 +291,10 @@
     <Content Include="Client\shared\img\logos\LogoPS4.png" />
     <Content Include="Client\shared\img\logos\LogoSteam.png" />
     <Content Include="Client\shared\img\logos\nintendo-logo-png-free-transparent-png-logos-nintendo-switch-logo-transparent-800_150.png" />
+    <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura1.jpg" />
+    <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura2.jpg" />
+    <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura3.jpg" />
+    <Content Include="Client\shared\img\screenshots\FinalFantasyVIIRemake-captura4.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura1.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura2.jpg" />
     <Content Include="favicon.ico" />
@@ -367,7 +374,7 @@
     <Content Include="Views\Games\Game.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Login\UserData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
