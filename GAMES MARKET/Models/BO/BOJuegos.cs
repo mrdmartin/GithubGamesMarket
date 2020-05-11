@@ -44,6 +44,7 @@ namespace GAMES_MARKET.Controllers.BO
             using (var bd = new Games_MarketEntities())
             {
                 juegos oJuegos = bd.juegos.Where(p => p.id_juego.Equals(pId)).First();
+                descuentos descuentos = bd.descuentos.Where((p => p.id_juego.Equals(pId)), (p => p.inicio < DateTime.Now), (p => p.fin > DateTime.Now))
                 plataformas oPlataformas = bd.plataformas.Where(p => p.id_plataforma.Equals(oJuegos.id_plataforma)).First();
 
                 oJuegoModel.id_juego = oJuegos.id_juego;
@@ -87,6 +88,10 @@ namespace GAMES_MARKET.Controllers.BO
                                    img_rutaPlataforma = plataformas.img_ruta,
                                    descuento = descuentos.descuento
                                }).ToList();
+            }
+            foreach(var item in listaJuegos)
+            {
+                item.precio = item.precio - (item.precio * item.descuento / 100);
             }
             return listaJuegos;
         }
@@ -147,7 +152,10 @@ namespace GAMES_MARKET.Controllers.BO
                                }).ToList();
 
                 listaJuegos = (listaJuegos.Concat(listaOfertas)).OrderByDescending(i => i.fecha_lanzamiento).ToList();
-
+                foreach (var item in listaJuegos)
+                {
+                    item.precio = item.precio - (item.precio * item.descuento / 100);
+                }
             }
             return listaJuegos;
         }
@@ -207,7 +215,10 @@ namespace GAMES_MARKET.Controllers.BO
                                }).ToList();
 
                 listaJuegos = (listaJuegos.Concat(listaOfertas).ToList());
-
+                foreach (var item in listaJuegos)
+                {
+                    item.precio = item.precio - (item.precio * item.descuento / 100);
+                }
             }
             return listaJuegos;
         }
