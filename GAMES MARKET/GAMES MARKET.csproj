@@ -176,9 +176,6 @@
     <Compile Include="Models\plataformas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\usuarios.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
