@@ -16,7 +16,7 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "home";
 
             BOJuegos oBOJuego = new BOJuegos();
-            List<JuegosModel> listaOfertas = oBOJuego.getOfertas();
+            List<JuegosModel> listaOfertas = oBOJuego.getJuegosOferta();
             ViewData["Ofertas"] = listaOfertas;
 
             List<JuegosModel> listaJuegos = oBOJuego.getJuegosDestacados();

@@ -44,13 +44,19 @@ namespace GAMES_MARKET.Controllers.BO
             using (var bd = new Games_MarketEntities())
             {
                 juegos oJuegos = bd.juegos.Where(p => p.id_juego.Equals(pId)).First();
-                descuentos descuentos = bd.descuentos.Where((p => p.id_juego.Equals(pId)), (p => p.inicio < DateTime.Now), (p => p.fin > DateTime.Now))
+                descuentos odescuentos = bd.descuentos.Where(p => p.id_juego.Equals(pId)).Where(p => p.inicio < DateTime.Now).Where(p => p.fin > DateTime.Now).FirstOrDefault();
+                if(odescuentos is null)
+                {
+                    odescuentos = new descuentos();
+                    odescuentos.descuento = 0;
+                }
                 plataformas oPlataformas = bd.plataformas.Where(p => p.id_plataforma.Equals(oJuegos.id_plataforma)).First();
 
                 oJuegoModel.id_juego = oJuegos.id_juego;
                 oJuegoModel.nombre = oJuegos.nombre;
                 oJuegoModel.id_plataforma = oJuegos.id_plataforma;
-                oJuegoModel.precio = oJuegos.precio;
+                oJuegoModel.precio = oJuegos.precio -(oJuegos.precio * odescuentos.descuento/100);
+                oJuegoModel.precio = Math.Round(oJuegoModel.precio, 2);
                 oJuegoModel.img_ruta = oJuegos.img_ruta;
                 oJuegoModel.trailer_url = oJuegos.trailer_url;
                 oJuegoModel.distribuidora = oJuegos.distribuidora;
@@ -60,7 +66,7 @@ namespace GAMES_MARKET.Controllers.BO
             }
             return oJuegoModel;
         }
-        public List<JuegosModel> getOfertas()
+        public List<JuegosModel> getJuegosOferta()
         {
             List<JuegosModel> listaJuegos = new List<JuegosModel>();
             using (var bd = new Games_MarketEntities())
@@ -91,7 +97,8 @@ namespace GAMES_MARKET.Controllers.BO
             }
             foreach(var item in listaJuegos)
             {
-                item.precio = item.precio - (item.precio * item.descuento / 100);
+                item.precio = (item.precio - (item.precio * item.descuento / 100));
+                item.precio = Math.Round(item.precio, 2);
             }
             return listaJuegos;
         }
@@ -155,6 +162,7 @@ namespace GAMES_MARKET.Controllers.BO
                 foreach (var item in listaJuegos)
                 {
                     item.precio = item.precio - (item.precio * item.descuento / 100);
+                    item.precio = Math.Round(item.precio, 2);
                 }
             }
             return listaJuegos;
