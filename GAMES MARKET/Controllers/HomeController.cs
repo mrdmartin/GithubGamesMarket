@@ -24,19 +24,5 @@ namespace GAMES_MARKET.Controllers
 
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewData["Title"] = "Sobre nosotros";
-            ViewData["PageName"] = "about";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewData["Title"] = "Contacto";
-            ViewData["PageName"] = "contact";
-            return View();
-        }
     }
 }
