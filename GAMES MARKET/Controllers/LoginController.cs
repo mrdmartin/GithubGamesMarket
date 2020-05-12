@@ -14,15 +14,21 @@ namespace GAMES_MARKET.Controllers
     {
         public ActionResult Login()
         {
+            ViewData["Title"] = "Iniciar sesión";
+            ViewData["PageName"] = "login";
             return View();
         }
 
         public ActionResult Help()
         {
+            ViewData["Title"] = "Ayuda";
+            ViewData["PageName"] = "help";
             return View();
         }
         public ActionResult Register()
         {
+            ViewData["Title"] = "Registro";
+            ViewData["PageName"] = "register";
             return View();
         }
         public ActionResult UserData()

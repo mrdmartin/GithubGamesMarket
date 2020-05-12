@@ -12,7 +12,7 @@ namespace GAMES_MARKET.Controllers
         public ActionResult Contact()
         {
             ViewData["Title"] = "Contacto";
-            ViewData["PageName"] = "contact";
+            ViewData["PageName"] = "Contact";
             return View();
         }
     }

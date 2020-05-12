@@ -13,7 +13,9 @@ namespace GAMES_MARKET.Controllers
     {
         // GET: Game
         public ActionResult Game(int? id)
-        { 
+        {
+            ViewData["Title"] = "Juego";
+            ViewData["PageName"] = "Game";
             if (id == null)
             {
                 id = 1;
@@ -39,8 +41,8 @@ namespace GAMES_MARKET.Controllers
         }
         public ActionResult List()
         {
-            ViewData["Title"] = "GamesList";
-            ViewData["PageName"] = "Lista de juegos";
+            ViewData["Title"] = "Lista de juegos";
+            ViewData["PageName"] = "List";
             BOJuegos oBOJuego = new BOJuegos();
 
             List<JuegosModel> listaJuegos = oBOJuego.getFullList();

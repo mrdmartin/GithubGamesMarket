@@ -2,10 +2,6 @@
     font-family: 'Magic Dreams';
     src: local('Magic Dreams'), url('../fonts/Magic-Dreams.ttf');
 }
-footer {
-    position: fixed;
-    bottom: 0;
-}
 /*title*/
 #title {
     display: flex;
@@ -60,4 +56,15 @@ footer {
 .logoUser {
     width: 150px;
     height: 150px;
+}
+
+/*cookies-warning*/
+[data-widget='cookies-warning'] {
+    position: sticky;
+    bottom: 0;
+    background: #343a40;
+    border: 5px solid #f33f3f;
+    color: #f8f9fa;
+    padding: 5%;
+    z-index: 15;
 }

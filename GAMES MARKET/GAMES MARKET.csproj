@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -270,6 +271,7 @@
     <Content Include="Client\shared\-bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.min.js" />
+    <Content Include="Client\shared\-cookies\js.cookie.js" />
     <Content Include="Client\shared\-dataTables\dataTables.bootstrap4.min.js" />
     <Content Include="Client\shared\-dataTables\jquery.dataTables.min.js" />
     <Content Include="Client\shared\-jquery\jquery-3.4.1.js" />
@@ -303,6 +305,7 @@
     <Content Include="Client\shared\img\screenshots\ResidentEvil3Remake-captura3.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura1.jpg" />
     <Content Include="Client\shared\img\screenshots\the-witcher-3-wild-hunt-captura2.jpg" />
+    <Content Include="Client\shared\js\script.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\EntityGamesMarket.Context.tt">
@@ -331,7 +334,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Client\page\" />
-    <Folder Include="Client\shared\js\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -377,11 +379,12 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Games\List.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Games\Game.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Login\UserData.cshtml" />
+    <Content Include="Views\Cookies\Cookies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

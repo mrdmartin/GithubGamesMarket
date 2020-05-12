@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html  lang="es" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" data-page="@ViewBag.PageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <a id="title" class="justify-content-center" href="~/Home/Index"><h1>GAMES<em>MARKET</em></h1></a>
+        <a id="title" class="justify-content-center" href="~/Home"><h1>GAMES<em>MARKET</em></h1></a>
     </header>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Home/Index">Inicio</a>
+                    <a class="nav-link" href="~/Home">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="~/Games/List">Juegos</a>
@@ -64,19 +64,47 @@
         @RenderBody()
     </main>
 
-    <footer>
-        ME LLAMO FOOTER
+    <footer class="bg-dark w-100 d-flex text-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-4 p-5">
+                    <h2>Información</h2>
+                    <ul class="d-inline">
+                        <li><span><a href="~/About">Quienes somos?</a></span></li>
+                        <li><span><a href="https://www.agpd.es/portalwebAGPD/canaldocumentacion/publicaciones/common/Guias/Guia_Cookies.pdf">Método de contacto</a></span></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 p-5">
+                    <h2>Cookies</h2>
+                    <ul class="d-inline">
+                        <li><a href="twitter.com/hotel_evento" class="">twitter.com/hotel_evento</a></li>
+                        <li><a href="instagram.com/hotel_evento" class="">instagram.com/hotel_evento</a></li>
+                    </ul>
+
+                </div>
+                <div class="col-12 col-md-4 p-5">
+                    <h2>Redes Sociales</h2>
+                    <ul class="d-inline">
+                        <li><a href="~/Cookies/Index">Política de Cookies</a></li>
+                        <li><span><a href="https://www.agpd.es/portalwebAGPD/canaldocumentacion/publicaciones/common/Guias/Guia_Cookies.pdf">Guía sobre el uso de las cookies</a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <div data-widget="cookies-warning">
+        <p class="display-3">Aviso sobre las cookies!</p>
+        <p>Esta página utiliza cookies, por ley debemos pedir su consentimimento.</p>
+        <button data-widget="cookiesAceptar">Aceptarlas todas </button>
+        <button data-widget="cookiesDenegar">Denegarlas todas </button>
+        <a href="cookie-usage">Política de cookies</a>
+    </div>
 
     <script src="~/Client/shared/-jquery/jquery-3.4.1.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.bundle.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.js"></script>
-    <script src="~/Client/shared/-dataTables/jquery.dataTables.min.js"></script>
-    <script src="~/Client/shared/-dataTables/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
+    <script src="~/Client/shared/-cookies/js.cookie.js"></script>
+    <script src="~/Client/shared/js/script.js"></script>
 </body>
 </html>

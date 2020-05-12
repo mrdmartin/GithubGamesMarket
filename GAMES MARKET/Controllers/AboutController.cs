@@ -12,7 +12,7 @@ namespace GAMES_MARKET.Controllers
         public ActionResult About()
         {
             ViewData["Title"] = "Sobre nosotros";
-            ViewData["PageName"] = "about";
+            ViewData["PageName"] = "About";
             return View();
         }
     }
