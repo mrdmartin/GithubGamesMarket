@@ -27,9 +27,8 @@ namespace GAMES_MARKET
                 url: "Home",
                 defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
             );
-
             routes.MapRoute(
-                name: "Default2",
+                name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Games", action = "Game", id = UrlParameter.Optional }
             );

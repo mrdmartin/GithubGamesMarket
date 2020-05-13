@@ -1,5 +1,6 @@
 ﻿using GAMES_MARKET.Controllers.BO;
 using GAMES_MARKET.Models;
+using GAMES_MARKET.Models.BO;
 using System;
 using System.Collections.Generic;
 using System.Deployment.Internal;
@@ -33,10 +34,12 @@ namespace GAMES_MARKET.Controllers
             
             BOJuegos oBOjuego = new BOJuegos();
             JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
-
             List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
             ViewData["capturas"] = listaCapturas;
 
+            BOComentarios oBOComentarios = new BOComentarios();
+            List<ComentariosModel> listaComentarios = oBOComentarios.getComments(id.Value);
+            ViewData["comentarios"] = listaComentarios;
             return View(juegosModel);
         }
         public ActionResult List()
@@ -55,6 +58,44 @@ namespace GAMES_MARKET.Controllers
             ViewData["PlataformaLista"] = listaPlataformas;
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Game(int? id, String comment)
+        {
+            ViewData["Title"] = "Juego";
+            ViewData["PageName"] = "Game";
+            if (id == null)
+            {
+                id = 1;
+            }
+            juegos juego = new juegos();
+            using (var bd = new Games_MarketEntities())
+            {
+
+                juego = bd.juegos.Find(id);
+            }
+            if (juego == null)
+            {
+                id = 1;
+            }
+
+            BOJuegos oBOjuego = new BOJuegos();
+            JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
+
+            List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
+            ViewData["capturas"] = listaCapturas;
+
+            BOComentarios oBOComentarios = new BOComentarios();
+            if (comment != "")
+            {
+                String email = Session["log"].ToString();
+                oBOComentarios.Post(id.Value, email, comment);
+            }
+            List<ComentariosModel> listaComentarios = oBOComentarios.getComments(id.Value);
+            ViewData["comentarios"] = listaComentarios;
+
+            return View(juegosModel);
         }
     }
 }

@@ -39,7 +39,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Bienvenido @Session["Log"]
+                            Bienvenido <span id="userLogged">@Session["Log"]</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="~/Login/UserData">ver perfil</a>
@@ -85,7 +85,7 @@
                 <div class="col-12 col-md-4 p-5">
                     <h2>Redes Sociales</h2>
                     <ul class="d-inline">
-                        <li><a href="~/Cookies/Index">Política de Cookies</a></li>
+                        <li><a href="~/Cookies/Cookies">Política de Cookies</a></li>
                         <li><span><a href="https://www.agpd.es/portalwebAGPD/canaldocumentacion/publicaciones/common/Guias/Guia_Cookies.pdf">Guía sobre el uso de las cookies</a></span></li>
                     </ul>
                 </div>

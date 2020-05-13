@@ -137,6 +137,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BO\BOComentarios.cs" />
     <Compile Include="Models\BO\BOJuegos.cs" />
     <Compile Include="Models\BO\BOLogin.cs" />
     <Compile Include="Models\capturas.cs">
@@ -149,6 +150,7 @@
     <Compile Include="Models\comentarios.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComentariosModel.cs" />
     <Compile Include="Models\descuentos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>

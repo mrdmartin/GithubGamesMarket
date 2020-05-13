@@ -64,11 +64,11 @@ namespace GAMES_MARKET.Controllers
             {
                 usuariosModel = oBOLogin.Login(usuariosModel);
                 Session["Log"] = usuariosModel.email;
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("../Home");
             }
             else
             {
-                ViewBag.error = "usuario o contraseña incorrecta";
+                ViewBag.error = "Email o contraseña incorrecta";
                 return View();
             }
 

@@ -5,11 +5,8 @@
 <div class="container-fluid">
     <div class="row">
         @*CAROUSEL*@
-        @*@if (ViewBag["capturas"].)
-        {*@
         <div class="col-12 p-0 col-md-7 p-md-4">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-
                 <ol class="carousel-indicators">
                     @{ var counter = 1; }
                     @foreach (var item in ViewData["capturas"] as List<CapturasModel>)
@@ -61,12 +58,10 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-
             </div>
-
         </div>
-        @*}*@
 
+        @*DATOS Y VIDEO*@
         <div class="col-12 p-0 col-md-5 p-md-4 mx-auto">
             <div class="card">
                 <div class="embed-responsive embed-responsive-16by9">
@@ -82,29 +77,34 @@
             </div>
         </div>
 
+        @*COMENTARIOS*@
+    <div class="col-12">
+        <form id="formPost" action="~/Games/Game/@Model.id_juego" method="post">
+            <h5>Comentar</h5>
+            <textarea class="w-100" name="comment"></textarea>
+            <button type="submit" id="btnPost" class="btn btn-primary">Publicar</button>
+        </form>
+            @{ counter = 1; }
+            @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
+            {
+                {
+                    if (counter % 8 == 0)
+                    {
+                        @:
+                    }
+                    else
+                    {
+                        <div class="border border-dark my-2 p-5">
+                            <p>#@item.id_comentario - @item.nombre_usuario</p>
+                            <p>@item.comentario</p>
+                        </div>
+                    }
+                    counter++;
+                }
+            }
 
-        @*COMENTARIOS ------------------    ESTO TIENE QUE SER UNA TABLA*@
-    <section>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-12 bg-primary">
-                    <span>08/05/2020</span>
-                </div>
-                <div class="col-3 col-md-2 d-flex flex-column border p-0">
-                    <span>JanitoGamer</span>
-                    <img src="~/Client/shared/img/avatar/ShadowLara.png" alt="avatar de usuario" class="logoUser">
-                </div>
-                <div class="col-9 col-md-10 border">
-                    <span>vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, vaya gráficos, </span>
-                </div>
-                <div class="col-12 my-5">
-                    <h5>Comentar</h5>
-                    <textarea class="w-100 h-50"></textarea>
-                    <button type="button" class="btn btn-primary">Publicar</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
+
+    </div>
     </div>
 </div>

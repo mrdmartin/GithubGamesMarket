@@ -1,8 +1,9 @@
 'use strict';
-//inicio
+
 var initPage_onDomContentLoaded = function () {
 
     var pageName = document.querySelector("html").getAttribute("data-page");
+
 
     if (pageName !== 'cookie-usage') {
         var cookiesWarning = document.querySelector("[data-widget='cookies-warning']");
@@ -34,5 +35,20 @@ var initPage_onDomContentLoaded = function () {
         btnRefuseCookie.addEventListener("click", refuseCookie);
     }
 
+    if (pageName === 'Game') {
+
+        var formPost = document.getElementById('formPost');
+
+        var checkLog = function (event) {
+            console.log(document.getElementById('userLogged'));
+            if (document.getElementById('userLogged') === null) {
+                event.preventDefault();
+                alert('Debes iniciar sesión');
+                return true;
+            }
+        }
+        formPost.addEventListener("submit", checkLog);
+
+    }
 }
 window.addEventListener('DOMContentLoaded', initPage_onDomContentLoaded);
