@@ -81,9 +81,7 @@
                                 <td class="d-none d-md-table-cell">@item.distribuidora</td>
                                 <td class="d-none d-md-table-cell">@item.fecha_lanzamiento.ToShortDateString()</td>
 
-                                @{var preciofinal = item.precio - (item.precio * item.descuento / 100);}
-
-                                <td>@preciofinal€</td>
+                                <td>@item.precio€</td>
                                 <td>@item.descuento%</td>
                             </tr>
                         }

@@ -204,6 +204,7 @@ namespace GAMES_MARKET.Controllers.BO
                                on juegos.id_juego equals descuentos.id_juego into todas
                                from descuentos in todas.DefaultIfEmpty()
                                where descuentos == null || ((DateTime.Now < descuentos.inicio) && (DateTime.Now > descuentos.fin))
+                               orderby descuentos.descuento descending
 
                                select new JuegosModel
                                {
@@ -222,10 +223,11 @@ namespace GAMES_MARKET.Controllers.BO
 
                                }).ToList();
 
-                listaJuegos = (listaJuegos.Concat(listaOfertas).ToList());
+                listaJuegos = listaOfertas.Concat(listaJuegos).OrderByDescending(i => i.fecha_lanzamiento).ToList();
                 foreach (var item in listaJuegos)
                 {
                     item.precio = item.precio - (item.precio * item.descuento / 100);
+                    item.precio = Math.Round(item.precio, 2);
                 }
             }
             return listaJuegos;

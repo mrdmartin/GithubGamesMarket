@@ -27,6 +27,7 @@ namespace GAMES_MARKET.Models.BO
                                    join plataformas in bd.plataformas
                                     on juegos.id_plataforma equals plataformas.id_plataforma
                                    where plataformas.id_plataforma == ofilter.id_plataforma
+                                   orderby juegos.fecha_lanzamiento descending
 
                                    select new JuegosModel
                                    {
@@ -41,6 +42,10 @@ namespace GAMES_MARKET.Models.BO
                                        fecha_lanzamiento = juegos.fecha_lanzamiento,
                                        img_rutaPlataforma = plataformas.img_ruta
                                    }).ToList();
+                    foreach (var item in listaJuegos)
+                    {
+                        item.fecha_lanzamiento_string = item.fecha_lanzamiento.ToShortDateString();
+                    }
                     return listaJuegos;
                 }
             }
@@ -58,6 +63,7 @@ namespace GAMES_MARKET.Models.BO
                                    join generos in bd.generos
                                    on generos_juegos.id_genero equals generos.id_genero
                                    where generos.id_genero == ofilter.id_genero
+                                   orderby juegos.fecha_lanzamiento descending
 
                                    select new JuegosModel
                                    {
@@ -72,6 +78,10 @@ namespace GAMES_MARKET.Models.BO
                                        fecha_lanzamiento = juegos.fecha_lanzamiento,
                                        img_rutaPlataforma = plataformas.img_ruta
                                    }).ToList();
+                    foreach (var item in listaJuegos)
+                    {
+                        item.fecha_lanzamiento_string = item.fecha_lanzamiento.ToShortDateString();
+                    }
                     return listaJuegos;
                 }
             }
@@ -84,6 +94,7 @@ namespace GAMES_MARKET.Models.BO
                                    join plataformas in bd.plataformas
                                     on juegos.id_plataforma equals plataformas.id_plataforma
                                    where plataformas.id_plataforma == ofilter.id_plataforma
+                                   orderby juegos.fecha_lanzamiento descending
                                    select new JuegosModel
                                    {
                                        id_juego = juegos.id_juego,
@@ -97,6 +108,11 @@ namespace GAMES_MARKET.Models.BO
                                        fecha_lanzamiento = juegos.fecha_lanzamiento,
                                        img_rutaPlataforma = plataformas.img_ruta
                                    }).ToList();
+
+                    foreach (var item in listaJuegos)
+                    {
+                        item.fecha_lanzamiento_string = item.fecha_lanzamiento.ToShortDateString();
+                    }
                     return listaJuegos;
                 }
             }
@@ -108,7 +124,7 @@ namespace GAMES_MARKET.Models.BO
                                    where (juegos.nombre.Contains(ofilter.nombre))
                                    join plataformas in bd.plataformas
                                    on juegos.id_plataforma equals plataformas.id_plataforma
-
+                                   orderby juegos.fecha_lanzamiento descending
                                    select new JuegosModel
                                    {
                                        id_juego = juegos.id_juego,
@@ -122,6 +138,11 @@ namespace GAMES_MARKET.Models.BO
                                        fecha_lanzamiento = juegos.fecha_lanzamiento,
                                        img_rutaPlataforma = plataformas.img_ruta
                                    }).ToList();
+
+                    foreach (var item in listaJuegos)
+                    {
+                        item.fecha_lanzamiento_string = item.fecha_lanzamiento.ToShortDateString();
+                    }
                     return listaJuegos;
                 }
             }

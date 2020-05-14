@@ -98,7 +98,7 @@ var initPage_onDomContentLoaded = function () {
             item.querySelector('[data-hook="name_link"]').href = "Game/" + game.id_juego;
             item.querySelector('[data-hook="name_game"]').textContent = game.nombre;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
-            item.querySelector('[data-hook="release_date"]').textContent = game.fecha_lanzamiento;
+            item.querySelector('[data-hook="release_date"]').textContent = game.fecha_lanzamiento_string;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
             item.querySelector('[data-hook="price"]').textContent = game.precio;
             item.querySelector('[data-hook="discount"]').textContent = game.descuento;
