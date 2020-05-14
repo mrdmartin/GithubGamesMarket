@@ -42,23 +42,6 @@ namespace GAMES_MARKET.Controllers
             ViewData["comentarios"] = listaComentarios;
             return View(juegosModel);
         }
-        public ActionResult List()
-        {
-            ViewData["Title"] = "Lista de juegos";
-            ViewData["PageName"] = "List";
-            BOJuegos oBOJuego = new BOJuegos();
-
-            List<JuegosModel> listaJuegos = oBOJuego.getFullList();
-            ViewData["Lista"] = listaJuegos;
-
-            List<JuegosModel> listaGeneros = oBOJuego.getGenereFullList();
-            ViewData["GeneroLista"] = listaGeneros;
-
-            List<JuegosModel> listaPlataformas = oBOJuego.getPlatformFullList();
-            ViewData["PlataformaLista"] = listaPlataformas;
-
-            return View();
-        }
 
         [HttpPost]
         public ActionResult Game(int? id, String comment)
@@ -96,6 +79,23 @@ namespace GAMES_MARKET.Controllers
             ViewData["comentarios"] = listaComentarios;
 
             return View(juegosModel);
+        }
+        public ActionResult List()
+        {
+            ViewData["Title"] = "Lista de juegos";
+            ViewData["PageName"] = "List";
+            BOJuegos oBOJuego = new BOJuegos();
+
+            List<JuegosModel> listaJuegos = oBOJuego.getFullList();
+            ViewData["Lista"] = listaJuegos;
+
+            List<JuegosModel> listaGeneros = oBOJuego.getGenereFullList();
+            ViewData["GeneroLista"] = listaGeneros;
+
+            List<JuegosModel> listaPlataformas = oBOJuego.getPlatformFullList();
+            ViewData["PlataformaLista"] = listaPlataformas;
+
+            return View(listaJuegos);
         }
     }
 }

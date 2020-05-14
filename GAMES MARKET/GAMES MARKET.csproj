@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ApiSearchController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BO\BOApiController.cs" />
     <Compile Include="Models\BO\BOComentarios.cs" />
     <Compile Include="Models\BO\BOJuegos.cs" />
     <Compile Include="Models\BO\BOLogin.cs" />
@@ -170,6 +172,9 @@
       <DependentUpon>EntityGamesMarket.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\generos.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\generos_juegos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\juegos.cs">

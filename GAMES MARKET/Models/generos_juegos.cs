@@ -12,18 +12,13 @@ namespace GAMES_MARKET.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class generos
+    public partial class generos_juegos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public generos()
-        {
-            this.generos_juegos = new HashSet<generos_juegos>();
-        }
-    
+        public int id_generos_juegos { get; set; }
         public int id_genero { get; set; }
-        public string nombre { get; set; }
+        public int id_juego { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<generos_juegos> generos_juegos { get; set; }
+        public virtual generos generos { get; set; }
+        public virtual juegos juegos { get; set; }
     }
 }

@@ -60,9 +60,9 @@
         </EntityType>
         <EntityType Name="generos_juegos">
           <Key>
-            <PropertyRef Name="id_genero" />
-            <PropertyRef Name="id_juego" />
+            <PropertyRef Name="id_generos_juegos" />
           </Key>
+          <Property Name="id_generos_juegos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_genero" Type="int" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
         </EntityType>
@@ -368,6 +368,7 @@
           <EntitySet Name="comentarios" EntityType="Games_MarketModel.comentarios" />
           <EntitySet Name="descuentos" EntityType="Games_MarketModel.descuentos" />
           <EntitySet Name="generos" EntityType="Games_MarketModel.generos" />
+          <EntitySet Name="generos_juegos" EntityType="Games_MarketModel.generos_juegos" />
           <EntitySet Name="juegos" EntityType="Games_MarketModel.juegos" />
           <EntitySet Name="plataformas" EntityType="Games_MarketModel.plataformas" />
           <EntitySet Name="usuarios" EntityType="Games_MarketModel.usuarios" />
@@ -397,6 +398,14 @@
             <End Role="juegos" EntitySet="juegos" />
             <End Role="descuentos" EntitySet="descuentos" />
           </AssociationSet>
+          <AssociationSet Name="FK_generos_juegos_generos" Association="Games_MarketModel.FK_generos_juegos_generos">
+            <End Role="generos" EntitySet="generos" />
+            <End Role="generos_juegos" EntitySet="generos_juegos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genero_juegos_juegos" Association="Games_MarketModel.FK_genero_juegos_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="generos_juegos" EntitySet="generos_juegos" />
+          </AssociationSet>
           <AssociationSet Name="FK_juegos_plataformas" Association="Games_MarketModel.FK_juegos_plataformas">
             <End Role="plataformas" EntitySet="plataformas" />
             <End Role="juegos" EntitySet="juegos" />
@@ -416,10 +425,6 @@
           <AssociationSet Name="deseados" Association="Games_MarketModel.deseados">
             <End Role="juegos" EntitySet="juegos" />
             <End Role="usuarios" EntitySet="usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="generos_juegos" Association="Games_MarketModel.generos_juegos">
-            <End Role="juegos" EntitySet="juegos" />
-            <End Role="generos" EntitySet="generos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="capturas">
@@ -472,7 +477,17 @@
           </Key>
           <Property Name="id_genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="juegos" Relationship="Games_MarketModel.generos_juegos" FromRole="generos" ToRole="juegos" />
+          <NavigationProperty Name="generos_juegos" Relationship="Games_MarketModel.FK_generos_juegos_generos" FromRole="generos" ToRole="generos_juegos" />
+        </EntityType>
+        <EntityType Name="generos_juegos">
+          <Key>
+            <PropertyRef Name="id_generos_juegos" />
+          </Key>
+          <Property Name="id_generos_juegos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_genero" Type="Int32" Nullable="false" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="generos" Relationship="Games_MarketModel.FK_generos_juegos_generos" FromRole="generos_juegos" ToRole="generos" />
+          <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_genero_juegos_juegos" FromRole="generos_juegos" ToRole="juegos" />
         </EntityType>
         <EntityType Name="juegos">
           <Key>
@@ -491,10 +506,10 @@
           <NavigationProperty Name="claves" Relationship="Games_MarketModel.FK_claves_juegos" FromRole="juegos" ToRole="claves" />
           <NavigationProperty Name="comentarios" Relationship="Games_MarketModel.FK_comentarios_juegos" FromRole="juegos" ToRole="comentarios" />
           <NavigationProperty Name="descuentos" Relationship="Games_MarketModel.FK_descuentos_juegos" FromRole="juegos" ToRole="descuentos" />
+          <NavigationProperty Name="generos_juegos" Relationship="Games_MarketModel.FK_genero_juegos_juegos" FromRole="juegos" ToRole="generos_juegos" />
           <NavigationProperty Name="plataformas" Relationship="Games_MarketModel.FK_juegos_plataformas" FromRole="juegos" ToRole="plataformas" />
           <NavigationProperty Name="valoraciones" Relationship="Games_MarketModel.FK_valoraciones_juegos" FromRole="juegos" ToRole="valoraciones" />
           <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.deseados" FromRole="juegos" ToRole="usuarios" />
-          <NavigationProperty Name="generos" Relationship="Games_MarketModel.generos_juegos" FromRole="juegos" ToRole="generos" />
         </EntityType>
         <EntityType Name="plataformas">
           <Key>
@@ -617,6 +632,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_generos_juegos_generos">
+          <End Type="Games_MarketModel.generos" Role="generos" Multiplicity="1" />
+          <End Type="Games_MarketModel.generos_juegos" Role="generos_juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="generos">
+              <PropertyRef Name="id_genero" />
+            </Principal>
+            <Dependent Role="generos_juegos">
+              <PropertyRef Name="id_genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genero_juegos_juegos">
+          <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="1" />
+          <End Type="Games_MarketModel.generos_juegos" Role="generos_juegos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="generos_juegos">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_juegos_plataformas">
           <End Type="Games_MarketModel.plataformas" Role="plataformas" Multiplicity="1" />
           <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="*" />
@@ -668,10 +707,6 @@
         <Association Name="deseados">
           <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="*" />
           <End Type="Games_MarketModel.usuarios" Role="usuarios" Multiplicity="*" />
-        </Association>
-        <Association Name="generos_juegos">
-          <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="*" />
-          <End Type="Games_MarketModel.generos" Role="generos" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -726,6 +761,15 @@
               <MappingFragment StoreEntitySet="generos">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="generos_juegos">
+            <EntityTypeMapping TypeName="Games_MarketModel.generos_juegos">
+              <MappingFragment StoreEntitySet="generos_juegos">
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+                <ScalarProperty Name="id_generos_juegos" ColumnName="id_generos_juegos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -790,14 +834,6 @@
           <AssociationSetMapping Name="deseados" TypeName="Games_MarketModel.deseados" StoreEntitySet="deseados">
             <EndProperty Name="usuarios">
               <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-            </EndProperty>
-            <EndProperty Name="juegos">
-              <ScalarProperty Name="id_juego" ColumnName="id_juego" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="generos_juegos" TypeName="Games_MarketModel.generos_juegos" StoreEntitySet="generos_juegos">
-            <EndProperty Name="generos">
-              <ScalarProperty Name="id_genero" ColumnName="id_genero" />
             </EndProperty>
             <EndProperty Name="juegos">
               <ScalarProperty Name="id_juego" ColumnName="id_juego" />
