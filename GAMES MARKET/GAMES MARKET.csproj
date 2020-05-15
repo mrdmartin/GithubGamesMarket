@@ -394,6 +394,7 @@
     <Content Include="Views\Login\UserData.cshtml" />
     <Content Include="Views\Cookies\Cookies.cshtml" />
     <Content Include="Views\Buys\Buy.cshtml" />
+    <Content Include="Views\Login\CambioContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
