@@ -11,43 +11,27 @@
                     @{ var counter = 1; }
                     @foreach (var item in ViewData["capturas"] as List<CapturasModel>)
                     {
-                        {
-                            if (counter % 5 == 0)
-                            {
-                                @:
-                            }
-                            else
-                            {
-                                <li data-target="#carouselExampleCaptions" data-slide-to="@counter"></li>
-                            }
-                            counter++;
-                        }
+                        <li data-target="#carouselExampleCaptions" data-slide-to="@counter"></li>
+                        counter++;
                     }
                 </ol>
                 <div class="carousel-inner">
                     @{counter = 1; }
                     @foreach (var item in ViewData["capturas"] as List<CapturasModel>)
                     {
-
+                        if (counter == 1)
                         {
-                            if (counter % 5 == 0)
-                            {
-                                @:
-                            }
-                            if (counter == 1)
-                            {
-                                <div class="carousel-item active">
-                                    <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="carousel-item">
-                                    <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
-                                </div>
-                            }
-                            counter++;
+                            <div class="carousel-item active">
+                                <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
+                            </div>
                         }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
+                            </div>
+                        }
+                        counter++;
                     }
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -64,15 +48,21 @@
         @*DATOS Y VIDEO*@
         <div class="col-12 p-0 col-md-5 p-md-4 mx-auto">
             <div class="card">
+
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="@Model.trailer_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">@Model.nombre</h5>
+
+                    <h3 class="card-title">@Model.nombre</h3>
                     <img src="~/Client/shared/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
                     <p class="card-text">@Model.descripcion</p>
-                    <button class="btn btn-primary">Comprar por @Model.precio€</button>
+
+                    <form action="/Buys/Buy/@Model.id_juego">
+                        <button class="btn btn-primary w-100">Comprar por @Model.precio€</button>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -80,31 +70,27 @@
         @*COMENTARIOS*@
     <div class="col-12">
         <form id="formPost" action="~/Games/Game/@Model.id_juego" method="post">
-            <h5>Comentar</h5>
+            <h3>Comentar</h3>
             <textarea class="w-100" name="comment"></textarea>
-            <button type="submit" id="btnPost" class="btn btn-primary">Publicar</button>
+            <button type="submit" id="btnPost" class="btn btn-primary w-100">Publicar</button>
         </form>
-            @{ counter = 1; }
-            @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
+
+        @{ counter = 1; }
+        @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
+        {
+            if (counter == 1)
             {
-                {
-                    if (counter % 8 == 0)
-                    {
-                        @:
-                    }
-                    else
-                    {
-                        <div class="border border-dark my-2 p-5">
-                            <p>#@item.id_comentario - @item.nombre_usuario</p>
-                            <p>@item.comentario</p>
-                        </div>
-                    }
-                    counter++;
-                }
+                <h3>Comentarios</h3>
             }
-
-
-
+            <div class="border border-dark my-2 ">
+                <div class="bg-dark text-white p-2 d-flex justify-content-between">
+                    <span class="text-left">#@item.id_comentario - @item.nombre_usuario </span>
+                    <span class="text-right">@item.fecha</span>
+                </div>
+                <p class="p-2">@item.comentario</p>
+            </div>
+        }
     </div>
+
     </div>
 </div>

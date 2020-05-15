@@ -1,16 +1,10 @@
 ﻿@using GAMES_MARKET.Models;
 @model  UsuariosModel
-@{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Registro</h2>
-
-
 
             <form action="Register" method="POST">
                 <div class="form-group">
@@ -36,8 +30,6 @@
                 <span class="text-danger">@ViewBag.error</span>
                 <button type="submit" class="btn btn-primary w-100 mb-5">Enviar</button>
             </form>
-
-
 
         </div>
     </div>

@@ -1,24 +1,17 @@
 ﻿@using GAMES_MARKET.Models;
 @model List<JuegosModel>
 
-@{
-    ViewBag.Title = "List Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2 class="text-center">Búsqueda de juegos</h2>
 <section>
     <form id="formFilter">
-        <div class="form-row">
-            <div class="col-7">
+        <div class="form-row m-2">
+            <div class="form-group col-12 col-md-6">
                 <div class="input-group-prepend">
                     <input class="form-control form-control-lg " type="text" placeholder="Nombre del título" id="inputName">
-                    <div class="input-group-append">
-                        <span class="input-group-text">Buscar</span>
-                    </div>
                 </div>
             </div>
-            <div class="col">
+
+            <div class=" form-group col-6 col-md-2">
                 <select class="custom-select custom-select-lg mb-3" id="selectGender">
                     <option selected value="0">---</option>
 
@@ -30,7 +23,7 @@
 
                 </select>
             </div>
-            <div class="col">
+            <div class="form-group col-6 col-md-2">
                 <select class="custom-select custom-select-lg mb-3" id="selectPlatform">
                     <option selected value="0">---</option>
 
@@ -41,12 +34,9 @@
 
                 </select>
             </div>
+            <div class="form-group col-12 col-md-2"> <button id="btnSearch" class="btn btn-primary btn-lg w-100">Busca</button></div>
         </div>
-
-        <button id="btnSearch">Busca</button>
     </form>
-
-
 
     <div class="container-fluid">
         <div class="row">
@@ -54,9 +44,8 @@
                 <table class="table table-image">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col"> Cáratula</th>
-                            <th scope="col">Plataforma</th>
-                            <th scope="col">Título</th>
+                            <th scope="col">Carátula</th>
+                            <th scope="col">Título y Plataforma</th>
                             <th scope="col" class="d-none d-md-table-cell">Distribuidor</th>
                             <th scope="col" class="d-none d-md-table-cell">Fecha de lanzamiento</th>
                             <th scope="col">Precio</th>
@@ -67,16 +56,13 @@
                     <tbody id="games_list">
                         @foreach (var item in Model)
                         {
-
                             <tr>
-                                <td class="w-25">
-                                    <a href="Game/@item.id_juego"><img src="~/Client/shared/img/gamescover/@item.img_ruta" alt="..." class="img-thumbnail"></a>
+                                <td class="w-25 p-0">
+                                    <a href="Game/@item.id_juego"><img src="~/Client/shared/img/gamescover/@item.img_ruta" alt="Carátula del juego" class="img-thumbnail"></a>
                                 </td>
-                                <td>
-                                    <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="...">
-                                </td>
-                                <td>
+                                <td class="d-flex flex-column">
                                     <a href="Game/@item.id_juego">@item.nombre</a>
+                                    <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="Logo de la plataforma">
                                 </td>
                                 <td class="d-none d-md-table-cell">@item.distribuidora</td>
                                 <td class="d-none d-md-table-cell">@item.fecha_lanzamiento.ToShortDateString()</td>
@@ -93,14 +79,12 @@
 
     <template data-hook="game_template">
         <tr>
-            <td class="w-25">
-                <a href="" data-hook="img_link"><img src="" alt="imagen del juego" class="img-thumbnail" data-hook="img_game"></a>
+            <td class="w-25 p-0">
+                <a href="" data-hook="img_link"><img src="" class="img-thumbnail" alt="Carátula del juego" data-hook="img_game"></a>
             </td>
-            <td>
-                <img src="" class="game-last-logo" alt="..." data-hook="img_platform">
-            </td>
-            <td>
+            <td class="d-flex flex-column">
                 <a href="" data-hook="name_link"><span data-hook="name_game"></span></a>
+                <img src="" class="game-last-logo" alt="Logo de la plataforma" data-hook="img_platform">
             </td>
             <td class="d-none d-md-table-cell"><span data-hook="name_distributor"></span></td>
             <td class="d-none d-md-table-cell"><span data-hook="release_date"></span></td>

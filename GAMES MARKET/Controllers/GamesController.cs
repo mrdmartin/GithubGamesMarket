@@ -48,6 +48,10 @@ namespace GAMES_MARKET.Controllers
         {
             ViewData["Title"] = "Juego";
             ViewData["PageName"] = "Game";
+            if (Session["Log"] == null)
+            {
+                return RedirectToAction("/Login/Login");
+            }
             if (id == null)
             {
                 id = 1;

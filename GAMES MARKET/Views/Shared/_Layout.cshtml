@@ -12,14 +12,15 @@
 <body>
 
     <header>
-        <a id="title" class="justify-content-center" href="~/Home"><h1>GAMES<em>MARKET</em></h1></a>
+        <a id="title" class="d-none d-md-block" href="~/Home"><h1>GAMES<em>MARKET</em></h1></a>
     </header>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a id="title" class="d-md-none p-0" href="~/Home"><h1>GAMES<em>MARKET</em></h1></a>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse text-center" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="~/Home">Inicio</a>
@@ -54,7 +55,7 @@
             }
             else
             {
-                <a href="~/Login/Login">Iniciar Sesión</a>
+                <a class="nav-link" href="~/Login/Login">Iniciar Sesión</a>
             }
 
         </div>
@@ -64,21 +65,21 @@
         @RenderBody()
     </main>
 
-    <footer class="bg-dark w-100 d-flex text-light">
+    <footer class="bg-dark w-100 d-flex text-center">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-4 p-5">
                     <h2>Información</h2>
                     <ul class="d-inline">
                         <li><span><a href="~/About">Quienes somos?</a></span></li>
-                        <li><span><a href="https://www.agpd.es/portalwebAGPD/canaldocumentacion/publicaciones/common/Guias/Guia_Cookies.pdf">Método de contacto</a></span></li>
+                        <li><span><a href="~/Contact">Método de contacto</a></span></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 p-5">
                     <h2>Cookies</h2>
                     <ul class="d-inline">
-                        <li><a href="twitter.com/hotel_evento" class="">twitter.com/hotel_evento</a></li>
-                        <li><a href="instagram.com/hotel_evento" class="">instagram.com/hotel_evento</a></li>
+                        <li><a href="twitter.com" class="">twitter.com/hotel_evento</a></li>
+                        <li><a href="instagram.com" class="">instagram.com/hotel_evento</a></li>
                     </ul>
 
                 </div>
@@ -96,9 +97,9 @@
     <div data-widget="cookies-warning">
         <p class="display-3">Aviso sobre las cookies!</p>
         <p>Esta página utiliza cookies, por ley debemos pedir su consentimimento.</p>
-        <button data-widget="cookiesAceptar">Aceptarlas todas </button>
-        <button data-widget="cookiesDenegar">Denegarlas todas </button>
-        <a href="cookie-usage">Política de cookies</a>
+        <button data-widget="cookiesAceptar">Aceptarlas todas</button>
+        <button onclick="location.href='/Cookies/Cookies'" data-widget="cookiesDenegar">Denegarlas todas</button>
+        <a href="~/Cookies/Cookies">Política de cookies</a>
     </div>
 
     <script src="~/Client/shared/-jquery/jquery-3.4.1.js"></script>

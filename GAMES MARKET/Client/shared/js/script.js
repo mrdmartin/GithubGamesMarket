@@ -3,16 +3,19 @@
 var initPage_onDomContentLoaded = function () {
 
     var pageName = document.querySelector("html").getAttribute("data-page");
+    var cookiesWarning = document.querySelector("[data-widget='cookies-warning']");
+    var btnAcceptCookies = cookiesWarning.querySelector("[data-widget='cookiesAceptar']");
+    var btnRefuseCookie = cookiesWarning.querySelector("[data-widget='cookiesDenegar']");
 
+    if (pageName === "Cookies") {
+        cookiesWarning.style.display = "none";
+    }
 
-    if (pageName !== 'cookie-usage') {
-        var cookiesWarning = document.querySelector("[data-widget='cookies-warning']");
-        var btnAcceptCookies = cookiesWarning.querySelector("[data-widget='cookiesAceptar']");
-        var btnRefuseCookie = cookiesWarning.querySelector("[data-widget='cookiesDenegar']");
+    if (pageName != "Cookies") {
 
         var initCookie = function () {
 
-            if (Cookies.get('COOKIES_USAGE')) {
+            if (Cookies.get('COOKIES_USAGE')=="1") {
                 cookiesWarning.style.display = "none";
             } else {
                 cookiesWarning.style.display = "block";
@@ -40,7 +43,6 @@ var initPage_onDomContentLoaded = function () {
         var formPost = document.getElementById('formPost');
 
         var checkLog = function (event) {
-            console.log(document.getElementById('userLogged'));
             if (document.getElementById('userLogged') === null) {
                 event.preventDefault();
                 alert('Debes iniciar sesión');
@@ -82,7 +84,6 @@ var initPage_onDomContentLoaded = function () {
         var updatelist = function (games) {
             var games_list = document.getElementById("games_list");
             games_list.innerHTML = "";
-            console.log(games.length);
             for (var i = 0; i < games.length; i++) {
                 addGame(games[i]);
             }
@@ -100,8 +101,8 @@ var initPage_onDomContentLoaded = function () {
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
             item.querySelector('[data-hook="release_date"]').textContent = game.fecha_lanzamiento_string;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
-            item.querySelector('[data-hook="price"]').textContent = game.precio;
-            item.querySelector('[data-hook="discount"]').textContent = game.descuento;
+            item.querySelector('[data-hook="price"]').textContent = game.precio + "\u20ac";
+            item.querySelector('[data-hook="discount"]').textContent = game.descuento + "%";
 
             games_list.appendChild(item);
         }

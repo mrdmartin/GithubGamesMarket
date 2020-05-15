@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ApiSearchController.cs" />
+    <Compile Include="Controllers\BuysController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
@@ -392,6 +393,7 @@
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Login\UserData.cshtml" />
     <Content Include="Views\Cookies\Cookies.cshtml" />
+    <Content Include="Views\Buys\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

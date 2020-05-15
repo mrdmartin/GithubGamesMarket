@@ -15,20 +15,20 @@ namespace GAMES_MARKET.Controllers
         public ActionResult Login()
         {
             ViewData["Title"] = "Iniciar sesión";
-            ViewData["PageName"] = "login";
+            ViewData["PageName"] = "Login";
             return View();
         }
 
         public ActionResult Help()
         {
             ViewData["Title"] = "Ayuda";
-            ViewData["PageName"] = "help";
+            ViewData["PageName"] = "Help";
             return View();
         }
         public ActionResult Register()
         {
             ViewData["Title"] = "Registro";
-            ViewData["PageName"] = "register";
+            ViewData["PageName"] = "Register";
             return View();
         }
         public ActionResult UserData()
@@ -49,6 +49,8 @@ namespace GAMES_MARKET.Controllers
         [HttpPost]
         public ActionResult Login(UsuariosModel usuariosModel)
         {
+            ViewData["Title"] = "Iniciar sesión";
+            ViewData["PageName"] = "Login";
             if (usuariosModel.email == null)
             {
                 ViewBag.error = "Falta el correo electrónico";
@@ -64,7 +66,7 @@ namespace GAMES_MARKET.Controllers
             {
                 usuariosModel = oBOLogin.Login(usuariosModel);
                 Session["Log"] = usuariosModel.email;
-                return RedirectToAction("../Home");
+                return RedirectToAction("../Home/Home");
             }
             else
             {
@@ -77,6 +79,8 @@ namespace GAMES_MARKET.Controllers
         [HttpPost]
         public ActionResult Register(UsuariosModel oregisterModel)
         {
+            ViewData["Title"] = "Registro";
+            ViewData["PageName"] = "Register";
             BOLogin oBOLogin = new BOLogin();
 
             if (!ModelState.IsValid)

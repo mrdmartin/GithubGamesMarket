@@ -1,9 +1,6 @@
 ﻿@using GAMES_MARKET.Models;
 @model JuegosModel
-@{
-    ViewBag.Title = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+
 <section>
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -14,7 +11,7 @@
                     <h2 class="d-none d-md-flex justify-content-center">Ofertas</h2>
                 </div>
 
-                <div class="col-12 p-0 col-md-6 p-md-4">
+                <div class="col-12 p-0 col-md-6">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 
                         <ol class="carousel-indicators">
@@ -113,7 +110,7 @@
                                     <div class="col-12">
                                         <div class="game-last-tittle">
                                             <a href="../Games/Game/@item.id_juego">
-                                                <p class="card-text">@item.nombre</p>
+                                                <h3 class="card-text">@item.nombre</h3>
                                             </a>
                                         </div>
                                     </div>
