@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="id_clave" />
           </Key>
-          <Property Name="id_clave" Type="int" Nullable="false" />
+          <Property Name="id_clave" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
           <Property Name="codigo" Type="nvarchar(max)" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
@@ -119,7 +119,6 @@
           <Property Name="tarj" Type="nvarchar(max)" Nullable="false" />
           <Property Name="tarj_mes" Type="nvarchar(max)" Nullable="false" />
           <Property Name="tarj_ano" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="cod_seg" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_capturas_capturas">
           <End Role="juegos" Type="Self.juegos" Multiplicity="1" />
@@ -441,7 +440,7 @@
           <Key>
             <PropertyRef Name="id_clave" />
           </Key>
-          <Property Name="id_clave" Type="Int32" Nullable="false" />
+          <Property Name="id_clave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_juego" Type="Int32" Nullable="false" />
           <Property Name="codigo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
@@ -558,7 +557,6 @@
           <Property Name="tarj" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tarj_mes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tarj_ano" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="cod_seg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="claves" Relationship="Games_MarketModel.FK_claves_ventas" FromRole="ventas" ToRole="claves" />
           <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.FK_ventas_usuarios" FromRole="ventas" ToRole="usuarios" />
         </EntityType>
@@ -823,7 +821,6 @@
           <EntitySetMapping Name="ventas">
             <EntityTypeMapping TypeName="Games_MarketModel.ventas">
               <MappingFragment StoreEntitySet="ventas">
-                <ScalarProperty Name="cod_seg" ColumnName="cod_seg" />
                 <ScalarProperty Name="tarj_ano" ColumnName="tarj_ano" />
                 <ScalarProperty Name="tarj_mes" ColumnName="tarj_mes" />
                 <ScalarProperty Name="tarj" ColumnName="tarj" />

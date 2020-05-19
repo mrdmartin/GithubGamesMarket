@@ -19,7 +19,6 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "Login";
             return View();
         }
-
         [HttpPost]
         public ActionResult Login(UsuariosModel usuariosModel)
         {
@@ -62,7 +61,9 @@ namespace GAMES_MARKET.Controllers
             ViewData["Title"] = "Ayuda";
             ViewData["PageName"] = "Help";
 
-            string token = randomPassword(Guid.NewGuid().ToString());
+            BOLogin oBOLogin = new BOLogin();
+            String token = oBOLogin.randomPassword();
+
             using (Games_MarketEntities db = new Games_MarketEntities())
             {
                 var oUsuario = db.usuarios.Where(d => d.email == ousuariosmodel.email).FirstOrDefault();
@@ -97,33 +98,6 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "Register";
             return View();
         }
-        public ActionResult UserData()
-        {
-            ViewData["Title"] = "Perfil de usuario";
-            ViewData["PageName"] = "Profile";
-            BOLogin oBOLogin = new BOLogin();
-            String text = Session["log"].ToString();
-            usuarios usuario = oBOLogin.getUsuarioByEmail(text);
-            UsuariosModel usuariosModel = new UsuariosModel();
-            usuariosModel.email = usuario.email;
-            usuariosModel.nombre = usuario.nombre;
-            usuariosModel.apellidos = usuario.apellidos;
-
-            return View(usuariosModel);
-        }
-
-        private String randomPassword(string randompas)
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-            for (int i = 0; i < 8; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-            randompas = new String(stringChars);
-            return randompas;
-        }
         [HttpPost]
         public ActionResult Register(UsuariosModel oregisterModel)
         {
@@ -136,7 +110,7 @@ namespace GAMES_MARKET.Controllers
                 ViewBag.error = "Faltan campos por rellenar.";
                 return View(oregisterModel);
             }
-            if (oBOLogin.getUsuarioByEmail(oregisterModel.email)!= null)
+            if (oBOLogin.getUsuarioByEmail(oregisterModel.email) != null)
             {
                 ViewBag.error = "El email ya ha sido registrado previamente";
                 return View(oregisterModel);
@@ -153,15 +127,6 @@ namespace GAMES_MARKET.Controllers
             }
         }
 
-
-        public ActionResult CorrectSend()
-        {
-
-            ViewData["Title"] = "Correo enviado";
-            ViewData["PageName"] = "CorrectSend";
-
-            return View();
-        }
         public ActionResult CambioContrasena(String token)
         {
             UsuariosModel model = new UsuariosModel();
@@ -215,9 +180,39 @@ namespace GAMES_MARKET.Controllers
             }
             return View();
         }
+
+        public ActionResult UserData()
+        {
+            ViewData["Title"] = "Perfil de usuario";
+            ViewData["PageName"] = "Profile";
+            BOLogin oBOLogin = new BOLogin();
+            String text = Session["log"].ToString();
+            usuarios usuario = oBOLogin.getUsuarioByEmail(text);
+            UsuariosModel usuariosModel = new UsuariosModel();
+            usuariosModel.email = usuario.email;
+            usuariosModel.nombre = usuario.nombre;
+            usuariosModel.apellidos = usuario.apellidos;
+
+            return View(usuariosModel);
+        }
+        public ActionResult CorrectSend()
+        {
+
+            ViewData["Title"] = "Correo enviado";
+            ViewData["PageName"] = "CorrectSend";
+
+            return View();
+        }
         public ActionResult passChanged(UsuariosModel model)
         {
+            ViewData["Title"] = "Contraseña Cambiada";
+            ViewData["PageName"] = "passChanged";
             return View();
+        }
+        public ActionResult logOut()
+        {
+            Session["Log"] = null;
+            return RedirectToAction("/Login/Login");
         }
     }
 }

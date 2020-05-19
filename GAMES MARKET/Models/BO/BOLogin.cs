@@ -41,6 +41,18 @@ namespace GAMES_MARKET.Models.BO
             usuarios usuario = bd.usuarios.Where(p => p.email.Equals(email)).FirstOrDefault();
             return usuario;
         }
+        public String randomPassword()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+            for (int i = 0; i < 8; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            String randompas = new String(stringChars);
+            return randompas;
+        }
 
     }
 }

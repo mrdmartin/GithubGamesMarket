@@ -26,7 +26,6 @@ namespace GAMES_MARKET.Models.BO
                 oventas.tarj = oventasModel.tarj;
                 oventas.tarj_mes = oventasModel.tarj_mes;
                 oventas.tarj_ano = oventasModel.tarj_ano;
-                oventas.cod_seg = oventasModel.cod_seg;
 
                 bd.ventas.Add(oventas);
                 bd.SaveChanges();

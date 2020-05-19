@@ -21,7 +21,6 @@ namespace GAMES_MARKET.Models
         public string tarj { get; set; }
         public string tarj_mes { get; set; }
         public string tarj_ano { get; set; }
-        public string cod_seg { get; set; }
     
         public virtual claves claves { get; set; }
         public virtual usuarios usuarios { get; set; }
