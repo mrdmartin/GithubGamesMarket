@@ -1,5 +1,4 @@
 ﻿@using GAMES_MARKET.Models;
-@model JuegosModel
 
 <h2 class="d-none d-md-flex justify-content-center"> @Model.nombre </h2>
 <div class="container-fluid">
@@ -59,9 +58,20 @@
                     <img src="~/Client/shared/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
                     <p class="card-text">@Model.descripcion</p>
 
-                    <form action="/Buys/Buy/@Model.id_juego">
-                        <button class="btn btn-primary w-100">Comprar por @Model.precio€</button>
-                    </form>
+                    @if (ViewBag.stock == false)
+                    {
+                        <span class="text-danger"> Sin Stock</span>
+                    }
+                    else
+                    {
+                        @*Con method="get" en la url sale un ?id= y no quiero mostrar el parámetro.
+                          Tampoco quiero que esta página sea indexada por google para evitar que compren juegos no disponibles.*@
+                        <form id="formBuy" action="/Buy">
+                            <input type="hidden" name="id" value="@Model.id_juego" />
+                            <button class="btn btn-primary w-100">Comprar por @Model.precio€</button>
+                        </form>
+                    }
+
 
                 </div>
             </div>

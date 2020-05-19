@@ -1,17 +1,15 @@
-﻿@model GAMES_MARKET.Models.UsuariosModel
-
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Recuperar contraseña</h2>
             <p>Introduce tu correo electrónico y te enviaremos un correo con la contraseña</p>
-            <form id="logForm" action="@Url.Content("~/Login/Help")" method="post">
+            <form id="logForm" action="~/Login/Help" method="post">
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    @Html.TextBoxFor(d => d.email, null, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(d => d.email, null, new { style = "color:red;" })
+                    <input type="email" class="form-control" name="email">
                 </div>
-                <button>Recuperar</button>
+                <span class="text-danger">@ViewBag.error</span>
+                <button class="btn btn-primary w-100 mb-5">Recuperar</button>
             </form>
         </div>
     </div>

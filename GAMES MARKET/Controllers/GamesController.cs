@@ -40,6 +40,10 @@ namespace GAMES_MARKET.Controllers
             BOComentarios oBOComentarios = new BOComentarios();
             List<ComentariosModel> listaComentarios = oBOComentarios.getComments(id.Value);
             ViewData["comentarios"] = listaComentarios;
+
+            BOClaves oBOClaves = new BOClaves();
+            ViewBag.stock = oBOClaves.checkStockClaveByid_juego(id.Value);
+
             return View(juegosModel);
         }
 
@@ -81,6 +85,7 @@ namespace GAMES_MARKET.Controllers
             }
             List<ComentariosModel> listaComentarios = oBOComentarios.getComments(id.Value);
             ViewData["comentarios"] = listaComentarios;
+
 
             return View(juegosModel);
         }

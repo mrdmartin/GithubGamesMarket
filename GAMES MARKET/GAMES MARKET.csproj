@@ -140,9 +140,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BO\BOApiController.cs" />
+    <Compile Include="Models\BO\BOClaves.cs" />
     <Compile Include="Models\BO\BOComentarios.cs" />
     <Compile Include="Models\BO\BOJuegos.cs" />
     <Compile Include="Models\BO\BOLogin.cs" />
+    <Compile Include="Models\BO\BOMail.cs" />
+    <Compile Include="Models\BO\BOVentas.cs" />
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -150,10 +153,13 @@
     <Compile Include="Models\claves.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClavesModel.cs" />
     <Compile Include="Models\comentarios.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ComentariosModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\VentasModel.cs" />
     <Compile Include="Models\descuentos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -395,6 +401,10 @@
     <Content Include="Views\Cookies\Cookies.cshtml" />
     <Content Include="Views\Buys\Buy.cshtml" />
     <Content Include="Views\Login\CambioContrasena.cshtml" />
+    <Content Include="Views\Buys\BuyCompleted.cshtml" />
+    <Content Include="Views\Login\CorrectSend.cshtml" />
+    <Content Include="Views\Login\passChanged.cshtml" />
+    <Content Include="Views\Contact\EmailThanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

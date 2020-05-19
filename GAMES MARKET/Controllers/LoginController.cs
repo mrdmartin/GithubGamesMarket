@@ -56,6 +56,40 @@ namespace GAMES_MARKET.Controllers
             ViewData["PageName"] = "Help";
             return View();
         }
+        [HttpPost]
+        public ActionResult Help(UsuariosModel ousuariosmodel)
+        {
+            ViewData["Title"] = "Ayuda";
+            ViewData["PageName"] = "Help";
+
+            string token = randomPassword(Guid.NewGuid().ToString());
+            using (Games_MarketEntities db = new Games_MarketEntities())
+            {
+                var oUsuario = db.usuarios.Where(d => d.email == ousuariosmodel.email).FirstOrDefault();
+                if (oUsuario != null)
+                {
+                    oUsuario.token = token;
+                    db.SaveChanges();
+
+                    String Dominio = "https://localhost:44327/";
+                    String url = Dominio + "Login/CambioContrasena/?token=" + token;
+
+                    MailMessage oMailMessage = new MailMessage("gamesmarket20@gmail.com", ousuariosmodel.email, "Restaurar contraseña GamesMarket",
+                        "<p>Correo de recuperación que falta tunear el html </p><br>" +
+                        "<a href='" + url + "'>Click para recuperar</a>");
+
+                    BOMail oBOMail = new BOMail();
+                    oBOMail.sendEmail(oMailMessage);
+
+                    return View("CorrectSend");
+                }
+                else
+                {
+                    ViewBag.error = "El correo no corresponde con ninguno registrado en la web. Revisa tus credenciales.";
+                }
+            }
+            return View();
+        }
 
         public ActionResult Register()
         {
@@ -78,26 +112,6 @@ namespace GAMES_MARKET.Controllers
             return View(usuariosModel);
         }
 
-        private void EnviarEmail(string EmailCliente, String token)
-        {
-            String EmailEmpresa = "gamesmarket20@gmail.com";
-            String contrasena = "gamesm20+";
-            string Dominio = "https://localhost:44327/";
-            String url = Dominio + "Login/CambioContrasena/?token=" + token;
-
-            MailMessage oMailMessage = new MailMessage(EmailEmpresa, EmailCliente, "Restaurar contraseña GamesMarket",
-                "<p>Correo de recuperación que falta tunear el html </p><br>" +
-                "<a href='" + url + "'>Click para recuperar</a>");
-
-            SmtpClient oSmtpClient = new SmtpClient("smtp.gmail.com");
-            oMailMessage.IsBodyHtml = true;
-            oSmtpClient.EnableSsl = true;
-            oSmtpClient.UseDefaultCredentials = false;
-            oSmtpClient.Port = 587;
-            oSmtpClient.Credentials = new System.Net.NetworkCredential(EmailEmpresa, contrasena);
-            oSmtpClient.Send(oMailMessage);
-            oSmtpClient.Dispose();
-        }
         private String randomPassword(string randompas)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -138,25 +152,14 @@ namespace GAMES_MARKET.Controllers
                 return RedirectToAction("../Home/Index");
             }
         }
-        
-        [HttpPost]
-        public ActionResult Help(UsuariosModel model)
-        {
-            ViewData["Title"] = "Ayuda";
-            ViewData["PageName"] = "Help";
 
-            string token = randomPassword(Guid.NewGuid().ToString());
-            using (Games_MarketEntities db = new Games_MarketEntities())
-            {
-                var oUsuario = db.usuarios.Where(d => d.email == model.email).FirstOrDefault();
-                if (oUsuario != null)
-                {
-                    oUsuario.token = token;
-                    db.SaveChanges();
-                    //envia mail
-                    EnviarEmail(oUsuario.email, token);
-                }
-            }
+
+        public ActionResult CorrectSend()
+        {
+
+            ViewData["Title"] = "Correo enviado";
+            ViewData["PageName"] = "CorrectSend";
+
             return View();
         }
         public ActionResult CambioContrasena(String token)
@@ -189,19 +192,31 @@ namespace GAMES_MARKET.Controllers
 
                 if (oUsuario != null)
                 {
-                    oUsuario.contrasena = model.contrasena;
-                    oUsuario.token = null;
-                    db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    ViewBag.Message = "Contraseña modificada con exito";
+                    if (model.contrasena == null || model.contrasena2 == null)
+                    {
+                        ViewBag.error = "Contraseña no puede estar vacia";
+                    }
+                    else if (model.contrasena != model.contrasena2)
+                    {
+                        ViewBag.error = "Las contraseñas no coinciden";
+                    }
+                    else
+                    {
+                        oUsuario.contrasena = model.contrasena;
+                        oUsuario.token = null;
+                        db.SaveChanges();
+                        return View("passChanged");
+                    }
                 }
                 else
                 {
-                    ViewBag.Message = "Contaseña provisional expirada";
+                    ViewBag.error = "Contaseña provisional expirada";
                 }
-
             }
-
+            return View();
+        }
+        public ActionResult passChanged(UsuariosModel model)
+        {
             return View();
         }
     }

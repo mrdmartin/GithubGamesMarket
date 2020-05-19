@@ -103,9 +103,6 @@ var initPage_onDomContentLoaded = function () {
             var game_template = document.querySelector('[data-hook="game_template"]')
             var item = document.importNode(game_template.content, true);
 
-            var precio = String(game.precio);
-            precio.replace('.', ',');
-
             item.querySelector('[data-hook="img_link"]').href = "Game/" + game.id_juego;
             item.querySelector('[data-hook="img_game"]').src = "/Client/shared/img/gamescover/" + game.img_ruta;
             item.querySelector('[data-hook="img_platform"]').src = "/Client/shared/img/logos/" + game.img_rutaPlataforma;
@@ -114,7 +111,7 @@ var initPage_onDomContentLoaded = function () {
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
             item.querySelector('[data-hook="release_date"]').textContent = game.fecha_lanzamiento_string;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;
-            item.querySelector('[data-hook="price"]').textContent = precio + "\u20ac";
+            item.querySelector('[data-hook="price"]').textContent = game.precio + "\u20ac";
             item.querySelector('[data-hook="discount"]').textContent = game.descuento + "%";
 
             games_list.appendChild(item);

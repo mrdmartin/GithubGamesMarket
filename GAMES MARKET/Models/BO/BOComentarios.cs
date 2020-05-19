@@ -35,8 +35,6 @@ namespace GAMES_MARKET.Models.BO
         }
         public void Post(int id, string email, string comment)
         {
-            
-
             using (var bd = new Games_MarketEntities())
             {
                 BOLogin oBOLogin = new BOLogin();

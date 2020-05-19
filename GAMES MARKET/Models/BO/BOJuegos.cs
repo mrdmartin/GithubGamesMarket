@@ -44,6 +44,7 @@ namespace GAMES_MARKET.Controllers.BO
             using (var bd = new Games_MarketEntities())
             {
                 juegos oJuegos = bd.juegos.Where(p => p.id_juego.Equals(pId)).First();
+                plataformas oplataforma = bd.plataformas.Where(p => p.id_plataforma.Equals(oJuegos.id_plataforma)).First();
                 descuentos odescuentos = bd.descuentos.Where(p => p.id_juego.Equals(pId)).Where(p => p.inicio < DateTime.Now).Where(p => p.fin > DateTime.Now).FirstOrDefault();
                 if(odescuentos is null)
                 {
@@ -55,6 +56,7 @@ namespace GAMES_MARKET.Controllers.BO
                 oJuegoModel.id_juego = oJuegos.id_juego;
                 oJuegoModel.nombre = oJuegos.nombre;
                 oJuegoModel.id_plataforma = oJuegos.id_plataforma;
+                oJuegoModel.nombre_plataforma = oplataforma.nombre;
                 oJuegoModel.precio = oJuegos.precio -(oJuegos.precio * odescuentos.descuento/100);
                 oJuegoModel.precio = Math.Round(oJuegoModel.precio, 2);
                 oJuegoModel.img_ruta = oJuegos.img_ruta;

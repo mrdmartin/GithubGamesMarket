@@ -1,36 +1,35 @@
-﻿
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Formulario de Compra</h2>
-
             <div class="border-dark">
                 <h3>Datos del artítulo</h3>
-                <p>Nombre:</p>
-                <p>Plataforma:</p>
-                <p>Precio:</p>
+                <p>Nombre: @Model.nombre</p>
+                <p>Plataforma: @Model.nombre_plataforma</p>
+                <p>Precio: @Model.precio €</p>
             </div>
 
-            <form action="Buy" method="POST">
+            <form id="formBuying" action="/Buys/Buy" method="post">
                 <h3>Datos de compra</h3>
                 <p>Email del comprador: @Session["Log"]</p>
                 <div class="form-group">
                     <label>Número de la tarjeta</label>
-                    <input type="number" class="form-control" name="tarj" min="0" maxlength="16">
+                    <input type="number" class="form-control" name="tarj" max="9999999999999999" minlength="16"maxlength="16">
                 </div>
                 <div class="form-group">
                     <label>Mes</label>
-                    <input type="number" class="form-control" name="tarj_mes" min="1" max="12" maxlength="2">
+                    <input type="number" class="form-control" name="tarj_mes" min="1" max="12" minlength="2" maxlength="2">
                 </div>
                 <div class="form-group">
                     <label>Año</label>
-                    <input type="number" class="form-control" name="tarj_ano" min="0" maxlength="2">
+                    <input type="number" class="form-control" name="tarj_ano" min="0" max="99" minlength="2" maxlength="2">
                 </div>
                 <div class="form-group">
                     <label>Número de seguridad</label>
-                    <input type="number" class="form-control" name="contrasena">
+                    <input type="number" class="form-control" name="cod_seg" maxlength="3">
                 </div>
-                <span class="text-danger">@ViewBag.error</span>
+                <span class="text-danger">@ViewBag.Error</span>
+                <input type="hidden" name="id_juego" value="@Model.id_juego" />
                 <button type="submit" class="btn btn-primary w-100 mb-5">Comprar</button>
             </form>
 

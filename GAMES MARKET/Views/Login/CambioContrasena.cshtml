@@ -1,28 +1,18 @@
-﻿@model GAMES_MARKET.Models.UsuariosModel
-
-@{
-    ViewBag.Title = "CambioContrasena";
-}
-
-<h2>@ViewBag.Message</h2>
-<h2>@ViewBag.Error</h2>
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Recuperar contraseña</h2>
             <p>Introduce tu correo electrónico y te enviaremos un correo con la contraseña</p>
-            <form id="logForm" action="@Url.Content("~/Login/CambioContrasena")" method="post">
-                @Html.HiddenFor(d => d.token)
+            <form id="logForm" action="~/Login/CambioContrasena" method="post">
+                <input type="hidden" name=token value="@Model.token" />
                 <div class="form-group">
                     <label>Nueva contraseña</label>
-                    @Html.PasswordFor(d => d.contrasena, new { @class = "form-control text-danger" })
-                    @Html.ValidationMessageFor(d => d.contrasena, null)
-
+                    <input type="password" class="form-control" name="contrasena">
                     <label>Vuelve a escribir la contraseña</label>
-                    @Html.PasswordFor(d => d.contrasena2, new { @class = "form-control text-danger" })
-                    @Html.ValidationMessageFor(d => d.contrasena2, null)
+                    <input type="password" class="form-control" name="contrasena2">
                 </div>
-                <button>Recuperar</button>
+                <span class="text-danger">@ViewBag.error</span>
+                <button class="btn btn-primary w-100 mb-5">Recuperar</button>
             </form>
         </div>
     </div>
