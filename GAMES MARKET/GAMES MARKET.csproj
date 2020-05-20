@@ -135,6 +135,7 @@
     <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,9 +144,11 @@
     <Compile Include="Models\BO\BOClaves.cs" />
     <Compile Include="Models\BO\BOComentarios.cs" />
     <Compile Include="Models\BO\BOJuegos.cs" />
+    <Compile Include="Models\BO\BOLibrary.cs" />
     <Compile Include="Models\BO\BOLogin.cs" />
     <Compile Include="Models\BO\BOMail.cs" />
     <Compile Include="Models\BO\BOVentas.cs" />
+    <Compile Include="Models\buysLibraryModel.cs" />
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
     </Compile>
     <Compile Include="Models\ComentariosModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\deseados.cs">
+      <DependentUpon>EntityGamesMarket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\VentasModel.cs" />
     <Compile Include="Models\descuentos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
@@ -281,6 +287,7 @@
     <Content Include="Client\shared\-bootstrap\css\bootstrap-reboot.min.css" />
     <Content Include="Client\shared\-bootstrap\css\bootstrap.css" />
     <Content Include="Client\shared\-bootstrap\css\bootstrap.min.css" />
+    <Content Include="Client\shared\-bootstrap\js\dark-mode-switch.min.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Client\shared\-bootstrap\js\bootstrap.js" />
@@ -289,6 +296,8 @@
     <Content Include="Client\shared\-dataTables\dataTables.bootstrap4.min.js" />
     <Content Include="Client\shared\-dataTables\jquery.dataTables.min.js" />
     <Content Include="Client\shared\-jquery\jquery-3.4.1.js" />
+    <Content Include="Client\shared\-popper\popper.min.js" />
+    <Content Include="Client\shared\css\style - dark.css" />
     <Content Include="Client\shared\css\style.css" />
     <Content Include="Client\shared\img\about-deco.jpg" />
     <Content Include="Client\shared\img\avatar\ShadowLara.png" />
@@ -350,6 +359,7 @@
     <Folder Include="Client\page\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\wish\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\shared\-bootstrap\css\bootstrap-grid.css.map" />
@@ -405,6 +415,7 @@
     <Content Include="Views\Login\CorrectSend.cshtml" />
     <Content Include="Views\Login\passChanged.cshtml" />
     <Content Include="Views\Contact\EmailThanks.cshtml" />
+    <Content Include="Views\Library\buysLibrary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

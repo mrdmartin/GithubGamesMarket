@@ -4,31 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="30381083cc94439eb2cd84d87d3b1b6c" Name="Diagram1" ZoomLevel="71">
-        <EntityTypeShape EntityType="Games_MarketModel.capturas" Width="1.5" PointX="5" PointY="12.5" />
-        <EntityTypeShape EntityType="Games_MarketModel.claves" Width="1.5" PointX="5" PointY="0.5" />
-        <EntityTypeShape EntityType="Games_MarketModel.comentarios" Width="1.5" PointX="7.25" PointY="13.25" />
-        <EntityTypeShape EntityType="Games_MarketModel.descuentos" Width="1.5" PointX="5" PointY="6.25" />
-        <EntityTypeShape EntityType="Games_MarketModel.generos" Width="1.5" PointX="5.75" PointY="3.5" />
-        <EntityTypeShape EntityType="Games_MarketModel.generos_juegos" Width="1.5" PointX="8" PointY="5.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.juegos" Width="1.5" PointX="2.75" PointY="4.125" />
-        <EntityTypeShape EntityType="Games_MarketModel.plataformas" Width="1.5" PointX="0.5" PointY="5.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.usuarios" Width="1.5" PointX="5" PointY="17.75" />
-        <EntityTypeShape EntityType="Games_MarketModel.valoraciones" Width="1.5" PointX="10.25" PointY="11.375" />
-        <EntityTypeShape EntityType="Games_MarketModel.ventas" Width="1.5" PointX="7.25" PointY="9.25" />
+      <Diagram DiagramId="30381083cc94439eb2cd84d87d3b1b6c" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="Games_MarketModel.capturas" Width="1.5" PointX="13.625" PointY="11.625" />
+        <EntityTypeShape EntityType="Games_MarketModel.claves" Width="1.5" PointX="13.625" PointY="5.5" />
+        <EntityTypeShape EntityType="Games_MarketModel.comentarios" Width="1.5" PointX="8" PointY="7.75" />
+        <EntityTypeShape EntityType="Games_MarketModel.descuentos" Width="1.5" PointX="13.625" PointY="8.5" />
+        <EntityTypeShape EntityType="Games_MarketModel.deseados" Width="1.5" PointX="5" PointY="7.875" />
+        <EntityTypeShape EntityType="Games_MarketModel.generos" Width="1.5" PointX="2.75" PointY="4.125" />
+        <EntityTypeShape EntityType="Games_MarketModel.generos_juegos" Width="1.5" PointX="5" PointY="4.875" />
+        <EntityTypeShape EntityType="Games_MarketModel.juegos" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Games_MarketModel.plataformas" Width="1.5" PointX="0.5" PointY="8" />
+        <EntityTypeShape EntityType="Games_MarketModel.usuarios" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="Games_MarketModel.valoraciones" Width="1.5" PointX="5" PointY="10.875" />
+        <EntityTypeShape EntityType="Games_MarketModel.ventas" Width="1.5" PointX="15.875" PointY="5.25" />
         <AssociationConnector Association="Games_MarketModel.FK_capturas_capturas" />
         <AssociationConnector Association="Games_MarketModel.FK_claves_juegos" />
         <AssociationConnector Association="Games_MarketModel.FK_claves_ventas" />
         <AssociationConnector Association="Games_MarketModel.FK_comentarios_juegos" />
         <AssociationConnector Association="Games_MarketModel.FK_comentarios_usuarios" />
         <AssociationConnector Association="Games_MarketModel.FK_descuentos_juegos" />
+        <AssociationConnector Association="Games_MarketModel.FK_deseados_juegos" />
+        <AssociationConnector Association="Games_MarketModel.FK_deseados_usuarios" />
         <AssociationConnector Association="Games_MarketModel.FK_generos_juegos_generos" />
         <AssociationConnector Association="Games_MarketModel.FK_genero_juegos_juegos" />
         <AssociationConnector Association="Games_MarketModel.FK_juegos_plataformas" />
         <AssociationConnector Association="Games_MarketModel.FK_valoraciones_juegos" />
         <AssociationConnector Association="Games_MarketModel.FK_valoraciones_usuarios" />
         <AssociationConnector Association="Games_MarketModel.FK_ventas_usuarios" />
-        <AssociationConnector Association="Games_MarketModel.deseados" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

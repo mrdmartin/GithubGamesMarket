@@ -44,6 +44,16 @@ namespace GAMES_MARKET.Controllers
             BOClaves oBOClaves = new BOClaves();
             ViewBag.stock = oBOClaves.checkStockClaveByid_juego(id.Value);
 
+            BOLogin oBOLOgin = new BOLogin();
+            if (Session["log"] != null)
+            {
+                String userEmail = Session["log"].ToString();
+                usuarios usuario = oBOLOgin.getUsuarioByEmail(userEmail);
+
+                BOLibrary oBOLibrary = new BOLibrary();
+                ViewBag.wish = oBOLibrary.checkWishList(usuario.id_usuario, id.Value);
+            }
+
             return View(juegosModel);
         }
 

@@ -34,5 +34,14 @@ namespace GAMES_MARKET.Models.BO
                 return false;
             }
         }
+        public claves getClaveByid_clave(int id_clave)
+        {
+            claves oClaves = new claves();
+            using (var bd = new Games_MarketEntities())
+            {
+                oClaves = bd.claves.Where(p => p.id_clave.Equals(id_clave)).FirstOrDefault();
+            }
+            return oClaves;
+        }
     }
 }

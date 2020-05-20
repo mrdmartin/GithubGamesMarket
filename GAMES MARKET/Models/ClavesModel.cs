@@ -9,7 +9,7 @@ namespace GAMES_MARKET.Models
     {
         public int id_clave { get; set; }
         public int id_juego { get; set; }
-        public string codigo { get; set; }
+        public String codigo { get; set; }
         public bool estado { get; set; }
     }
 }

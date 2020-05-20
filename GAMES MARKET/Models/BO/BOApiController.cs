@@ -91,7 +91,6 @@ namespace GAMES_MARKET.Models.BO
                     return listaJuegos;
                 }
             }
-
             if (ofilter.id_genero != 0 && ofilter.id_plataforma == 0)
             {
                 using (var bd = new Games_MarketEntities())

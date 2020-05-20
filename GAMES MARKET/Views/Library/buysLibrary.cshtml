@@ -1,0 +1,31 @@
+﻿@using GAMES_MARKET.Models;
+@model List<buysLibraryModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Libreria de compras</h2>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Plataforma</th>
+                        <th scope="col">Clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.nombre_juego</td>
+                            <td>@item.nombre_plataforma</td>
+                            <td>@item.clave</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

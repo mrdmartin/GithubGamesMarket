@@ -9,15 +9,15 @@ namespace GAMES_MARKET.Models.BO
     public class BOVentas : Controller
     {
         // GET: BOVentas
-        public Boolean addVenta(VentasModel oventasModel)
+        public ventas addVenta(VentasModel oventasModel)
         {
+            ventas oventas = new ventas();
             using (var bd = new Games_MarketEntities())
             {
 
                 BOClaves oBOClaves = new BOClaves();
                 claves oclaves = oBOClaves.getClaveByid_juego(oventasModel.id_juego);
 
-                ventas oventas = new ventas();
                 oclaves.estado = false;
 
                 oventas.id_clave = oclaves.id_clave;
@@ -30,7 +30,7 @@ namespace GAMES_MARKET.Models.BO
                 bd.ventas.Add(oventas);
                 bd.SaveChanges();
             }
-            return true;
+            return oventas;
         }
     }
 }

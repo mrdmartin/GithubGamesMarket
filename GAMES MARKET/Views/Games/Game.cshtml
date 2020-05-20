@@ -46,7 +46,7 @@
 
         @*DATOS Y VIDEO*@
         <div class="col-12 p-0 col-md-5 p-md-4 mx-auto">
-            <div class="card">
+            <div class="card bg-light mb-4 shadow-sm">
 
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="@Model.trailer_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -55,7 +55,29 @@
                 <div class="card-body">
 
                     <h3 class="card-title">@Model.nombre</h3>
-                    <img src="~/Client/shared/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="~/Client/shared/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
+                        </div>
+                        <div class="col-8 d-flex justify-content-end">
+                            @if (ViewBag.wish == false)
+                            {
+                                <form id="formWish" action="/Library/addWish">
+                                    <input type="hidden" name="id" value="@Model.id_juego" />
+                                    <button class="btn btn-primary">Añadir a deseados</button>
+                                </form>
+                            }
+                            @if (ViewBag.wish == true)
+                            {
+                            <form id="formWish" action="/Library/delWish">
+                                <input type="hidden" name="id" value="@Model.id_juego" />
+                                <button class="btn btn-primary">Borrar de deseados</button>
+                            </form>
+                            }
+                        </div>
+                        
+                    </div>
+                    
                     <p class="card-text">@Model.descripcion</p>
 
                     @if (ViewBag.stock == false)
@@ -64,14 +86,11 @@
                     }
                     else
                     {
-                        @*Con method="get" en la url sale un ?id= y no quiero mostrar el parámetro.
-                          Tampoco quiero que esta página sea indexada por google para evitar que compren juegos no disponibles.*@
                         <form id="formBuy" action="/Buy">
                             <input type="hidden" name="id" value="@Model.id_juego" />
                             <button class="btn btn-primary w-100">Comprar por @Model.precio€</button>
                         </form>
                     }
-
 
                 </div>
             </div>

@@ -29,6 +29,7 @@ namespace GAMES_MARKET.Models
         public virtual DbSet<claves> claves { get; set; }
         public virtual DbSet<comentarios> comentarios { get; set; }
         public virtual DbSet<descuentos> descuentos { get; set; }
+        public virtual DbSet<deseados> deseados { get; set; }
         public virtual DbSet<generos> generos { get; set; }
         public virtual DbSet<generos_juegos> generos_juegos { get; set; }
         public virtual DbSet<juegos> juegos { get; set; }

@@ -18,9 +18,9 @@ namespace GAMES_MARKET.Models
         public usuarios()
         {
             this.comentarios = new HashSet<comentarios>();
+            this.deseados = new HashSet<deseados>();
             this.valoraciones = new HashSet<valoraciones>();
             this.ventas = new HashSet<ventas>();
-            this.juegos = new HashSet<juegos>();
         }
     
         public int id_usuario { get; set; }
@@ -33,10 +33,10 @@ namespace GAMES_MARKET.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comentarios> comentarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<deseados> deseados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<valoraciones> valoraciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ventas> ventas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<juegos> juegos { get; set; }
     }
 }

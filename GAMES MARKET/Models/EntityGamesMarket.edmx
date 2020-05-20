@@ -45,9 +45,9 @@
         </EntityType>
         <EntityType Name="deseados">
           <Key>
-            <PropertyRef Name="id_juego" />
-            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_deseados" />
           </Key>
+          <Property Name="id_deseados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_juego" Type="int" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
         </EntityType>
@@ -367,6 +367,7 @@
           <EntitySet Name="claves" EntityType="Games_MarketModel.claves" />
           <EntitySet Name="comentarios" EntityType="Games_MarketModel.comentarios" />
           <EntitySet Name="descuentos" EntityType="Games_MarketModel.descuentos" />
+          <EntitySet Name="deseados" EntityType="Games_MarketModel.deseados" />
           <EntitySet Name="generos" EntityType="Games_MarketModel.generos" />
           <EntitySet Name="generos_juegos" EntityType="Games_MarketModel.generos_juegos" />
           <EntitySet Name="juegos" EntityType="Games_MarketModel.juegos" />
@@ -398,6 +399,14 @@
             <End Role="juegos" EntitySet="juegos" />
             <End Role="descuentos" EntitySet="descuentos" />
           </AssociationSet>
+          <AssociationSet Name="FK_deseados_juegos" Association="Games_MarketModel.FK_deseados_juegos">
+            <End Role="juegos" EntitySet="juegos" />
+            <End Role="deseados" EntitySet="deseados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deseados_usuarios" Association="Games_MarketModel.FK_deseados_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="deseados" EntitySet="deseados" />
+          </AssociationSet>
           <AssociationSet Name="FK_generos_juegos_generos" Association="Games_MarketModel.FK_generos_juegos_generos">
             <End Role="generos" EntitySet="generos" />
             <End Role="generos_juegos" EntitySet="generos_juegos" />
@@ -421,10 +430,6 @@
           <AssociationSet Name="FK_ventas_usuarios" Association="Games_MarketModel.FK_ventas_usuarios">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="ventas" EntitySet="ventas" />
-          </AssociationSet>
-          <AssociationSet Name="deseados" Association="Games_MarketModel.deseados">
-            <End Role="juegos" EntitySet="juegos" />
-            <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="capturas">
@@ -471,6 +476,16 @@
           <Property Name="img_ruta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_descuentos_juegos" FromRole="descuentos" ToRole="juegos" />
         </EntityType>
+        <EntityType Name="deseados">
+          <Key>
+            <PropertyRef Name="id_deseados" />
+          </Key>
+          <Property Name="id_deseados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_juego" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="juegos" Relationship="Games_MarketModel.FK_deseados_juegos" FromRole="deseados" ToRole="juegos" />
+          <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.FK_deseados_usuarios" FromRole="deseados" ToRole="usuarios" />
+        </EntityType>
         <EntityType Name="generos">
           <Key>
             <PropertyRef Name="id_genero" />
@@ -506,10 +521,10 @@
           <NavigationProperty Name="claves" Relationship="Games_MarketModel.FK_claves_juegos" FromRole="juegos" ToRole="claves" />
           <NavigationProperty Name="comentarios" Relationship="Games_MarketModel.FK_comentarios_juegos" FromRole="juegos" ToRole="comentarios" />
           <NavigationProperty Name="descuentos" Relationship="Games_MarketModel.FK_descuentos_juegos" FromRole="juegos" ToRole="descuentos" />
+          <NavigationProperty Name="deseados" Relationship="Games_MarketModel.FK_deseados_juegos" FromRole="juegos" ToRole="deseados" />
           <NavigationProperty Name="generos_juegos" Relationship="Games_MarketModel.FK_genero_juegos_juegos" FromRole="juegos" ToRole="generos_juegos" />
           <NavigationProperty Name="plataformas" Relationship="Games_MarketModel.FK_juegos_plataformas" FromRole="juegos" ToRole="plataformas" />
           <NavigationProperty Name="valoraciones" Relationship="Games_MarketModel.FK_valoraciones_juegos" FromRole="juegos" ToRole="valoraciones" />
-          <NavigationProperty Name="usuarios" Relationship="Games_MarketModel.deseados" FromRole="juegos" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="plataformas">
           <Key>
@@ -531,9 +546,9 @@
           <Property Name="contrasena" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="comentarios" Relationship="Games_MarketModel.FK_comentarios_usuarios" FromRole="usuarios" ToRole="comentarios" />
+          <NavigationProperty Name="deseados" Relationship="Games_MarketModel.FK_deseados_usuarios" FromRole="usuarios" ToRole="deseados" />
           <NavigationProperty Name="valoraciones" Relationship="Games_MarketModel.FK_valoraciones_usuarios" FromRole="usuarios" ToRole="valoraciones" />
           <NavigationProperty Name="ventas" Relationship="Games_MarketModel.FK_ventas_usuarios" FromRole="usuarios" ToRole="ventas" />
-          <NavigationProperty Name="juegos" Relationship="Games_MarketModel.deseados" FromRole="usuarios" ToRole="juegos" />
         </EntityType>
         <EntityType Name="valoraciones">
           <Key>
@@ -632,6 +647,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_deseados_juegos">
+          <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="1" />
+          <End Type="Games_MarketModel.deseados" Role="deseados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="juegos">
+              <PropertyRef Name="id_juego" />
+            </Principal>
+            <Dependent Role="deseados">
+              <PropertyRef Name="id_juego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deseados_usuarios">
+          <End Type="Games_MarketModel.usuarios" Role="usuarios" Multiplicity="1" />
+          <End Type="Games_MarketModel.deseados" Role="deseados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="deseados">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_generos_juegos_generos">
           <End Type="Games_MarketModel.generos" Role="generos" Multiplicity="1" />
           <End Type="Games_MarketModel.generos_juegos" Role="generos_juegos" Multiplicity="*" />
@@ -704,10 +743,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="deseados">
-          <End Type="Games_MarketModel.juegos" Role="juegos" Multiplicity="*" />
-          <End Type="Games_MarketModel.usuarios" Role="usuarios" Multiplicity="*" />
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -753,6 +788,15 @@
                 <ScalarProperty Name="descuento" ColumnName="descuento" />
                 <ScalarProperty Name="id_juego" ColumnName="id_juego" />
                 <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deseados">
+            <EntityTypeMapping TypeName="Games_MarketModel.deseados">
+              <MappingFragment StoreEntitySet="deseados">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_juego" ColumnName="id_juego" />
+                <ScalarProperty Name="id_deseados" ColumnName="id_deseados" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -831,14 +875,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="deseados" TypeName="Games_MarketModel.deseados" StoreEntitySet="deseados">
-            <EndProperty Name="usuarios">
-              <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-            </EndProperty>
-            <EndProperty Name="juegos">
-              <ScalarProperty Name="id_juego" ColumnName="id_juego" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

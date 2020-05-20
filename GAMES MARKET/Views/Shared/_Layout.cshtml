@@ -6,6 +6,7 @@
     <meta name="Description" content="Games Market, tienda de videojuegos.">
     <link rel="stylesheet" href="~/Client/shared/-bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Client/shared/css/style.css" />
+    <link rel="stylesheet" href="~/Client/shared/css/style - dark.css" />
     <link rel="shortcut icon" href="~/Client/shared/img/ico/LogoGM.ico" />
     <title>@ViewBag.Title</title>
 </head>
@@ -34,6 +35,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="~/Contact">Contacto</a>
                 </li>
+                <li class="nav-item align-content-center center-switch">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                        <label class="custom-control-label" for="darkSwitch">Modo noche</label>
+                    </div>
+                </li>
+
             </ul>
             @if (Session["Log"] != null)
             {
@@ -44,8 +52,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="~/Login/UserData">ver perfil</a>
-                            <a class="dropdown-item" href="#">Lista de deseados</a>
-                            <a class="dropdown-item" href="#">Lista de compras</a>
+                            <a class="dropdown-item" href="~/Library/buysLibrary">Libreria de compras</a>
+                            <a class="dropdown-item" href="#">Libreria de deseados</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="~/Login/logOut">Cerrar sesión</a>
                         </div>
@@ -102,6 +110,8 @@
     </div>
 
     <script src="~/Client/shared/-jquery/jquery-3.4.1.js"></script>
+    <script src="~/Client/shared/-popper/js/popper.min.js"></script>
+    <script src="~/Client/shared/-bootstrap/js/dark-mode-switch.min.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.bundle.js"></script>
     <script src="~/Client/shared/-bootstrap/js/bootstrap.js"></script>
     <script src="~/Client/shared/-cookies/js.cookie.js"></script>

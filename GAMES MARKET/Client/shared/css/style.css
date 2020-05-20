@@ -23,15 +23,16 @@ footer{
         list-style: none;
     }
 
-.navbar-dark .navbar-nav .nav-link, .nav-link {
+.navbar-dark .navbar-nav .nav-link, .nav-link, .center-switch {
     color: white;
 }
-    .navbar-dark .navbar-nav .nav-link:hover, .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus, .nav-link:focus {
+    .navbar-dark .navbar-nav .nav-link:hover, .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus, .nav-link:focus, .center-switch, .center-switch:focus, .center-switch:hover {
         border: 2px solid white;
         border-radius: 15px 50px;
         color: #f33f3f;
         padding: 6px;
     }
+
 /*buttons*/
 button {
     background: #343a40 !important;
