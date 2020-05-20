@@ -13,6 +13,9 @@ namespace GAMES_MARKET.Controllers
         // GET: Library
         public ActionResult buysLibrary()
         {
+            ViewData["Title"] = "Libreria de compras";
+            ViewData["PageName"] = "buysLibrary";
+
             if (Session["log"] is null)
             {
                 return RedirectToAction("../Home/home");
@@ -22,13 +25,30 @@ namespace GAMES_MARKET.Controllers
             usuarios usuario = oBOLogin.getUsuarioByEmail(text);
 
             BOLibrary oBOLibrary = new BOLibrary();
-            List<buysLibraryModel> listBuysLibraryModel = oBOLibrary.getBuysLibraryByIdUsuario(usuario.id_usuario);
+            List<buysLibraryModel> listBuysLibraryModel = oBOLibrary.getBuysLibrary(usuario.id_usuario);
 
             return View(listBuysLibraryModel);
         }
-        public ActionResult wishList()
+        public ActionResult wishLibrary()
         {
-            return View();
+            ViewData["Title"] = "Libreria de deseados";
+            ViewData["PageName"] = "wishList";
+            
+
+            if (Session["log"] != null)
+            {
+                String userEmail = Session["log"].ToString();
+                BOLogin oBOLogin = new BOLogin();
+                usuarios usuario = oBOLogin.getUsuarioByEmail(userEmail);
+
+                BOLibrary oBOLibrary = new BOLibrary();
+                List<JuegosModel> listaJuegos = new List<JuegosModel>();
+                listaJuegos = oBOLibrary.getWishLibrary(usuario.id_usuario);
+
+                return View(listaJuegos);
+            }
+
+            return RedirectToAction("../Login/Login");
         }
         public ActionResult addWish(int id)
         {

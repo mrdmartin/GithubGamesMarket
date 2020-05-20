@@ -64,14 +64,14 @@
                             {
                                 <form id="formWish" action="/Library/addWish">
                                     <input type="hidden" name="id" value="@Model.id_juego" />
-                                    <button class="btn btn-primary">Añadir a deseados</button>
+                                    <button class="btn btn-primary mb-2">Añadir a deseados</button>
                                 </form>
                             }
                             @if (ViewBag.wish == true)
                             {
                             <form id="formWish" action="/Library/delWish">
                                 <input type="hidden" name="id" value="@Model.id_juego" />
-                                <button class="btn btn-primary">Borrar de deseados</button>
+                                <button class="btn btn-primary mb-2">Borrar de deseados</button>
                             </form>
                             }
                         </div>
@@ -82,7 +82,7 @@
 
                     @if (ViewBag.stock == false)
                     {
-                        <span class="text-danger"> Sin Stock</span>
+                        <span class="text-danger d-flex justify-content-center">Sin Stock</span>
                     }
                     else
                     {
@@ -113,11 +113,12 @@
             }
             <div class="border border-dark my-2 ">
                 <div class="bg-dark text-white p-2 d-flex justify-content-between">
-                    <span class="text-left">#@item.id_comentario - @item.nombre_usuario </span>
+                    <span class="text-left">#@counter - @item.nombre_usuario </span>
                     <span class="text-right">@item.fecha</span>
                 </div>
                 <p class="p-2">@item.comentario</p>
             </div>
+            counter++;
         }
     </div>
 

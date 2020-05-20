@@ -13,6 +13,11 @@ namespace GAMES_MARKET
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+                name: "Home",
+                url: "Home",
+                defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Buy",
                 url: "Buy",
                 defaults: new { controller = "Buys", action = "Buy", id = UrlParameter.Optional }
@@ -26,11 +31,6 @@ namespace GAMES_MARKET
                 name: "Contact",
                 url: "Contact",
                 defaults: new { controller = "Contact", action = "Contact", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Home",
-                url: "Home",
-                defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Default",

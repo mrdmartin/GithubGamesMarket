@@ -16,7 +16,6 @@ namespace GAMES_MARKET.Controllers
         public ActionResult Buy(int? id)
         {
             BOClaves oBOClaves = new BOClaves();
-
             if (id is null)
             {
                 return RedirectToAction("../Home");
@@ -25,8 +24,10 @@ namespace GAMES_MARKET.Controllers
             {
                 return RedirectToAction("../Games/Game/"+id);
             }
+
             ViewData["Title"] = "Comprar";
             ViewData["PageName"] = "Buy";
+
             BOJuegos oBOJuegos = new BOJuegos();
             JuegosModel ojuegosModel = oBOJuegos.getJuegoById(id.Value);
             return View(ojuegosModel);
@@ -43,7 +44,6 @@ namespace GAMES_MARKET.Controllers
             }
             if (oventasModel.tarj is null || oventasModel.tarj.Length != 16)
             {
-                
                 ViewBag.Error = "Número de la tarjeta erróneo.";
                 return View(ojuegosModel);
             }

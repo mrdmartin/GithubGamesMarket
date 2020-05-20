@@ -52,14 +52,19 @@ var initPage_onDomContentLoaded = function () {
         var formBuy = document.getElementById('formBuy');
 
         formPost.addEventListener("submit", checkLog);
-        //formBuy.addEventListener("submit", checkLog);
+        if (formBuy != undefined) {
+            formBuy.addEventListener("submit", checkLog);
+        }
+        
 
     }
     if (pageName === 'Buy') {
 
         var formBuying = document.getElementById('formBuying');
 
-        //formBuying.addEventListener("submit", checkLog);
+
+
+        formBuying.addEventListener("submit", checkLog);
 
     }
     if (pageName === 'List') {
@@ -104,7 +109,7 @@ var initPage_onDomContentLoaded = function () {
             var item = document.importNode(game_template.content, true);
 
             var precio = String(game.precio);
-            precio.replace('.', ',');
+            precio = precio.replace('.',',');
 
             item.querySelector('[data-hook="img_link"]').href = "Game/" + game.id_juego;
             item.querySelector('[data-hook="img_game"]').src = "/Client/shared/img/gamescover/" + game.img_ruta;
