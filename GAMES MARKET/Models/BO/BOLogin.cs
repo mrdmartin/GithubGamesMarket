@@ -35,6 +35,12 @@ namespace GAMES_MARKET.Models.BO
 
             return usuariosModel;
         }
+        public usuarios getUsuarioById(int id)
+        {
+            var bd = new Games_MarketEntities();
+            usuarios usuario = bd.usuarios.Where(p => p.id_usuario.Equals(id)).FirstOrDefault();
+            return usuario;
+        }
         public usuarios getUsuarioByEmail(string email)
         {
             var bd = new Games_MarketEntities();

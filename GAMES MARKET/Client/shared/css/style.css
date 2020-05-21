@@ -30,9 +30,12 @@ footer{
         border: 2px solid white;
         border-radius: 15px 50px;
         color: #f33f3f;
-        padding: 6px;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
-
+    .checkbox-theme{
+        margin-left: 24px;
+    }
 /*buttons*/
 button {
     background: #343a40 !important;

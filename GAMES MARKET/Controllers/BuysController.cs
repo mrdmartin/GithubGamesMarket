@@ -37,6 +37,10 @@ namespace GAMES_MARKET.Controllers
         {
             BOClaves oBOClaves = new BOClaves();
             BOJuegos oBOJuegos = new BOJuegos();
+
+            ViewData["Title"] = "Comprar";
+            ViewData["PageName"] = "Buy";
+
             JuegosModel ojuegosModel = oBOJuegos.getJuegoById(oventasModel.id_juego);
             if (oBOClaves.checkStockClaveByid_juego(oventasModel.id_juego) == false)
             {
@@ -77,9 +81,13 @@ namespace GAMES_MARKET.Controllers
 
             BOVentas oBOVentas = new BOVentas();
             ventas oventa = oBOVentas.addVenta(oventasModel);
-
-            claves oclaves = oBOClaves.getClaveByid_clave(oventa.id_clave);
-
+            if (oventa.id_clave == 0)
+            {
+                ViewBag.Error = "Hemos tenido un problema durante el proceso de compra.";
+                return View(ojuegosModel);
+            }
+                claves oclaves = oBOClaves.getClaveByid_clave(oventa.id_clave);
+            
             MailMessage oMailMessage = new MailMessage("gamesmarket20@gmail.com", ousuario.email, "¡Gracias por comprar en GamesMarket!",
             "<p>Hola " + ousuario.nombre +" " + ousuario.apellidos + "</p>" + "<p>La Key del juego " + ojuegosModel.nombre + " comprado el " + oventa.fecha_venta + " es: </p>" +
             "<h2>" + oclaves.codigo + "</h2>" +

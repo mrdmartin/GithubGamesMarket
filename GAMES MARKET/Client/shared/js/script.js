@@ -61,10 +61,39 @@ var initPage_onDomContentLoaded = function () {
     if (pageName === 'Buy') {
 
         var formBuying = document.getElementById('formBuying');
+        var input_tarj = document.getElementById('tarj');
+        var input_tarj_mes = document.getElementById('tarj_mes');
+        var input_tarj_ano = document.getElementById('tarj_ano');
+        var input_cod_seg = document.getElementById('cod_seg');
 
+        var checkForm = function (event) {
 
+            var tarj = input_tarj.value;
+            var tarj_mes = input_tarj_mes.value;
+            var tarj_ano = input_tarj_ano.value;
+            var cod_seg = input_cod_seg.value;
 
+            var msg = "";
+            if (tarj.length != 16) {
+                msg = msg.concat("La tarjeta debe contener 16 car\u00E1cteres. \n");
+            }
+            if (tarj_mes > 12 || tarj_mes < 0 || tarj_mes.length != 2) {
+                msg = msg.concat("El mes de la tarjeta debe contener 2 car\u00E1cteres y estar entre 01 y 12. \n");
+            }
+            if (tarj_ano > 99 || tarj_ano < 0 || tarj_ano.length != 2) {
+                msg = msg.concat("El a\u00f1o de la tarjeta debe contener 2 car\u00E1cteres y estar entre 00 y 99. \n");
+            }
+            if (cod_seg > 999 || cod_seg < 0 || tarj_ano.length != 3) {
+                msg = msg.concat("El c\u00F3digo de seguridad de la tarjeta debe contener 3 car\u00E1cteres y estar entre 000 y 999. \n");
+            }
+            if (msg != "") {
+                alert(msg)
+                event.preventDefault();
+            }
+
+        }
         formBuying.addEventListener("submit", checkLog);
+        formBuying.addEventListener("submit", checkForm);
 
     }
     if (pageName === 'List') {
