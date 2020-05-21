@@ -254,5 +254,25 @@ namespace GAMES_MARKET.Controllers.BO
             }
             return listaCapturas;
         }
+        public List<GenerosModel> GetGenerosById_juegosList(int id_juego)
+        {
+            List<GenerosModel> listaGeneros = new List<GenerosModel>();
+            using (var bd = new Games_MarketEntities())
+            {
+                listaGeneros = (from juegos in bd.juegos
+                                join generos_juegos in bd.generos_juegos
+                                on juegos.id_juego equals generos_juegos.id_juego
+                                where generos_juegos.id_juego == id_juego
+                                join generos in bd.generos
+                                on generos_juegos.id_genero equals generos.id_genero
+
+                                select new GenerosModel
+                                {
+                                     id_genero = generos.id_genero,
+                                     nombre = generos.nombre
+                                 }).ToList();
+            }
+            return listaGeneros;
+        }
     }
 }

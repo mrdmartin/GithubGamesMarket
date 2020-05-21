@@ -165,6 +165,7 @@
     <Compile Include="Models\deseados.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GenerosModel.cs" />
     <Compile Include="Models\VentasModel.cs" />
     <Compile Include="Models\descuentos.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
@@ -396,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\page\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Scripts\" />
   </ItemGroup>

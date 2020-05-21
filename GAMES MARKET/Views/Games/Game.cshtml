@@ -53,7 +53,6 @@
                 </div>
 
                 <div class="card-body">
-
                     <h3 class="card-title">@Model.nombre</h3>
                     <div class="row">
                         <div class="col-4">
@@ -69,15 +68,19 @@
                             }
                             @if (ViewBag.wish == true)
                             {
-                            <form id="formWish" action="/Library/delWish">
-                                <input type="hidden" name="id" value="@Model.id_juego" />
-                                <button class="btn btn-primary mb-2">Borrar de deseados</button>
-                            </form>
+                                <form id="formWish" action="/Library/delWish">
+                                    <input type="hidden" name="id" value="@Model.id_juego" />
+                                    <button class="btn btn-primary mb-2">Borrar de deseados</button>
+                                </form>
                             }
                         </div>
-                        
+                        <div class="col-12">
+                            <span>
+                                Generos:@ViewBag.generos
+                            </span>
+                        </div>
                     </div>
-                    
+
                     <p class="card-text">@Model.descripcion</p>
 
                     @if (ViewBag.stock == false)
@@ -97,30 +100,30 @@
         </div>
 
         @*COMENTARIOS*@
-    <div class="col-12">
-        <form id="formPost" action="~/Games/Game/@Model.id_juego" method="post">
-            <h3>Comentar</h3>
-            <textarea class="w-100" name="comment"></textarea>
-            <button type="submit" id="btnPost" class="btn btn-primary w-100">Publicar</button>
-        </form>
+        <div class="col-12">
+            <form id="formPost" action="~/Games/Game/@Model.id_juego" method="post">
+                <h3>Comentar</h3>
+                <textarea class="w-100" name="comment"></textarea>
+                <button type="submit" id="btnPost" class="btn btn-primary w-100">Publicar</button>
+            </form>
 
-        @{ counter = 1; }
-        @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
-        {
-            if (counter == 1)
+            @{ counter = 1; }
+            @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
             {
-                <h3>Comentarios</h3>
-            }
-            <div class="border border-dark my-2 ">
-                <div class="bg-dark text-white p-2 d-flex justify-content-between">
-                    <span class="text-left">#@counter - @item.nombre_usuario </span>
-                    <span class="text-right">@item.fecha</span>
+                if (counter == 1)
+                {
+                    <h3>Comentarios</h3>
+                }
+                <div class="border border-dark my-2 ">
+                    <div class="bg-dark text-white p-2 d-flex justify-content-between">
+                        <span class="text-left">#@counter - @item.nombre_usuario </span>
+                        <span class="text-right">@item.fecha</span>
+                    </div>
+                    <p class="p-2">@item.comentario</p>
                 </div>
-                <p class="p-2">@item.comentario</p>
-            </div>
-            counter++;
-        }
-    </div>
+                counter++;
+            }
+        </div>
 
     </div>
 </div>

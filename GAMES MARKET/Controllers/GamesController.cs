@@ -24,16 +24,26 @@ namespace GAMES_MARKET.Controllers
             juegos juego = new juegos();
             using (var bd = new Games_MarketEntities())
             {
-                
+
                 juego = bd.juegos.Find(id);
             }
-            if(juego == null)
+            if (juego == null)
             {
                 id = 1;
             }
-            
+
             BOJuegos oBOjuego = new BOJuegos();
             JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
+            List<GenerosModel> oGenerosModel = oBOjuego.GetGenerosById_juegosList(id.Value);
+
+
+            string generos = "";
+            foreach (var item in oGenerosModel as List<GenerosModel>)
+            {
+                generos += " " + @item.nombre;
+            }
+            ViewBag.generos = generos;
+
             List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
             ViewData["capturas"] = listaCapturas;
 
