@@ -1,20 +1,15 @@
-﻿
-@{
-    ViewBag.Title = "Help";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
             <h2 class="m-md-3 text-center">Recuperar contraseña</h2>
             <p>Introduce tu correo electrónico y te enviaremos un correo con la contraseña</p>
-            <form id="logForm">
+            <form id="logForm" action="~/Login/Help" method="post">
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" class="form-control" id="logEmail">
+                    <input type="email" class="form-control" name="email">
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                <span class="text-danger">@ViewBag.error</span>
+                <button class="btn btn-primary w-100 mb-5">Recuperar</button>
             </form>
         </div>
     </div>

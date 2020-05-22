@@ -17,13 +17,13 @@ namespace GAMES_MARKET.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public generos()
         {
-            this.juegos = new HashSet<juegos>();
+            this.generos_juegos = new HashSet<generos_juegos>();
         }
     
         public int id_genero { get; set; }
         public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<juegos> juegos { get; set; }
+        public virtual ICollection<generos_juegos> generos_juegos { get; set; }
     }
 }

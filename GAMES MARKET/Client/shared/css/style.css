@@ -2,24 +2,79 @@
     font-family: 'Magic Dreams';
     src: local('Magic Dreams'), url('../fonts/Magic-Dreams.ttf');
 }
-footer {
-    position: fixed;
-    bottom: 0;
+h1, h2, h3, h4, h5{
+    padding: 1rem 0 !important;
 }
+html{
+    height:100vh;
+}
+header{
+    text-align:center;
+}
+main {
+    min-height: 90vh;
+}
+footer{
+    min-height: 10vh;
+    color: white;
+    margin-top: 2rem;
+}
+    footer ul {
+        list-style: none;
+    }
+
+.navbar-dark .navbar-nav .nav-link, .nav-link, .center-switch {
+    color: white;
+}
+    .navbar-dark .navbar-nav .nav-link:hover, .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus, .nav-link:focus, .center-switch:focus, .center-switch:hover {
+        border: 2px solid white;
+        border-radius: 15px 50px;
+        color: #f33f3f;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    .checkbox-theme{
+        margin-left: 24px;
+    }
+/*buttons*/
+button {
+    background: #343a40 !important;
+    color: white !important;
+}
+
+    button:hover {
+        background: #f33f3f !important;
+    }
+
+    button:checked {
+        border: none;
+    }
+/*inputs*/
+input, select, textarea {
+    border: 1px solid #343a40 !important;
+}
+
+    input:focus, select:focus, textarea:focus {
+        border: 1px solid #f33f3f !important;
+        box-shadow: none !important;
+    }
 /*title*/
 #title {
     display: flex;
     background: #343a40;
-    padding: 20px;
+    padding: 1rem;
     font-size: 4.5rem;
     color: white;
     text-shadow: 0 0 10px black;
     font-family: 'Magic Dreams';
 }
-
     #title em {
         color: #f33f3f;
     }
+    #title:hover {
+        text-decoration: none;
+    }
+
 /*home carousel*/
 .carousel-caption {
     background-color: #282828;
@@ -29,10 +84,15 @@ footer {
     left: 0%;
     width: 100%;
 }
-
+.carousel-caption h3{
+    font-size: 1rem;
+    padding: 0px !important;
+}
 .carousel-indicators {
     margin-bottom: 0;
 }
+
+
 /*home last games*/
 .game-last-tittle {
     font-size: 20px;
@@ -40,24 +100,30 @@ footer {
     font-weight: bold;
 }
 
-.game-last-price {
-    color: #121212;
-    font-size: 21px;
-}
 .card-text:last-child {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 .game-last-logo {
-    width: 120px;
+    width: 80px;
 }
 
 /*List images*/
 .img-thumbnail {
     width: 300px;
-    align-content: center;
 }
-/*Logo user*/
+/*Logo user*/F
 .logoUser {
     width: 150px;
     height: 150px;
+}
+
+/*cookies-warning*/
+[data-widget='cookies-warning'] {
+    position: sticky;
+    bottom: 0;
+    background: #343a40;
+    border: 5px solid #f33f3f;
+    color: #f8f9fa;
+    padding: 5%;
+    z-index: 15;
 }

@@ -12,12 +12,13 @@ namespace GAMES_MARKET.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class deseados
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id_deseados { get; set; }
+        public int id_juego { get; set; }
+        public int id_usuario { get; set; }
+    
+        public virtual juegos juegos { get; set; }
+        public virtual usuarios usuarios { get; set; }
     }
 }

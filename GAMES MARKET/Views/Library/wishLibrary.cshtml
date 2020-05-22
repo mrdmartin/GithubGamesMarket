@@ -1,0 +1,46 @@
+﻿@using GAMES_MARKET.Models;
+@model List<JuegosModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Libreria de deseados</h2>
+
+            <table class="table table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Plataforma</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descuento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.descuento != 0)
+                        {
+                            <tr class="table-info">
+                                <td><a href="../Games/Game/@item.id_juego">@item.nombre</a></td>
+                                <td>@item.nombre_plataforma</td>
+                                <td>@item.precio€</td>
+                                <td>@item.descuento%</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><a href="../Games/Game/@item.id_juego">@item.nombre</a></td>
+                                <td>@item.nombre_plataforma</td>
+                                <td>@item.precio€</td>
+                                <td>@item.descuento%</td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

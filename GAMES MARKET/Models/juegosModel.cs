@@ -35,6 +35,7 @@ namespace GAMES_MARKET.Models
         [Display(Name = "Fecha de lanzamiento")]
         [Required]
         public System.DateTime fecha_lanzamiento { get; set; }
+        public string fecha_lanzamiento_string { get; set; }
         [Display(Name = "Plataforma")]
         [Required]
         public string nombre_plataforma { get; set; }

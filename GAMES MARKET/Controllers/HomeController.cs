@@ -10,13 +10,13 @@ namespace GAMES_MARKET.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Home()
         {
-            ViewData["Title"] = "Inici";
-            ViewData["PageName"] = "home";
+            ViewData["Title"] = "Inicio";
+            ViewData["PageName"] = "Home";
 
             BOJuegos oBOJuego = new BOJuegos();
-            List<JuegosModel> listaOfertas = oBOJuego.getOfertas();
+            List<JuegosModel> listaOfertas = oBOJuego.getJuegosOferta();
             ViewData["Ofertas"] = listaOfertas;
 
             List<JuegosModel> listaJuegos = oBOJuego.getJuegosDestacados();

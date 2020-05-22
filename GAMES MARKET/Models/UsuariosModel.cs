@@ -23,6 +23,7 @@ namespace GAMES_MARKET.Models
         [Required]
 
         public string contrasena2 { get; set; }
+        public string token { get; set; }
 
     }
 }

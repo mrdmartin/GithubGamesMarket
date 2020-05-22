@@ -1,8 +1,4 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 <div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-lg-3 col-lg-4 justify-content-center">
@@ -16,7 +12,7 @@
                     <label>Contraseña</label>
                     <input type="password" class="form-control" name="contrasena">
                 </div>
-                <span class="text-danger">@ViewBag.error</span>
+                <span class="text-danger">@ViewBag.Error</span>
                 <button type="submit" class="btn btn-primary w-100 mb-5">Enviar</button>
                 <div class="row">
                     <div class="col-6">
