@@ -76,7 +76,7 @@ namespace GAMES_MARKET.Controllers
                     String url = Dominio + "Login/CambioContrasena/?token=" + token;
 
                     MailMessage oMailMessage = new MailMessage("gamesmarket20@gmail.com", ousuariosmodel.email, "Restaurar contraseña GamesMarket",
-                        "<p>Correo de recuperación que falta tunear el html </p><br>" +
+                        "<p>Hola "+ousuariosmodel.nombre +" haz click en el link de abajo para reedirigirte a la pantalla de cambio de contraseña.</p><br>" +
                         "<a href='" + url + "'>Click para recuperar</a>");
 
                     BOMail oBOMail = new BOMail();
