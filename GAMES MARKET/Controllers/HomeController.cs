@@ -12,9 +12,6 @@ namespace GAMES_MARKET.Controllers
     {
         public ActionResult Home()
         {
-            ViewData["Title"] = "Inicio";
-            ViewData["PageName"] = "Home";
-
             BOJuegos oBOJuego = new BOJuegos();
             List<JuegosModel> listaOfertas = oBOJuego.getJuegosOferta();
             ViewData["Ofertas"] = listaOfertas;

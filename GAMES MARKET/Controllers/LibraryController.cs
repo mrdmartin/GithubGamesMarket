@@ -10,51 +10,40 @@ namespace GAMES_MARKET.Controllers
 {
     public class LibraryController : Controller
     {
-        // GET: Library
         public ActionResult buysLibrary()
         {
-            ViewData["Title"] = "Libreria de compras";
-            ViewData["PageName"] = "buysLibrary";
-
             if (Session["log"] is null)
             {
                 return RedirectToAction("../Home/home");
             }
-            String text = Session["log"].ToString();
+
             BOLogin oBOLogin = new BOLogin();
-            usuarios usuario = oBOLogin.getUsuarioByEmail(text);
+            usuarios usuario = oBOLogin.getUsuarioById((int)Session["Log"]);
 
             BOLibrary oBOLibrary = new BOLibrary();
-            List<buysLibraryModel> listBuysLibraryModel = oBOLibrary.getBuysLibrary(usuario.id_usuario);
+            List<BuysLibraryModel> listBuysLibraryModel = oBOLibrary.getBuysLibrary(usuario.id_usuario);
 
             return View(listBuysLibraryModel);
         }
         public ActionResult wishLibrary()
         {
-            ViewData["Title"] = "Libreria de deseados";
-            ViewData["PageName"] = "wishList";
-            
-
-            if (Session["log"] != null)
+            if (Session["log"] is null)
             {
-                String userEmail = Session["log"].ToString();
-                BOLogin oBOLogin = new BOLogin();
-                usuarios usuario = oBOLogin.getUsuarioByEmail(userEmail);
-
-                BOLibrary oBOLibrary = new BOLibrary();
-                List<JuegosModel> listaJuegos = new List<JuegosModel>();
-                listaJuegos = oBOLibrary.getWishLibrary(usuario.id_usuario);
-
-                return View(listaJuegos);
+                return RedirectToAction("../Login/Login");
             }
 
-            return RedirectToAction("../Login/Login");
+            BOLogin oBOLogin = new BOLogin();
+            usuarios usuario = oBOLogin.getUsuarioById((int)Session["Log"]);
+
+            BOLibrary oBOLibrary = new BOLibrary();
+            List<JuegosModel> listaJuegos = oBOLibrary.getWishLibrary(usuario.id_usuario);
+
+            return View(listaJuegos);
         }
         public ActionResult addWish(int id)
         {
-            String userEmail = Session["log"].ToString();
             BOLogin oBOLogin = new BOLogin();
-            usuarios user = oBOLogin.getUsuarioByEmail(userEmail);
+            usuarios user = oBOLogin.getUsuarioById((int) Session["Log"]);
 
             BOLibrary oBOLibrary = new BOLibrary();
             oBOLibrary.addToWish(user.id_usuario, id);
@@ -63,9 +52,8 @@ namespace GAMES_MARKET.Controllers
         }
         public ActionResult delWish(int id)
         {
-            String userEmail = Session["log"].ToString();
             BOLogin oBOLogin = new BOLogin();
-            usuarios user = oBOLogin.getUsuarioByEmail(userEmail);
+            usuarios user = oBOLogin.getUsuarioById((int) Session["Log"]);
 
             BOLibrary oBOLibrary = new BOLibrary();
             oBOLibrary.removeFromWish(user.id_usuario, id);

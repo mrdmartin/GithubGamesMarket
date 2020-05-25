@@ -11,19 +11,13 @@ namespace GAMES_MARKET.Controllers
 {
     public class ContactController : Controller
     {
-        // GET: Contact
         public ActionResult Contact()
         {
-            ViewData["Title"] = "Contacto";
-            ViewData["PageName"] = "Contact";
             return View();
         }
         [HttpPost]
         public ActionResult Contact(ContactModel oContactModel)
         {
-            ViewData["Title"] = "Contacto";
-            ViewData["PageName"] = "Contact";
-
             MailMessage oMailMessage = new MailMessage("gamesmarket20@gmail.com", "gamesmarket20@gmail.com", "¡Nueva consulta! de " + oContactModel.email,
             "<p>De: " + oContactModel.nombre + " " + oContactModel.apellidos + "</p> <p> con correo electronico: " + oContactModel.email + "</p> " + oContactModel.consulta);
 
@@ -32,13 +26,9 @@ namespace GAMES_MARKET.Controllers
 
             return View("EmailThanks");
         }
-        public ActionResult EmailThanks(ContactModel oContactModel)
+        public ActionResult EmailThanks()
         {
-            ViewData["Title"] = "Gracias por contactar";
-            ViewData["PageName"] = "EmailThanks";
-
             return View();
-
         }
     }
 }

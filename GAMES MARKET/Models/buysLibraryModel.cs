@@ -5,10 +5,10 @@ using System.Web;
 
 namespace GAMES_MARKET.Models
 {
-    public class buysLibraryModel
+    public class BuysLibraryModel
     {
-        public String nombre_juego { get; set; }
-        public String nombre_plataforma { get; set; }
-        public String clave { get; set; }
+        public string nombre_juego { get; set; }
+        public string nombre_plataforma { get; set; }
+        public string clave { get; set; }
     }
 }

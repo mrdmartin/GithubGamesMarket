@@ -148,7 +148,7 @@
     <Compile Include="Models\BO\BOLogin.cs" />
     <Compile Include="Models\BO\BOMail.cs" />
     <Compile Include="Models\BO\BOVentas.cs" />
-    <Compile Include="Models\buysLibraryModel.cs" />
+    <Compile Include="Models\BuysLibraryModel.cs" />
     <Compile Include="Models\capturas.cs">
       <DependentUpon>EntityGamesMarket.tt</DependentUpon>
     </Compile>
@@ -464,13 +464,13 @@
     <Content Include="Views\Login\UserData.cshtml" />
     <Content Include="Views\Cookies\Cookies.cshtml" />
     <Content Include="Views\Buys\Buy.cshtml" />
-    <Content Include="Views\Login\CambioContrasena.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
     <Content Include="Views\Buys\BuyCompleted.cshtml" />
     <Content Include="Views\Login\CorrectSend.cshtml" />
-    <Content Include="Views\Login\passChanged.cshtml" />
+    <Content Include="Views\Login\PassChanged.cshtml" />
     <Content Include="Views\Contact\EmailThanks.cshtml" />
-    <Content Include="Views\Library\buysLibrary.cshtml" />
-    <Content Include="Views\Library\wishLibrary.cshtml" />
+    <Content Include="Views\Library\BuysLibrary.cshtml" />
+    <Content Include="Views\Library\WishLibrary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

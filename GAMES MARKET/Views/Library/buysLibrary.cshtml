@@ -1,10 +1,13 @@
 ﻿@using GAMES_MARKET.Models;
-@model List<buysLibraryModel>
-
+@model List<BuysLibraryModel>
+@{
+    ViewBag.Title = "Mis juegos comprados";
+    ViewBag.PageName = "buysLibrary";
+}
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
-            <h2>Libreria de compras</h2>
+            <h2>Mis juegos</h2>
 
             <table class="table table-light">
                 <thead class="thead-dark">

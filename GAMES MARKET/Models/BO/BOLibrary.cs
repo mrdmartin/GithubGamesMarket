@@ -7,9 +7,9 @@ namespace GAMES_MARKET.Models.BO
 {
     public class BOLibrary
     {
-        public List<buysLibraryModel> getBuysLibrary(int id)
+        public List<BuysLibraryModel> getBuysLibrary(int id)
         {
-            List<buysLibraryModel> listaBuysLibrary = new List<buysLibraryModel>();
+            List<BuysLibraryModel> listaBuysLibrary = new List<BuysLibraryModel>();
             using (var bd = new Games_MarketEntities())
             {
                 listaBuysLibrary = (from ventas in bd.ventas
@@ -27,7 +27,7 @@ namespace GAMES_MARKET.Models.BO
 
                                     orderby ventas.fecha_venta descending
 
-                                    select new buysLibraryModel
+                                    select new BuysLibraryModel
                                     {
                                         nombre_juego = juegos.nombre,
                                         nombre_plataforma = plataformas.nombre,
@@ -117,8 +117,7 @@ namespace GAMES_MARKET.Models.BO
         }
         public Boolean checkWishList(int id_usuario, int id_juego)
         {
-            Boolean check = new Boolean();
-            check = true;
+            Boolean check = true;
             using (var bd = new Games_MarketEntities())
             {
                 deseados odeseados = bd.deseados.Where(p => p.id_usuario.Equals(id_usuario) & p.id_juego.Equals(id_juego)).FirstOrDefault();

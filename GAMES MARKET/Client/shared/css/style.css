@@ -59,19 +59,19 @@ input, select, textarea {
         box-shadow: none !important;
     }
 /*title*/
-#title {
+#title, #navtitle {
     display: flex;
     background: #343a40;
     padding: 1rem;
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     color: white;
     text-shadow: 0 0 10px black;
     font-family: 'Magic Dreams';
 }
-    #title em {
+    #title em, #navtitle em {
         color: #f33f3f;
     }
-    #title:hover {
+    #title:hover, #navtitle:hover {
         text-decoration: none;
     }
 
