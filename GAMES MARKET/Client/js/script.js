@@ -10,7 +10,7 @@ var initPage_onDomContentLoaded = function () {
     var checkLog = function (event) {
         if (document.getElementById('userLogged') === null) {
             event.preventDefault();
-            alert('Debes iniciar sesión');
+            alert('Debes iniciar sesi\u00F3n');
             return true;
         }
     }
@@ -141,8 +141,8 @@ var initPage_onDomContentLoaded = function () {
             precio = precio.replace('.',',');
 
             item.querySelector('[data-hook="img_link"]').href = "Game/" + game.id_juego;
-            item.querySelector('[data-hook="img_game"]').src = "/Client/shared/img/gamescover/" + game.img_ruta;
-            item.querySelector('[data-hook="img_platform"]').src = "/Client/shared/img/logos/" + game.img_rutaPlataforma;
+            item.querySelector('[data-hook="img_game"]').src = "/Client/img/gamescover/" + game.img_ruta;
+            item.querySelector('[data-hook="img_platform"]').src = "/Client/img/logos/" + game.img_rutaPlataforma;
             item.querySelector('[data-hook="name_link"]').href = "Game/" + game.id_juego;
             item.querySelector('[data-hook="name_game"]').textContent = game.nombre;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;

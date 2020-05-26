@@ -1,9 +1,6 @@
 ﻿using GAMES_MARKET.Models;
 using GAMES_MARKET.Models.BO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GAMES_MARKET.Controllers

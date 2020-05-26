@@ -75,9 +75,9 @@ namespace GAMES_MARKET.Controllers.BO
             {
                 listaJuegos = (from juegos in bd.juegos
                                join plataformas in bd.plataformas
-                              on juegos.id_plataforma equals plataformas.id_plataforma
-                              join descuentos in bd.descuentos
-                              on juegos.id_juego equals descuentos.id_juego
+                               on juegos.id_plataforma equals plataformas.id_plataforma
+                               join descuentos in bd.descuentos
+                               on juegos.id_juego equals descuentos.id_juego
                                where (DateTime.Now > descuentos.inicio) && (DateTime.Now < descuentos.fin)
                                orderby descuentos.descuento descending
 
