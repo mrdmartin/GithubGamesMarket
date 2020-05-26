@@ -96,6 +96,41 @@ var initPage_onDomContentLoaded = function () {
         formBuying.addEventListener("submit", checkForm);
 
     }
+    if (pageName === 'Contact') {
+        var formContact = document.getElementById('formContact');
+        var input_name = document.getElementById('input_name');
+        var input_last_name = document.getElementById('input_last_name');
+        var input_email = document.getElementById('input_email');
+        var textarea_query = document.getElementById('textarea_query');
+
+        var checkFormContact = function (event) {
+
+            var name = input_name.value;
+            var last_name = input_last_name.value;
+            var email = input_email.value;
+            var query = textarea_query.value;
+
+            var msg = "";
+            if (name.length == 0) {
+                msg = msg.concat("Nombre no debe estar vac\u00EDo. \n");
+            }
+            if (last_name.length == 0) {
+                msg = msg.concat("Apellidos no debe estar vac\u00EDo. \n");
+            }
+            if (email.length == 0) {
+                msg = msg.concat("Correo no debe estar electr\u00F3nico vac\u00EDo. \n");
+            }
+            if (query.length == 0) {
+                msg = msg.concat("Cosulta no debe estar vac\u00EDo. \n");
+            }
+            if (msg != "") {
+                alert(msg)
+                event.preventDefault();
+            }
+        }
+        formContact.addEventListener("submit", checkFormContact);
+
+    }
     if (pageName === 'List') {
 
         var formFilter = document.getElementById("formFilter");
