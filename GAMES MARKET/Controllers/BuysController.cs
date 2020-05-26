@@ -56,14 +56,14 @@ namespace GAMES_MARKET.Controllers
                 ViewBag.Error = "Número del código de seguridad de la tarjeta erróneo.";
                 return View(ojuegosModel);
             }
-            if(Session["log"] is null)
+            if(Session["Log"] is null)
             {
                 return RedirectToAction("../Login/Login");
             }
 
             //Iniciamos el proceso de compra.
             BOLogin oBOLogin = new BOLogin();
-            usuarios ousuario = oBOLogin.getUsuarioById((int)Session["id"]);
+            usuarios ousuario = oBOLogin.getUsuarioById((int)Session["Log"]);
             oventasModel.id_usuario = ousuario.id_usuario;
             //Iniciamos el proceso de compra.
             BOVentas oBOVentas = new BOVentas();

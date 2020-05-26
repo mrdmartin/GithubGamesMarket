@@ -32,7 +32,7 @@ namespace GAMES_MARKET.Controllers
             JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
             
             //Encuentra los generos del juego
-            List<GenerosModel> oGenerosModel = oBOjuego.GetGenerosById_juegosList(id.Value);
+            List<GenerosModel> oGenerosModel = oBOjuego.getGenerosById_juegosList(id.Value);
             string generos = "";
             foreach (var item in oGenerosModel)
             {
@@ -41,7 +41,7 @@ namespace GAMES_MARKET.Controllers
             ViewBag.generos = generos;
 
             //Encuentra las capturas del juego
-            List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
+            List<CapturasModel> listaCapturas = oBOjuego.getCapturasList(id.Value);
             ViewData["capturas"] = listaCapturas;
             
             //Encuentra los comentarios
@@ -59,7 +59,7 @@ namespace GAMES_MARKET.Controllers
 
             //Comprueba si el usuario lo tiene en lista de deseados
             BOLogin oBOLogin = new BOLogin();
-            if (Session["log"] != null)
+            if (Session["Log"] != null)
             {
                 usuarios usuario = oBOLogin.getUsuarioById((int) Session["Log"]);
                 BOLibrary oBOLibrary = new BOLibrary();
@@ -95,7 +95,7 @@ namespace GAMES_MARKET.Controllers
             JuegosModel juegosModel = oBOjuego.getJuegoById(id.Value);
 
             //Encuentra los generos del juego
-            List<GenerosModel> oGenerosModel = oBOjuego.GetGenerosById_juegosList(id.Value);
+            List<GenerosModel> oGenerosModel = oBOjuego.getGenerosById_juegosList(id.Value);
             string generos = "";
             foreach (var item in oGenerosModel)
             {
@@ -104,14 +104,14 @@ namespace GAMES_MARKET.Controllers
             ViewBag.generos = generos;
 
             //Encuentra las capturas del juego
-            List<CapturasModel> listaCapturas = oBOjuego.GetCapturasList(id.Value);
+            List<CapturasModel> listaCapturas = oBOjuego.getCapturasList(id.Value);
             ViewData["capturas"] = listaCapturas;
 
             //Añade el comentario
             BOComentarios oBOComentarios = new BOComentarios();
             if (comment != "")
             {
-                oBOComentarios.Post(id.Value, (int)Session["Log"], comment);
+                oBOComentarios.post(id.Value, (int)Session["Log"], comment);
             }
             //Encuentra los comentarios
             List<ComentariosModel> listaComentarios = oBOComentarios.getComments(id.Value);
@@ -127,7 +127,7 @@ namespace GAMES_MARKET.Controllers
             ViewBag.stock = oBOClaves.checkStockClaveByid_juego(id.Value);
 
             //Comprueba si el usuario lo tiene en lista de deseados
-            if (Session["log"] != null)
+            if (Session["Log"] != null)
             {
                 BOLogin oBOLogin = new BOLogin();
                 usuarios usuario = oBOLogin.getUsuarioById((int)Session["Log"]);

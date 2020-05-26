@@ -9,7 +9,6 @@ namespace GAMES_MARKET.Models.BO
 {
     public class BOVentas : Controller
     {
-        // GET: BOVentas
         public ventas addVenta(VentasModel oventasModel)
         {
             ventas oventas = new ventas();
@@ -19,12 +18,11 @@ namespace GAMES_MARKET.Models.BO
                 {
                     try
                     {
-                        BOClaves oBOClaves = new BOClaves();
-                        claves oclaves = oBOClaves.getClaveByid_juego(oventasModel.id_juego);
+                        claves oClaves = new claves();
+                        oClaves = bd.claves.Where(p => p.id_juego.Equals(oventasModel.id_juego)).Where(p => p.estado.Equals(true)).FirstOrDefault();
+                        oClaves.estado = false;
 
-                        oclaves.estado = false;
-
-                        oventas.id_clave = oclaves.id_clave;
+                        oventas.id_clave = oClaves.id_clave;
                         oventas.id_usuario = oventasModel.id_usuario;
                         oventas.fecha_venta = DateTime.Now;
                         oventas.tarj = oventasModel.tarj;

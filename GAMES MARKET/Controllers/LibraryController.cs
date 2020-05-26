@@ -9,7 +9,7 @@ namespace GAMES_MARKET.Controllers
     {
         public ActionResult buysLibrary()
         {
-            if (Session["log"] is null)
+            if (Session["Log"] is null)
             {
                 return RedirectToAction("../Home/home");
             }
@@ -24,7 +24,7 @@ namespace GAMES_MARKET.Controllers
         }
         public ActionResult wishLibrary()
         {
-            if (Session["log"] is null)
+            if (Session["Log"] is null)
             {
                 return RedirectToAction("../Login/Login");
             }

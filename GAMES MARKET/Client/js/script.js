@@ -83,7 +83,7 @@ var initPage_onDomContentLoaded = function () {
             if (tarj_ano > 99 || tarj_ano < 0 || tarj_ano.length != 2) {
                 msg = msg.concat("El a\u00f1o de la tarjeta debe contener 2 car\u00E1cteres y estar entre 00 y 99. \n");
             }
-            if (cod_seg > 999 || cod_seg < 0 || tarj_ano.length != 3) {
+            if (cod_seg > 999 || cod_seg < 0 || cod_seg.length != 3) {
                 msg = msg.concat("El c\u00F3digo de seguridad de la tarjeta debe contener 3 car\u00E1cteres y estar entre 000 y 999. \n");
             }
             if (msg != "") {

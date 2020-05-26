@@ -235,7 +235,7 @@ namespace GAMES_MARKET.Controllers.BO
             return listaJuegos;
         }
 
-        public List<CapturasModel> GetCapturasList(int id)
+        public List<CapturasModel> getCapturasList(int id)
         {
             List<CapturasModel> listaCapturas = new List<CapturasModel>();
             using (var bd = new Games_MarketEntities())
@@ -254,7 +254,7 @@ namespace GAMES_MARKET.Controllers.BO
             }
             return listaCapturas;
         }
-        public List<GenerosModel> GetGenerosById_juegosList(int id_juego)
+        public List<GenerosModel> getGenerosById_juegosList(int id_juego)
         {
             List<GenerosModel> listaGeneros = new List<GenerosModel>();
             using (var bd = new Games_MarketEntities())

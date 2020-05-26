@@ -8,7 +8,6 @@ namespace GAMES_MARKET.Models.BO
 {
     public class BOClaves : Controller
     {
-        // GET: BOClaves
         public claves getClaveByid_juego(int id_juego)
         {
             claves oClaves = new claves();

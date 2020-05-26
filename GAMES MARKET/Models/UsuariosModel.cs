@@ -11,19 +11,15 @@ namespace GAMES_MARKET.Models
         [Required]
         public int id_usuario { get; set; }
         [Required]
-
         public string nombre { get; set; }
         [Required]
-
         public string apellidos { get; set; }
         [Required]
         public string email { get; set; }
         [Required]
         public string contrasena { get; set; }
         [Required]
-
         public string contrasena2 { get; set; }
         public string token { get; set; }
-
     }
 }

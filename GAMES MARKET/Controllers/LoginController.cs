@@ -27,10 +27,10 @@ namespace GAMES_MARKET.Controllers
                 return View();
             }
             BOLogin oBOLogin = new BOLogin();
-            if (oBOLogin.Login(usuariosModel) != null)
+            if (oBOLogin.login(usuariosModel) != null)
             {
-                usuariosModel = oBOLogin.Login(usuariosModel);
-                Session["Log"] = usuariosModel.id_usuario; 
+                usuariosModel = oBOLogin.login(usuariosModel);
+                Session["Log"]= usuariosModel.id_usuario; 
                 Session["LogName"] = usuariosModel.nombre;
 
                 return RedirectToAction("../Home/Home");
@@ -107,7 +107,7 @@ namespace GAMES_MARKET.Controllers
             else
             {
                 oBOLogin.addUser(oregisterModel);
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("../Home");
             }
         }
 
@@ -168,7 +168,7 @@ namespace GAMES_MARKET.Controllers
         public ActionResult UserData()
         {
             BOLogin oBOLogin = new BOLogin();
-            usuarios usuario = oBOLogin.getUsuarioById((int) Session["log"]);
+            usuarios usuario = oBOLogin.getUsuarioById((int) Session["Log"]);
             UsuariosModel usuariosModel = new UsuariosModel();
             usuariosModel.email = usuario.email;
             usuariosModel.nombre = usuario.nombre;

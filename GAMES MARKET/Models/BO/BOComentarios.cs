@@ -33,7 +33,7 @@ namespace GAMES_MARKET.Models.BO
             }
             return listaComentarios;
         }
-        public void Post(int id_juego, int id_usuario, string comment)
+        public void post(int id_juego, int id_usuario, string comment)
         {
             using (var bd = new Games_MarketEntities())
             {
