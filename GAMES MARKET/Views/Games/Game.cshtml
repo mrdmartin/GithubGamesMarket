@@ -1,5 +1,8 @@
 ﻿@using GAMES_MARKET.Models;
-
+@{
+    ViewBag.Title = "Juego";
+    ViewBag.PageName = "Game";
+}
 <h2 class="d-none d-md-flex justify-content-center"> @Model.nombre </h2>
 <div class="container-fluid">
     <div class="row">
@@ -21,13 +24,13 @@
                         if (counter == 1)
                         {
                             <div class="carousel-item active">
-                                <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
+                                <img src="~/Client/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
                             </div>
                         }
                         else
                         {
                             <div class="carousel-item">
-                                <img src="~/Client/shared/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
+                                <img src="~/Client/img/screenshots/@item.img_ruta" class="d-block w-100" alt="Captura del videojuego">
                             </div>
                         }
                         counter++;
@@ -49,14 +52,14 @@
             <div class="card bg-light mb-4 shadow-sm">
 
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="@Model.trailer_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="@Model.trailer_url" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <div class="card-body">
                     <h3 class="card-title">@Model.nombre</h3>
                     <div class="row">
                         <div class="col-4">
-                            <img src="~/Client/shared/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
+                            <img src="~/Client/img/logos/@Model.img_rutaPlataforma" class="game-last-logo" alt="@Model.nombre_plataforma">
                         </div>
                         <div class="col-8 d-flex justify-content-end">
                             @if (ViewBag.wish == false)
@@ -76,7 +79,7 @@
                         </div>
                         <div class="col-12">
                             <span>
-                                Generos:@ViewBag.generos
+                                Géneros:@ViewBag.generos
                             </span>
                         </div>
                     </div>
@@ -107,21 +110,19 @@
                 <button type="submit" id="btnPost" class="btn btn-primary w-100">Publicar</button>
             </form>
 
-            @{ counter = 1; }
+            @if (ViewBag.checkComments == true)
+            {
+                <h3>Comentarios</h3>
+            }
             @foreach (var item in ViewData["comentarios"] as List<ComentariosModel>)
             {
-                if (counter == 1)
-                {
-                    <h3>Comentarios</h3>
-                }
                 <div class="border border-dark my-2 ">
                     <div class="bg-dark text-white p-2 d-flex justify-content-between">
-                        <span class="text-left">#@counter - @item.nombre_usuario </span>
+                        <span class="text-left">@item.nombre_usuario </span>
                         <span class="text-right">@item.fecha</span>
                     </div>
                     <p class="p-2">@item.comentario</p>
                 </div>
-                counter++;
             }
         </div>
 

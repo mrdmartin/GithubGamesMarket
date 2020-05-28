@@ -9,7 +9,6 @@ namespace GAMES_MARKET.Models.BO
 {
     public class BOMail : Controller
     {
-        // GET: BOMail
         public void sendEmail(MailMessage oMailMessage)
         {
             String EmailEmpresa = "gamesmarket20@gmail.com";

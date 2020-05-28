@@ -21,7 +21,7 @@ namespace GAMES_MARKET.Models.BO
             }
         }
 
-        public UsuariosModel Login(UsuariosModel usuariosModel)
+        public UsuariosModel login(UsuariosModel usuariosModel)
         {
             var bd = new Games_MarketEntities();
             usuarios usuario = bd.usuarios.Where(p => p.email.Equals(usuariosModel.email) && p.contrasena.Equals(usuariosModel.contrasena)).FirstOrDefault();

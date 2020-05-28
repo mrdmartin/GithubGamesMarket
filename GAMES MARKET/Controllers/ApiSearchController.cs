@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using GAMES_MARKET.Models;
 using System.Web.Script.Serialization;
@@ -9,13 +8,14 @@ using GAMES_MARKET.Models.BO;
 
 namespace GAMES_MARKET.Controllers
 {
+    // Api del buscador AJAX
     public class ApiSearchController : Controller
     {
-        // GET: ApiSearch
-
+        //Genera y envia la lista de juegos
         [HttpPost]
         public ActionResult Index()
         {
+            //Aqui recoge los datos con formato dccionario
             Dictionary<string, string> jsonRequest = GetJsonRequest();
 
             JuegosModel oJuegosModel = new JuegosModel();
@@ -38,7 +38,7 @@ namespace GAMES_MARKET.Controllers
             return Json(jsonResponse);
 
         }
-
+        //Da formato diccionario los datos en un diccionario.
         private Dictionary<string, string> GetJsonRequest()
         {
             var serializer = new JavaScriptSerializer();
@@ -46,7 +46,7 @@ namespace GAMES_MARKET.Controllers
                 ReadRequestBody()
             );
         }
-
+        //Recoge los datos del formulario
         private string ReadRequestBody()
         {
             string documentContents;

@@ -1,12 +1,8 @@
 ﻿using GAMES_MARKET.Models;
 using GAMES_MARKET.Models.BO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using System.Net.Mail;
 
 namespace GAMES_MARKET.Controllers
@@ -15,15 +11,11 @@ namespace GAMES_MARKET.Controllers
     {
         public ActionResult Login()
         {
-            ViewData["Title"] = "Iniciar sesión";
-            ViewData["PageName"] = "Login";
             return View();
         }
         [HttpPost]
         public ActionResult Login(UsuariosModel usuariosModel)
         {
-            ViewData["Title"] = "Iniciar sesión";
-            ViewData["PageName"] = "Login";
             if (usuariosModel.email == null)
             {
                 ViewBag.error = "Falta el correo electrónico";
@@ -35,10 +27,12 @@ namespace GAMES_MARKET.Controllers
                 return View();
             }
             BOLogin oBOLogin = new BOLogin();
-            if (oBOLogin.Login(usuariosModel) != null)
+            if (oBOLogin.login(usuariosModel) != null)
             {
-                usuariosModel = oBOLogin.Login(usuariosModel);
-                Session["Log"] = usuariosModel.email;
+                usuariosModel = oBOLogin.login(usuariosModel);
+                Session["Log"]= usuariosModel.id_usuario; 
+                Session["LogName"] = usuariosModel.nombre;
+
                 return RedirectToAction("../Home/Home");
             }
             else
@@ -46,21 +40,15 @@ namespace GAMES_MARKET.Controllers
                 ViewBag.error = "Email o contraseña incorrecta";
                 return View();
             }
-
         }
 
         public ActionResult Help()
         {
-            ViewData["Title"] = "Ayuda";
-            ViewData["PageName"] = "Help";
             return View();
         }
         [HttpPost]
         public ActionResult Help(UsuariosModel ousuariosmodel)
         {
-            ViewData["Title"] = "Ayuda";
-            ViewData["PageName"] = "Help";
-
             BOLogin oBOLogin = new BOLogin();
             String token = oBOLogin.randomPassword();
 
@@ -73,10 +61,10 @@ namespace GAMES_MARKET.Controllers
                     db.SaveChanges();
 
                     String Dominio = "https://localhost:44327/";
-                    String url = Dominio + "Login/CambioContrasena/?token=" + token;
+                    String url = Dominio + "Login/ChangePassword/?token=" + token;
 
                     MailMessage oMailMessage = new MailMessage("gamesmarket20@gmail.com", ousuariosmodel.email, "Restaurar contraseña GamesMarket",
-                        "<p>Correo de recuperación que falta tunear el html </p><br>" +
+                        "<p>Hola " + ousuariosmodel.nombre + " haz click en el link de abajo para redirigirte a la pantalla de cambio de contraseña.</p><br>" +
                         "<a href='" + url + "'>Click para recuperar</a>");
 
                     BOMail oBOMail = new BOMail();
@@ -94,15 +82,11 @@ namespace GAMES_MARKET.Controllers
 
         public ActionResult Register()
         {
-            ViewData["Title"] = "Registro";
-            ViewData["PageName"] = "Register";
             return View();
         }
         [HttpPost]
         public ActionResult Register(UsuariosModel oregisterModel)
         {
-            ViewData["Title"] = "Registro";
-            ViewData["PageName"] = "Register";
             BOLogin oBOLogin = new BOLogin();
 
             if (!ModelState.IsValid)
@@ -123,33 +107,32 @@ namespace GAMES_MARKET.Controllers
             else
             {
                 oBOLogin.addUser(oregisterModel);
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("../Login/Login");
             }
         }
-
-        public ActionResult CambioContrasena(String token)
+         
+        public ActionResult ChangePassword(String token)
         {
-            UsuariosModel model = new UsuariosModel();
+            if (token == null)
+            {
+                return RedirectToAction("Help");
+            }
             using (Games_MarketEntities db = new Games_MarketEntities())
             {
-
-                if (token == null)
-                {
-                    return View("Index");
-                }
-                var oUsuario = db.usuarios.Where(d => d.token == model.token).FirstOrDefault();
+                usuarios oUsuario = db.usuarios.Where(d => d.token == token).FirstOrDefault();
                 if (oUsuario == null)
                 {
                     ViewBag.Error = "Contaseña provisional expirada";
-                    return View("Index");
+                    return View("Help");
                 }
             }
+            UsuariosModel model = new UsuariosModel();
             model.token = token;
 
             return View(model);
         }
         [HttpPost]
-        public ActionResult CambioContrasena(UsuariosModel model)
+        public ActionResult ChangePassword(UsuariosModel model)
         {
             using (Games_MarketEntities db = new Games_MarketEntities())
             {
@@ -160,10 +143,12 @@ namespace GAMES_MARKET.Controllers
                     if (model.contrasena == null || model.contrasena2 == null)
                     {
                         ViewBag.error = "Contraseña no puede estar vacia";
+                        return View(model);
                     }
                     else if (model.contrasena != model.contrasena2)
                     {
                         ViewBag.error = "Las contraseñas no coinciden";
+                        return View(model);
                     }
                     else
                     {
@@ -183,11 +168,8 @@ namespace GAMES_MARKET.Controllers
 
         public ActionResult UserData()
         {
-            ViewData["Title"] = "Perfil de usuario";
-            ViewData["PageName"] = "Profile";
             BOLogin oBOLogin = new BOLogin();
-            String text = Session["log"].ToString();
-            usuarios usuario = oBOLogin.getUsuarioByEmail(text);
+            usuarios usuario = oBOLogin.getUsuarioById((int) Session["Log"]);
             UsuariosModel usuariosModel = new UsuariosModel();
             usuariosModel.email = usuario.email;
             usuariosModel.nombre = usuario.nombre;
@@ -197,22 +179,17 @@ namespace GAMES_MARKET.Controllers
         }
         public ActionResult CorrectSend()
         {
-
-            ViewData["Title"] = "Correo enviado";
-            ViewData["PageName"] = "CorrectSend";
-
             return View();
         }
         public ActionResult passChanged(UsuariosModel model)
         {
-            ViewData["Title"] = "Contraseña Cambiada";
-            ViewData["PageName"] = "passChanged";
             return View();
         }
         public ActionResult logOut()
         {
             Session["Log"] = null;
-            return RedirectToAction("/Login/Login");
+            Session["LogName"] = null;
+            return RedirectToAction("/Login");
         }
     }
 }

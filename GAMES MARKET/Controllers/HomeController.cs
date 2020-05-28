@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using GAMES_MARKET.Controllers.BO;
 using GAMES_MARKET.Models;
@@ -12,9 +9,6 @@ namespace GAMES_MARKET.Controllers
     {
         public ActionResult Home()
         {
-            ViewData["Title"] = "Inicio";
-            ViewData["PageName"] = "Home";
-
             BOJuegos oBOJuego = new BOJuegos();
             List<JuegosModel> listaOfertas = oBOJuego.getJuegosOferta();
             ViewData["Ofertas"] = listaOfertas;

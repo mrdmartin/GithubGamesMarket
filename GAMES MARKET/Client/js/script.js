@@ -10,7 +10,7 @@ var initPage_onDomContentLoaded = function () {
     var checkLog = function (event) {
         if (document.getElementById('userLogged') === null) {
             event.preventDefault();
-            alert('Debes iniciar sesión');
+            alert('Debes iniciar sesi\u00F3n');
             return true;
         }
     }
@@ -83,9 +83,13 @@ var initPage_onDomContentLoaded = function () {
             if (tarj_ano > 99 || tarj_ano < 0 || tarj_ano.length != 2) {
                 msg = msg.concat("El a\u00f1o de la tarjeta debe contener 2 car\u00E1cteres y estar entre 00 y 99. \n");
             }
-            if (cod_seg > 999 || cod_seg < 0 || tarj_ano.length != 3) {
+            if ((parseInt(tarj_ano) + 2000) < new Date().getFullYear()) {
+                msg = msg.concat("El a\u00f1o de la tarjeta debe ser superior o igual a " + (new Date().getFullYear()-2000)+". \n");
+            }
+            if (cod_seg > 999 || cod_seg < 0 || cod_seg.length != 3) {
                 msg = msg.concat("El c\u00F3digo de seguridad de la tarjeta debe contener 3 car\u00E1cteres y estar entre 000 y 999. \n");
             }
+            
             if (msg != "") {
                 alert(msg)
                 event.preventDefault();
@@ -94,6 +98,84 @@ var initPage_onDomContentLoaded = function () {
         }
         formBuying.addEventListener("submit", checkLog);
         formBuying.addEventListener("submit", checkForm);
+
+    }
+    if (pageName === 'Register') {
+        var formRegister = document.getElementById('formRegister');
+        var input_nombre = document.getElementById('input_nombre');
+        var input_apellidos = document.getElementById('input_apellidos');
+        var input_email = document.getElementById('input_email');
+        var input_contrasena = document.getElementById('input_contrasena');
+        var input_contrasena2 = document.getElementById('input_contrasena2');
+
+        var checkFormRegister = function (event) {
+
+            var nombre = input_nombre.value;
+            var apellidos = input_apellidos.value;
+            var email = input_email.value;
+            var contrasena = input_contrasena.value;
+            var contrasena2 = input_contrasena2.value;
+
+            var msg = "";
+            if (nombre.length == 0) {
+                msg = msg.concat("Nombre no debe estar vac\u00EDo. \n");
+            }
+            if (apellidos.length == 0) {
+                msg = msg.concat("Apellidos no debe estar vac\u00EDo. \n");
+            }
+            if (email.length == 0) {
+                msg = msg.concat("Correo no debe estar electr\u00F3nico vac\u00EDo. \n");
+            }
+            if (contrasena.length == 0) {
+                msg = msg.concat("Contrase\u00f1a no debe estar vac\u00EDo. \n");
+            }
+            if (contrasena2.length == 0) {
+                msg = msg.concat("Confirmar contrase\u00f1a no debe estar vac\u00EDo. \n");
+            }
+            if (contrasena != contrasena2) {
+                msg = msg.concat("Las contrase\u00f1as deben ser iguales. \n");
+            }
+            if (msg != "") {
+                alert(msg)
+                event.preventDefault();
+            }
+        }
+        formRegister.addEventListener("submit", checkFormRegister);
+
+    }
+    if (pageName === 'Contact') {
+        var formContact = document.getElementById('formContact');
+        var input_name = document.getElementById('input_name');
+        var input_last_name = document.getElementById('input_last_name');
+        var input_email = document.getElementById('input_email');
+        var textarea_query = document.getElementById('textarea_query');
+
+        var checkFormContact = function (event) {
+
+            var name = input_name.value;
+            var last_name = input_last_name.value;
+            var email = input_email.value;
+            var query = textarea_query.value;
+
+            var msg = "";
+            if (name.length == 0) {
+                msg = msg.concat("Nombre no debe estar vac\u00EDo. \n");
+            }
+            if (last_name.length == 0) {
+                msg = msg.concat("Apellidos no debe estar vac\u00EDo. \n");
+            }
+            if (email.length == 0) {
+                msg = msg.concat("Correo no debe estar electr\u00F3nico vac\u00EDo. \n");
+            }
+            if (query.length == 0) {
+                msg = msg.concat("Cosulta no debe estar vac\u00EDo. \n");
+            }
+            if (msg != "") {
+                alert(msg)
+                event.preventDefault();
+            }
+        }
+        formContact.addEventListener("submit", checkFormContact);
 
     }
     if (pageName === 'List') {
@@ -141,8 +223,8 @@ var initPage_onDomContentLoaded = function () {
             precio = precio.replace('.',',');
 
             item.querySelector('[data-hook="img_link"]').href = "Game/" + game.id_juego;
-            item.querySelector('[data-hook="img_game"]').src = "/Client/shared/img/gamescover/" + game.img_ruta;
-            item.querySelector('[data-hook="img_platform"]').src = "/Client/shared/img/logos/" + game.img_rutaPlataforma;
+            item.querySelector('[data-hook="img_game"]').src = "/Client/img/gamescover/" + game.img_ruta;
+            item.querySelector('[data-hook="img_platform"]').src = "/Client/img/logos/" + game.img_rutaPlataforma;
             item.querySelector('[data-hook="name_link"]').href = "Game/" + game.id_juego;
             item.querySelector('[data-hook="name_game"]').textContent = game.nombre;
             item.querySelector('[data-hook="name_distributor"]').textContent = game.distribuidora;

@@ -1,5 +1,8 @@
 ﻿@using GAMES_MARKET.Models;
-
+@{
+    ViewBag.Title = "Lista de juegos";
+    ViewBag.PageName = "List";
+}
 <h2 class="text-center">Búsqueda de juegos</h2>
 <section>
     <form id="formFilter">
@@ -9,34 +12,28 @@
                     <input class="form-control form-control-lg " type="text" placeholder="Nombre del título" id="inputName">
                 </div>
             </div>
-
             <div class=" form-group col-6 col-md-2">
                 <select class="custom-select custom-select-lg mb-3" id="selectGender">
                     <option selected value="0">---</option>
-
                     @foreach (var item in ViewData["GeneroLista"] as List<JuegosModel>)
                     {
 
                         <option value="@item.id_genero">@item.nombre_genero</option>
                     }
-
                 </select>
             </div>
             <div class="form-group col-6 col-md-2">
                 <select class="custom-select custom-select-lg mb-3" id="selectPlatform">
                     <option selected value="0">---</option>
-
                     @foreach (var item in ViewData["PlataformaLista"] as List<JuegosModel>)
                     {
                         <option value="@item.id_plataforma" data-hook="platform">@item.nombre_plataforma</option>
                     }
-
                 </select>
             </div>
             <div class="form-group col-12 col-md-2"> <button id="btnSearch" class="btn btn-primary btn-lg w-100">Busca</button></div>
         </div>
     </form>
-
     <div class="container-fluid">
         <div class="row" id="games_list">
             @foreach (var item in Model)
@@ -44,10 +41,9 @@
                 <div class="col-6 col-md-3">
                     <div class="card bg-light mb-4 shadow-sm">
                         <a href="../Games/Game/@item.id_juego">
-                            <img src="../../Client/shared/img/gamescover/@item.img_ruta" class="d-block w-100" alt="@item.nombre">
+                            <img src="../../Client/img/gamescover/@item.img_ruta" class="d-block w-100" alt="@item.nombre">
                         </a>
                         <div class="row card-body">
-
                             <div class="col-12">
                                 <div class="game-last-tittle">
                                     <a href="../Games/Game/@item.id_juego">
@@ -55,9 +51,8 @@
                                     </a>
                                 </div>
                             </div>
-
                             <div class="col-6">
-                                <img src="~/Client/shared/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="@item.nombre_plataforma">
+                                <img src="~/Client/img/logos/@item.img_rutaPlataforma" class="game-last-logo" alt="@item.nombre_plataforma">
                             </div>
                             <div class="col-6 text-right">
                                 <p>@item.distribuidora</p>
@@ -72,18 +67,15 @@
                             <div class="col-6 ">
                                 <p>@item.descuento%</p>
                             </div>
-
                             <div class="col-6 text-right">
                                 <p class="game-last-price font-weight-bold">@item.precio€</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
             }
         </div>
     </div>
-
     <template data-hook="game_template">
         <div class="col-6 col-md-3">
             <div class="card bg-light mb-4 shadow-sm">
@@ -91,7 +83,6 @@
                     <img src=" " class="d-block w-100" alt="" data-hook="img_game">
                 </a>
                 <div class="row card-body">
-
                     <div class="col-12">
                         <div class="game-last-tittle">
                             <a href=" " data-hook="name_link">
@@ -117,7 +108,6 @@
                     <div class="col-6 text-right">
                         <p class="font-weight-bold" data-hook="price"></p>
                     </div>
-
                 </div>
             </div>
         </div>

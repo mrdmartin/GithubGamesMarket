@@ -20,7 +20,7 @@ namespace GAMES_MARKET.Models.BO
                                     join usuarios in bd.usuarios
                                     on comentarios.id_usuario equals usuarios.id_usuario
                                     where comentarios.id_juego == id
-                                    orderby comentarios.fecha ascending
+                                    orderby comentarios.fecha descending
                                     select new ComentariosModel
                                 {
                                     id_comentario = comentarios.id_comentario,
@@ -33,16 +33,14 @@ namespace GAMES_MARKET.Models.BO
             }
             return listaComentarios;
         }
-        public void Post(int id, string email, string comment)
+        public void post(int id_juego, int id_usuario, string comment)
         {
             using (var bd = new Games_MarketEntities())
             {
-                BOLogin oBOLogin = new BOLogin();
-                usuarios usuario = oBOLogin.getUsuarioByEmail(email);
 
                 comentarios ocomentarios = new comentarios();
-                ocomentarios.id_juego = id;
-                ocomentarios.id_usuario = usuario.id_usuario;
+                ocomentarios.id_juego = id_juego;
+                ocomentarios.id_usuario = id_usuario;
                 ocomentarios.comentario = comment;
                 ocomentarios.fecha = DateTime.Now;
                 bd.comentarios.Add(ocomentarios);

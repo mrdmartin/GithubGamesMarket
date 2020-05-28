@@ -1,34 +1,39 @@
-﻿<section>
+﻿@{
+    ViewBag.Title = "Contacto";
+    ViewBag.PageName = "Contact";
+}
+
+<section>
     <h2 class="m-md-3 text-center">Contacto</h2>
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="col-lg-3 col-lg-4 justify-content-center">
 
-                <form action="/Contact" method="post">
+                <form action="/Contact" method="post" id="formContact">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" class="form-control" name="nombre">
+                        <input type="text" class="form-control" name="nombre" id="input_name">
                     </div>
                     <div class="form-group">
                         <label>Apellidos</label>
-                        <input type="text" class="form-control" name="apellidos">
+                        <input type="text" class="form-control" name="apellidos" id="input_last_name">
                     </div>
                     <div class="form-group">
                         <label>Correo electrónico</label>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" id="input_email">
                     </div>
                     <div class="form-group">
                         <label>Consulta</label>
-                        <textarea class="form-control" rows="3" name="consulta"></textarea>
+                        <textarea class="form-control" rows="3" name="consulta" id="textarea_query"></textarea>
                     </div>
                     <span class="text-danger">@ViewBag.error</span>
                     <button class="btn btn-primary w-100 mb-5">Enviar</button>
                     <div class="row">
                         <div class="col-6">
-                            <a href="twitter.com/hotel_evento" class="">twitter.com/hotel_evento</a>
+                            <a href="https://twitter.com/twitter" class="">twitter.com/hotel_evento</a>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="instagram.com/hotel_evento" class="">instagram.com/hotel_evento</a>
+                            <a href="https://www.instagram.com/?hl=es" class="">instagram.com/hotel_evento</a>
                         </div>
                     </div>
                 </form>
