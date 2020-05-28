@@ -110,24 +110,23 @@ namespace GAMES_MARKET.Controllers
                 return RedirectToAction("../Login/Login");
             }
         }
-
+         
         public ActionResult ChangePassword(String token)
         {
-            UsuariosModel model = new UsuariosModel();
+            if (token == null)
+            {
+                return RedirectToAction("Help");
+            }
             using (Games_MarketEntities db = new Games_MarketEntities())
             {
-
-                if (token == null)
-                {
-                    return View("Index");
-                }
-                var oUsuario = db.usuarios.Where(d => d.token == model.token).FirstOrDefault();
+                usuarios oUsuario = db.usuarios.Where(d => d.token == token).FirstOrDefault();
                 if (oUsuario == null)
                 {
                     ViewBag.Error = "Contaseña provisional expirada";
-                    return View("Index");
+                    return View("Help");
                 }
             }
+            UsuariosModel model = new UsuariosModel();
             model.token = token;
 
             return View(model);
@@ -144,10 +143,12 @@ namespace GAMES_MARKET.Controllers
                     if (model.contrasena == null || model.contrasena2 == null)
                     {
                         ViewBag.error = "Contraseña no puede estar vacia";
+                        return View(model);
                     }
                     else if (model.contrasena != model.contrasena2)
                     {
                         ViewBag.error = "Las contraseñas no coinciden";
+                        return View(model);
                     }
                     else
                     {
@@ -188,7 +189,7 @@ namespace GAMES_MARKET.Controllers
         {
             Session["Log"] = null;
             Session["LogName"] = null;
-            return RedirectToAction("/Login/Login");
+            return RedirectToAction("/Login");
         }
     }
 }

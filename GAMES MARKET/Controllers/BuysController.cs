@@ -80,7 +80,7 @@ namespace GAMES_MARKET.Controllers
             "<p>Hola " + ousuario.nombre +" " + ousuario.apellidos + "</p>" + "<p>La Key del juego " + ojuegosModel.nombre + " comprado el " + oventa.fecha_venta + " es: </p>" +
             "<h2>" + oclaves.codigo + "</h2>" +
             "<p>¡Gracias y esperamos que sigas comprando en GamesMarket!<p>" +
-            "<p>No olvides que puedes consultar la key también iniciando sesión en nuestra web: www.GamesMarket.com </p>");
+            "<p>No olvides que puedes consultar la clave también iniciando sesión en nuestra web: www.GamesMarket.com </p>");
 
             BOMail oBOMail = new BOMail();
             oBOMail.sendEmail(oMailMessage);
