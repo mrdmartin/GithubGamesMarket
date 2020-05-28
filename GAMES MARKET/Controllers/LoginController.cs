@@ -107,7 +107,7 @@ namespace GAMES_MARKET.Controllers
             else
             {
                 oBOLogin.addUser(oregisterModel);
-                return RedirectToAction("../Home");
+                return RedirectToAction("../Login/Login");
             }
         }
 
